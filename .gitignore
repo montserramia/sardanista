@@ -1,0 +1,31 @@
+# Ignora fitxers i carpetes temporals
+.DS_Store
+.idea/
+.vscode/
+
+# Composer
+/drupal11/vendor/
+/drupal11/composer.lock
+
+# Fitxers del sistema de fitxers públics
+/drupal11/web/sites/default/files/
+
+# Configuració sensible
+/drupal11/web/sites/default/settings.local.php
+
+# Docker
+*.log
+*.pid
+
+# Altres fitxers temporals
+*.swp
+
+# Fitxers de backup de text (ex: fitxer.txt~)
+*~
+
+# Config export (ja el tens controlat)
+!drupal11/config/sync/
+
+# Ignora backups si són grans o privats
+/backup-db.sh
+/restore-db.sh
