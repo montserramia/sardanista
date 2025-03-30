@@ -1,0 +1,10 @@
+uuid: 06b5077d-8881-49f0-a909-9f07741ac464
+langcode: ca
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wKD4WsoV_wFgv2vgI4mcAAFSIzrye17ykzdwrnApkfY
+id: html_week
+label: 'Setmana HTML'
+locked: true
+pattern: Y-\WW

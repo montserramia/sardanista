@@ -1,0 +1,22 @@
+uuid: ca969115-19e7-416d-8a6a-4c3f8a2f60a6
+langcode: ca
+status: true
+dependencies:
+  theme:
+    - olivero
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: olivero_secondary_local_tasks
+theme: olivero
+region: highlighted
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Pestanyes secundàries'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

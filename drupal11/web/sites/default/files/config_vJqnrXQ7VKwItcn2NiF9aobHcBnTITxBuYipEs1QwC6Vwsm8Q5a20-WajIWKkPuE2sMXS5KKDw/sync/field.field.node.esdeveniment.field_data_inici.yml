@@ -1,0 +1,24 @@
+uuid: 07936b78-53a9-40c0-bc24-35d9e71053e2
+langcode: ca
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_data_inici
+    - node.type.esdeveniment
+  module:
+    - datetime
+id: node.esdeveniment.field_data_inici
+field_name: field_data_inici
+entity_type: node
+bundle: esdeveniment
+label: "Data d'inici"
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

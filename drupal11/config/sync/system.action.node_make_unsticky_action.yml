@@ -1,0 +1,13 @@
+uuid: b2113699-b390-4c8b-9405-ccb2cb9a5f19
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: lDM9mvIGAu8Sw8rt-uCO4Sr7yX5VPrDPxYcawkbKd6k
+id: node_make_unsticky_action
+label: 'Fes el contingut no estàtic'
+type: node
+plugin: node_make_unsticky_action
+configuration: {  }

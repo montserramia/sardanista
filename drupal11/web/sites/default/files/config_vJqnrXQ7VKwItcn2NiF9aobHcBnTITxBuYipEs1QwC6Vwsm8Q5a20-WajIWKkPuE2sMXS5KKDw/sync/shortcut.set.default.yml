@@ -1,0 +1,8 @@
+uuid: db8a4590-bd4f-484a-8972-870366f9ac93
+langcode: ca
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: U5VlGjd_SfV0Qm_EfnaynOfc549cNscFAx48JfYoMRI
+id: default
+label: 'Per defecte'

@@ -1,0 +1,13 @@
+uuid: 9ad08ab3-3bec-4f42-8ee4-8b606980dfbc
+langcode: ca
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Fe3N1uqaAyyKJbVkqT-btXy3t98puW8GCRD822xjl10
+name: Article
+type: article
+description: 'Utilitzeu els <em>articles</em> per a contingut sensible en el temps com notícies, comunicats de premsa o entrades de blog.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

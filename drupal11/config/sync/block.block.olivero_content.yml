@@ -1,0 +1,22 @@
+uuid: 5b67ce39-2b57-4a8d-bbcc-6b182b3b2ef6
+langcode: ca
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - olivero
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: olivero_content
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contingut principal de la pàgina'
+  label_display: '0'
+  provider: system
+visibility: {  }
