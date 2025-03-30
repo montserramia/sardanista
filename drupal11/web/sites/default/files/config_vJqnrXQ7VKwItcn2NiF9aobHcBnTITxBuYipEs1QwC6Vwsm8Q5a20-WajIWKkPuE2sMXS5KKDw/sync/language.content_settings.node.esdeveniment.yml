@@ -1,0 +1,11 @@
+uuid: ac5fce1f-417d-4f3d-b165-bc38ddc8635a
+langcode: ca
+status: true
+dependencies:
+  config:
+    - node.type.esdeveniment
+id: node.esdeveniment
+target_entity_type_id: node
+target_bundle: esdeveniment
+default_langcode: site_default
+language_alterable: false

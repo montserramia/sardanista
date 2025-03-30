@@ -1,0 +1,13 @@
+uuid: 0bbe5146-be28-4e8f-aa8d-77d559cd03f4
+langcode: ca
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jonvgt3CkUM2eMLTFwWfHileWWDC4YtXCuIlCahTk_I
+id: personal
+label: 'Formulari de contacte personal'
+recipients: {  }
+reply: ''
+weight: 0
+message: "El vostre missatge s'ha enviat."
+redirect: ''

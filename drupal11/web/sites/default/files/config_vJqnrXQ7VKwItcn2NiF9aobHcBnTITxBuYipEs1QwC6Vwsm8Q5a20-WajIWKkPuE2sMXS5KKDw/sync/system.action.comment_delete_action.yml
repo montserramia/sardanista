@@ -1,0 +1,13 @@
+uuid: a5e07cff-1610-45eb-8ea0-3c5df88e320c
+langcode: ca
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: comment_delete_action
+label: 'Suprimeix el comentari'
+type: comment
+plugin: 'entity:delete_action:comment'
+configuration: {  }

@@ -1,0 +1,14 @@
+uuid: 32510279-1dd5-42c2-9603-e73414e1ed26
+langcode: ca
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: k3aUaZXGDuhkek2TZIee0PApOPTvYZLadziekdyHA5A
+id: user_search
+label: Usuaris
+path: user
+weight: 0
+plugin: user_search
+configuration: {  }

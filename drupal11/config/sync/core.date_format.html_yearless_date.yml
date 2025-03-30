@@ -1,0 +1,10 @@
+uuid: bb5ec3df-e6df-436e-a26e-5e78c365b29e
+langcode: ca
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5VpawMrKPEPCkoO4YpPa0TDFO2dgiIHfTziJtwlmUxc
+id: html_yearless_date
+label: 'Data HTML sense any'
+locked: true
+pattern: m-d

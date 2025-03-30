@@ -1,0 +1,22 @@
+uuid: 3bed18e8-1a87-435b-97d8-38d76a771f15
+langcode: ca
+status: true
+dependencies:
+  theme:
+    - claro
+_core:
+  default_config_hash: ACjBZI5shAMiiUpsz-inLYVXDqNNXRnSzAWV3kV_8Hw
+id: claro_primary_local_tasks
+theme: claro
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Pestanyes primàries'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

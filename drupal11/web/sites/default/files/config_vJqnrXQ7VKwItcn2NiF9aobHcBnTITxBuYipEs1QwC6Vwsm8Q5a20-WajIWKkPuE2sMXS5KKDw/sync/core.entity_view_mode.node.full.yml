@@ -1,0 +1,13 @@
+uuid: 473a8414-e507-4ad8-828b-fdcf313ed6d8
+langcode: ca
+status: false
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: QJ2aZ1xfVf59aq6Pz5X7fyUOa2HxuCoTwQ_RQjoulAU
+id: node.full
+label: 'Contingut sencer'
+description: ''
+targetEntityType: node
+cache: true

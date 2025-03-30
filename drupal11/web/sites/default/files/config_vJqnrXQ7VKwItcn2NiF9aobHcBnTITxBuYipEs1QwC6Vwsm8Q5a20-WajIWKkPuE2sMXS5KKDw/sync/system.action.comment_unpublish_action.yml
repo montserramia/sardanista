@@ -1,0 +1,13 @@
+uuid: 69430a80-7584-4d7a-9772-59bdfa3b022b
+langcode: ca
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: tWOIjSMobEWOFZddMkNqb9JySbOVwE1diC6NRqcfLTk
+id: comment_unpublish_action
+label: 'Retira el comentari'
+type: comment
+plugin: 'entity:unpublish_action:comment'
+configuration: {  }

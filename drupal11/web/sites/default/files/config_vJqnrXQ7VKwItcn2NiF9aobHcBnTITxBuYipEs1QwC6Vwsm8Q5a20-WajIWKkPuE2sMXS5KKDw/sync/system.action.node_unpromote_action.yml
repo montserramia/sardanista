@@ -1,0 +1,13 @@
+uuid: 07c9eec2-0c16-4993-bc82-d07db1150975
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: JBptjnfuOMtsdKygklXxoOgeOCTMtQxlkymjnnj-cC0
+id: node_unpromote_action
+label: 'Elimina el contingut de la portada'
+type: node
+plugin: node_unpromote_action
+configuration: {  }
