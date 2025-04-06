@@ -29,3 +29,7 @@
 # Ignora backups si són grans o privats
 /backup-db.sh
 /restore-db.sh
+
+# Evita que es colin dependències Node a l'arrel
+/node_modules/
+/package-lock.json
