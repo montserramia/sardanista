@@ -54,6 +54,11 @@ export default {
     focus: "#000e20",
   },
 
+  groc: {
+    main: "#F7C400",
+    focus: "#d4aa00",
+  },
+
   info: {
     main: "#F7C400",
     focus: "#d4aa00",
@@ -105,6 +110,11 @@ export default {
     secondary: {
       main: "#747b8a",
       state: "#495361",
+    },
+
+    groc: {
+      main: "#F7C400",
+      focus: "#d4aa00",
     },
 
     info: {
