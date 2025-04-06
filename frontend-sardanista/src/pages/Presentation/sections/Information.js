@@ -38,25 +38,27 @@ function Information() {
           <Grid item xs={12} lg={4} sx={{ mx: "auto" }}>
             <RotatingCard>
               <RotatingCardFront
+                color="groc"
                 image={bgFront}
                 icon="touch_app"
                 title={
                   <>
-                    Feel the
+                    Agrupació
                     <br />
-                    Material Kit
+                    Sardanista
                   </>
                 }
-                description="All the MUI components that you need in a development have been re-design with the new look."
+                description="Mantenim viva la cultura catalana a través de la sardana, amb passió i comunitat."
               />
               <RotatingCardBack
+                color="groc"
                 image={bgBack}
-                title="Discover More"
-                description="You will save a lot of time going from prototyping to full-functional code because all elements are implemented."
+                title="Descobreix-nos"
+                description="Som més de 900 socis i 30 anys de trajectòria compartint dansa i tradició."
                 action={{
                   type: "internal",
-                  route: "/sections/page-sections/page-headers",
-                  label: "start with header",
+                  route: "/contacte",
+                  label: "Contacta'ns",
                 }}
               />
             </RotatingCard>
@@ -65,33 +67,33 @@ function Information() {
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="content_copy"
-                  title="Full Documentation"
-                  description="Built by developers for developers. Check the foundation and you will find
-                    everything inside our documentation."
+                  icon="school"
+                  color="info"
+                  title="Classes de sardanes"
+                  description="Aprèn a ballar sardanes des de zero o perfecciona els teus passos. Classes per a totes les edats."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="flip_to_front"
-                  title="MUI Ready"
-                  description="The world's most popular react components library for building user interfaces."
+                  icon="people"
+                  title="Trobades socials"
+                  description="Compartim dansa, menjar i rialles en trobades que enforteixen la comunitat."
                 />
               </Grid>
             </Grid>
             <Grid container spacing={3} sx={{ mt: { xs: 0, md: 6 } }}>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="price_change"
-                  title="Save Time & Money"
-                  description="Creating your design from scratch with dedicated designers can be very expensive. Start with our Design System."
+                  icon="event"
+                  title="Aplecs i actuacions"
+                  description="Actuem a festes majors, concursos i esdeveniments arreu de Catalunya."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="devices"
-                  title="Fully Responsive"
-                  description="Regardless of the screen size, the website content will naturally fit the given resolution."
+                  icon="favorite"
+                  title="Tradició i comunitat"
+                  description="Som una gran família que estima la cultura i la fa créixer cada dia."
                 />
               </Grid>
             </Grid>

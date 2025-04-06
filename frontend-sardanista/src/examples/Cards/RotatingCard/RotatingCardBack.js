@@ -53,10 +53,10 @@ function RotatingCard({ color, image, title, description, action }) {
       }}
     >
       <MKBox pt={12} pb={2} px={2} textAlign="center" lineHeight={1}>
-        <MKTypography variant="h3" color="white" gutterBottom>
+        <MKTypography variant="h3" color="dark" gutterBottom>
           {title}
         </MKTypography>
-        <MKTypography variant="body2" color="white" opacity={0.8}>
+        <MKTypography variant="body2" color="dark" opacity={0.8}>
           {description}
         </MKTypography>
         {action && (
