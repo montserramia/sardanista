@@ -68,6 +68,8 @@ import ProgressBars from "layouts/sections/elements/progress-bars";
 import Toggles from "layouts/sections/elements/toggles";
 import Typography from "layouts/sections/elements/typography";
 import Esdeveniments from "pages/esdeveniments";
+import BlogPage from "pages/blog";
+import ArticleDetail from "pages/blog/ArticleDetail";
 
 const routes = [
   {
@@ -100,6 +102,11 @@ const routes = [
             key: "esdeveniments",
             route: "/esdeveniments",
             component: <Esdeveniments />,
+          },
+          {
+            name: "Blog",
+            route: "/blog",
+            component: <BlogPage />,
           },
         ],
       },
@@ -276,6 +283,12 @@ const routes = [
     name: "github",
     icon: <GitHubIcon />,
     href: "https://www.github.com/creativetimofficial/material-kit-react",
+  },
+
+  // Ruta dinàmica per mostrar un article individual
+  {
+    route: "/blog/:slug",
+    component: <ArticleDetail />,
   },
 ];
 
