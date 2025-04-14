@@ -12,6 +12,7 @@ const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
 export default function Esdeveniments() {
   const [esdeveniments, setEsdeveniments] = useState([]);
+  const [imatgeHero, setImatgeHero] = useState(null);
 
   useEffect(() => {
     axios
@@ -42,7 +43,11 @@ export default function Esdeveniments() {
             };
           })
         );
+
         setEsdeveniments(events);
+
+        const primerAmbImatge = events.find((e) => e.imageUrl);
+        setImatgeHero(primerAmbImatge?.imageUrl);
       })
       .catch((error) => {
         console.error("Error carregant esdeveniments:", error);
@@ -51,27 +56,62 @@ export default function Esdeveniments() {
 
   return (
     <>
-      <DefaultNavbar routes={routes} transparent light />
+      <MKBox position="fixed" top="0" width="100%" zIndex={999}>
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/neta",
+            label: "Contacta'ns",
+            color: "info",
+          }}
+        />
+      </MKBox>
 
-      {/* Hero amb imatge de fons */}
+      {/* Hero amb imatge del primer esdeveniment */}
       <MKBox
-        minHeight="45vh"
+        minHeight="60vh"
         width="100%"
         sx={{
           backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
             `${linearGradient(
-              rgba(gradients.info.main, 0.6),
-              rgba(gradients.info.state, 0.6)
-            )}, url('/img/header-event.jpg')`,
+              rgba(gradients.info.main, 0.1),
+              rgba(gradients.info.state, 0.1)
+            )}, url(${
+              imatgeHero
+                ? `http://localhost:8080${imatgeHero}`
+                : "https://source.unsplash.com/1600x600/?festival,sardana"
+            })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
       >
-        <MKTypography variant="h2" color="white">
-          Esdeveniments
-        </MKTypography>
+        <MKBox
+          sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            px: 3,
+            py: 2,
+            borderRadius: "lg",
+          }}
+        >
+          <MKTypography
+            variant="h2"
+            color="white"
+            textAlign="center"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Esdeveniments
+          </MKTypography>
+          <MKTypography
+            variant="body2"
+            color="white"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Ballades, àplecs i trobades sardanistes.
+          </MKTypography>
+        </MKBox>
       </MKBox>
 
       {/* Contingut principal */}
@@ -93,7 +133,9 @@ export default function Esdeveniments() {
                     <CardMedia
                       component="img"
                       height="200"
-                      image={`http://localhost:8080${event.imageUrl || ""}` || imatgePerDefecte}
+                      image={
+                        event.imageUrl ? `http://localhost:8080${event.imageUrl}` : imatgePerDefecte
+                      }
                       alt={event.title}
                     />
                     <CardContent>

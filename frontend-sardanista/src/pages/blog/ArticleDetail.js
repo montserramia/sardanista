@@ -1,91 +1,130 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import DefaultFooter from "examples/Footers/DefaultFooter";
+import routes from "routes";
+import footerRoutes from "footer.routes";
 
 function ArticleDetail() {
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const API_BASE = "http://localhost:8080";
-    console.log("Slug rebut:", slug); // 🔍 Comprovació en consola
 
-    fetch(`${API_BASE}/jsonapi/node/article?filter[path][value]=/${slug}&include=field_image`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data.length > 0) {
-          const node = data.data[0];
-          const imageId = node.relationships?.field_image?.data?.id;
-          const image = data.included?.find((i) => i.id === imageId)?.attributes?.uri?.url;
+    axios
+      .get(`${API_BASE}/jsonapi/node/article?filter[field_slug]=${slug}&include=field_image`)
+      .then((res) => {
+        const item = res.data.data?.[0];
+        if (!item) throw new Error("Article no trobat");
 
-          setArticle({
-            title: node.attributes.title,
-            body: node.attributes.body?.processed,
-            created: node.attributes.created,
-            image: image ? `${API_BASE}${image}` : null,
-          });
-        } else {
-          console.warn("No s'ha trobat cap article per al slug:", slug);
-        }
+        const imageUrl = res.data.included?.[0]?.attributes?.uri?.url
+          ? `${API_BASE}${res.data.included[0].attributes.uri.url}`
+          : "https://source.unsplash.com/random/800x600?culture";
+
+        setArticle({
+          title: item.attributes.title,
+          body: item.attributes.body?.value || "Contingut no disponible",
+          image: imageUrl,
+        });
       })
-      .catch((error) => {
-        console.error("Error carregant l'article:", error);
-      });
+      .catch((err) => {
+        console.error("Error carregant article:", err);
+        setArticle(null);
+      })
+      .finally(() => setLoading(false));
   }, [slug]);
 
-  if (!article) {
-    return (
-      <MKBox py={6} textAlign="center">
-        Carregant article...
-      </MKBox>
-    );
-  }
+  if (loading) return <MKTypography>Carregant...</MKTypography>;
+  if (!article) return <MKTypography>Article no trobat</MKTypography>;
 
   return (
-    <MKBox component="section" py={6}>
-      <Container>
-        {article.image && (
-          <MKBox
-            component="img"
-            src={article.image}
-            alt={article.title}
-            width="100%"
-            borderRadius="xl"
-            mb={4}
-          />
-        )}
-        <MKTypography variant="h2" gutterBottom>
-          {article.title}
-        </MKTypography>
-        <MKTypography
-          variant="caption"
-          color="text"
-          mb={2}
-          display="block"
-        >
-          Publicat el {new Date(article.created).toLocaleDateString("ca-ES")}
-        </MKTypography>
-        <MKTypography
-          variant="body1"
-          component="div"
-          color="text"
-          dangerouslySetInnerHTML={{ __html: article.body }}
+    <>
+      <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/neta",
+            label: "Contacta'ns",
+            color: "info",
+          }}
         />
-        <MKBox mt={4}>
+      </MKBox>
+
+      {/* Hero amb imatge de fons */}
+      <MKBox
+        minHeight="60vh"
+        width="100%"
+        sx={{
+          backgroundImage: `url(${article.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <MKBox
+          sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.0)",
+            px: 3,
+            py: 2,
+            borderRadius: "lg",
+          }}
+        >
           <MKTypography
-            component={Link}
-            to="/blog"
-            variant="body2"
-            color="info"
-            sx={{ textDecoration: "none" }}
+            variant="h2"
+            color="white"
+            textAlign="center"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
           >
-            ← Tornar al blog
+            {article.title}
           </MKTypography>
         </MKBox>
-      </Container>
-    </MKBox>
+      </MKBox>
+
+      {/* Cos de l'article dins una Card */}
+      <Card
+        sx={{
+          p: 3,
+          mx: { xs: 2, lg: 3 },
+          mt: -6,
+          mb: 6,
+          boxShadow: ({ boxShadows: { xxl } }) => xxl,
+        }}
+      >
+        <MKBox component="section" py={3}>
+          <Container>
+            <Grid container justifyContent="center">
+              <Grid item xs={12} md={10}>
+                <CardContent>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: article.body }}
+                    style={{
+                      fontSize: "1.125rem",
+                      lineHeight: 1.8,
+                      color: "#444",
+                    }}
+                  />
+                </CardContent>
+              </Grid>
+            </Grid>
+          </Container>
+        </MKBox>
+      </Card>
+
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
+    </>
   );
 }
 
