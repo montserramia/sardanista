@@ -29,13 +29,6 @@ function BlogCard({ image, title, description, route }) {
   );
 }
 
-BlogCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  route: PropTypes.string.isRequired,
-};
-
 export default BlogCard;
 
 BlogCard.propTypes = {

@@ -63,7 +63,7 @@ function Presentation() {
         minHeight="75vh"
         width="100%"
         sx={{
-          backgroundImage: `linear-gradient(to bottom, rgba(3, 22, 99, 0.2), rgba(3, 22, 99, 0.6)), url(${bgImage})`,
+          backgroundImage: `linear-gradient(to bottom, rgba(3, 22, 99, 0.1), rgba(3, 22, 99, 0.4)), url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",

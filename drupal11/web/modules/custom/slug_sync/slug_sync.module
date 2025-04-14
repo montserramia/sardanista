@@ -1,0 +1,29 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implementa hook_entity_presave().
+ */
+function slug_sync_entity_presave(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() !== 'node') {
+    return;
+  }
+
+  $content_types = ['article', 'esdeveniment'];
+
+  if (!in_array($entity->bundle(), $content_types)) {
+    return;
+  }
+
+  if (!$entity->hasField('field_slug') || !$entity->hasField('path')) {
+    return;
+  }
+
+  // Obtenim l'àlies de la URL (pathauto ja l'ha generat en aquest moment)
+  $alias = $entity->get('path')->alias;
+  if ($alias) {
+    $slug = trim($alias, '/'); // treu les barres inicials i finals
+    $entity->set('field_slug', $slug);
+  }
+}
