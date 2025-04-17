@@ -55,15 +55,15 @@ function Pages() {
           <MKBadge
             variant="contained"
             color="info"
-            badgeContent="boost creativity"
+            badgeContent="El passat que ens inspira"
             container
             sx={{ mb: 2 }}
           />
           <MKTypography variant="h2" fontWeight="bold">
-            With our coded pages
+            Tradicions Vives
           </MKTypography>
           <MKTypography variant="body1" color="text">
-            The easiest way to get started is to use one of our
+            Històries i figures emblemàtiques de
             <br /> pre-built example pages.
           </MKTypography>
         </Grid>

@@ -54,7 +54,7 @@ function ArticleDetail() {
           action={{
             type: "internal",
             route: "/neta",
-            label: "Contacta'ns",
+            label: "Subscriu-te",
             color: "info",
           }}
         />

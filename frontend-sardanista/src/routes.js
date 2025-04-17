@@ -42,19 +42,14 @@ import Icon from "@mui/material/Icon";
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
-import Author from "layouts/pages/landing-pages/author";
-import SignIn from "layouts/pages/authentication/sign-in";
-
-// Sections
 import Esdeveniments from "pages/esdeveniments";
 import BlogPage from "pages/blog";
-import ArticleDetail from "pages/blog/ArticleDetail";
 import PaginaNeta from "pages/neta";
 
 const routes = [
   {
     name: "Qui som",
-    icon: <Icon>info</Icon>,
+    icon: <Icon>groups</Icon>,
     route: "/pages/landing-pages/about-us",
     component: <AboutUs />,
   },
@@ -66,35 +61,21 @@ const routes = [
   },
   {
     name: "Blog",
-    icon: <Icon>article</Icon>,
+    icon: <Icon>newspaper</Icon>,
     route: "/blog",
     component: <BlogPage />,
   },
-
-  // 🔒 Rutes ocultes del menú però accessibles per URL
   {
-    route: "/blog/:slug",
-    component: <ArticleDetail />,
-  },
-  {
+    name: "Vocabulari",
+    icon: <Icon>book</Icon>,
     route: "/neta",
     component: <PaginaNeta />,
   },
   {
-    route: "/pages/landing-pages/about-us",
-    component: <AboutUs />,
-  },
-  {
+    name: "Contacta'ns",
+    icon: <Icon>message</Icon>,
     route: "/pages/landing-pages/contact-us",
     component: <ContactUs />,
-  },
-  {
-    route: "/pages/landing-pages/author",
-    component: <Author />,
-  },
-  {
-    route: "/pages/authentication/sign-in",
-    component: <SignIn />,
   },
 ];
 
