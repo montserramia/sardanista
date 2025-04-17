@@ -27,8 +27,8 @@ import RotatingCardBack from "examples/Cards/RotatingCard/RotatingCardBack";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 // Images
-import bgFront from "assets/images/rotating-card-bg-front.jpeg";
-import bgBack from "assets/images/rotating-card-bg-back.jpeg";
+import bgFront from "assets/images/sardana/pilar-pepa.jpeg";
+import bgBack from "assets/images/sardana/actuacio.jpeg";
 
 function Information() {
   return (
@@ -46,15 +46,32 @@ function Information() {
                     Agrupació
                     <br />
                     Sardanista
+                    <br />
+                    Castelldefels
                   </>
                 }
-                description="Mantenim viva la cultura catalana a través de la sardana, amb passió i comunitat."
+                description={
+                  <>
+                    Mantenim viva la cultura catalana a través de la sardana, amb passió i
+                    comunitat.
+                    <br />
+                    Ens adaptantem als nous temps sense perdre l’essència.
+                    <br />
+                    Tu pots ser-ne part
+                  </>
+                }
               />
               <RotatingCardBack
                 color="groc"
                 image={bgBack}
-                title="Descobreix-nos"
-                description="Som més de 900 socis i 30 anys de trajectòria compartint dansa i tradició."
+                title="Uneix-te a nosaltres"
+                description={
+                  <>
+                    Gaudir de la sardana és millor en companyia.
+                    <br />
+                    T’esperem amb els braços oberts!
+                  </>
+                }
                 action={{
                   type: "internal",
                   route: "/contacte",
@@ -70,14 +87,14 @@ function Information() {
                   icon="school"
                   color="info"
                   title="Classes de sardanes"
-                  description="Aprèn a ballar sardanes des de zero o perfecciona els teus passos. Classes per a totes les edats."
+                  description="Les nostres classes de sardana estan dissenyades per ensenyar als participants els passos i la coreografia d’aquesta dansa tradicional, fomentant la inclusió i l’aprenentatge col·laboratiu."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
                   icon="people"
-                  title="Trobades socials"
-                  description="Compartim dansa, menjar i rialles en trobades que enforteixen la comunitat."
+                  title="Trobades i Esdeveniments"
+                  description="Les nostres trobades i esdeveniments són oportunitats excelents per gaudir de la sardana, així com per conèixer a altres ballarins, compartir experiències i reforçar la comunitat sardanista."
                 />
               </Grid>
             </Grid>
@@ -86,14 +103,14 @@ function Information() {
                 <DefaultInfoCard
                   icon="event"
                   title="Aplecs i actuacions"
-                  description="Actuem a festes majors, concursos i esdeveniments arreu de Catalunya."
+                  description="Els espectacles de sardana que organitzem destaquen no només la dansa, sinó també la música tradicional, i solen atraure un públic divers, contribuint a la difusió de la cultura catalana."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
                   icon="favorite"
                   title="Tradició i comunitat"
-                  description="Som una gran família que estima la cultura i la fa créixer cada dia."
+                  description="Realitzem diverses activitats culturals al voltant de la sardana, incloent conferències i tallers, per enriquir el coneixement i apreciació d’aquesta disciplina musical i de dansa."
                 />
               </Grid>
             </Grid>

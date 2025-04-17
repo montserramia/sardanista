@@ -53,7 +53,7 @@ function RotatingCardFront({ color, image, icon, title, description }) {
         <MKTypography variant="h3" color="dark" gutterBottom>
           {title}
         </MKTypography>
-        <MKTypography variant="body2" color="dark" opacity={0.8}>
+        <MKTypography variant="body3" color="dark">
           {description}
         </MKTypography>
       </MKBox>

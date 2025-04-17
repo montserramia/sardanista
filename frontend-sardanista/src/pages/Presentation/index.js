@@ -49,16 +49,18 @@ import bgImage from "assets/images/bg-sardanistes.jpeg";
 function Presentation() {
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "free download",
-          color: "info",
-        }}
-        sticky
-      />
+      <MKBox position="fixed" top="0" width="100%" zIndex={999}>
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/neta",
+            label: "Subscriu-te",
+            color: "info",
+          }}
+        />
+      </MKBox>
+
       <MKBox
         minHeight="75vh"
         width="100%"

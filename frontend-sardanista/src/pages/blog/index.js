@@ -11,12 +11,12 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
+import bgImage from "assets/images/sardana/db/mans.jpeg";
 
 const imatgePerDefecte = "https://source.unsplash.com/random/800x600?culture";
 
 function BlogPage() {
   const [articles, setArticles] = useState([]);
-  const [imatgeHero, setImatgeHero] = useState(null);
 
   useEffect(() => {
     const API_BASE = "http://localhost:8080";
@@ -48,9 +48,6 @@ function BlogPage() {
         });
 
         setArticles(formatted);
-
-        const primerAmbImatge = formatted.find((a) => a.imageUrl);
-        setImatgeHero(primerAmbImatge?.imageUrl);
       })
       .catch((error) => {
         console.error("Error carregant articles:", error);
@@ -65,7 +62,7 @@ function BlogPage() {
           action={{
             type: "internal",
             route: "/neta",
-            label: "Contacta'ns",
+            label: "Subscriu-te",
             color: "info",
           }}
         />
@@ -77,23 +74,16 @@ function BlogPage() {
         sx={{
           backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
             `${linearGradient(
-              rgba(gradients.info.main, 0.0),
+              rgba(gradients.info.main, 0.1),
               rgba(gradients.info.state, 0.1)
-            )}, url(${imatgeHero || "https://source.unsplash.com/1600x600/?writing,books,news"})`,
+            )}, url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
       >
-        <MKBox
-          sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.1)",
-            px: 3,
-            py: 2,
-            borderRadius: "lg",
-          }}
-        >
+        <MKBox>
           <MKTypography
             variant="h2"
             color="white"
@@ -102,7 +92,11 @@ function BlogPage() {
           >
             Últims articles
           </MKTypography>
-          <MKTypography variant="body2" color="white">
+          <MKTypography
+            variant="body3"
+            color="white"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
             Reflexions, notícies i cultura sardanista.
           </MKTypography>
         </MKBox>

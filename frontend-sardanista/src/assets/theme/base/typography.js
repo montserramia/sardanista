@@ -123,7 +123,7 @@ const typography = {
 
   body1: {
     fontFamily: baseProperties.fontFamily,
-    fontSize: baseProperties.fontSizeXL,
+    fontSize: baseProperties.fontSize2XL,
     fontWeight: baseProperties.fontWeightRegular,
     lineHeight: 1.625,
   },
@@ -133,6 +133,12 @@ const typography = {
     fontSize: baseProperties.fontSizeMD,
     fontWeight: baseProperties.fontWeightLight,
     lineHeight: 1.6,
+  },
+
+  body3: {
+    fontFamily: baseProperties.fontFamily,
+    fontSize: baseProperties.fontSizeXL,
+    lineHeight: 1.8,
   },
 
   button: {

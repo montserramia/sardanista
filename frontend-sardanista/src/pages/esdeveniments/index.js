@@ -8,11 +8,12 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
+import bgImage from "assets/images/sardana/db/vestit-tradicional.jpg";
+
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
 export default function Esdeveniments() {
   const [esdeveniments, setEsdeveniments] = useState([]);
-  const [imatgeHero, setImatgeHero] = useState(null);
 
   useEffect(() => {
     axios
@@ -45,9 +46,6 @@ export default function Esdeveniments() {
         );
 
         setEsdeveniments(events);
-
-        const primerAmbImatge = events.find((e) => e.imageUrl);
-        setImatgeHero(primerAmbImatge?.imageUrl);
       })
       .catch((error) => {
         console.error("Error carregant esdeveniments:", error);
@@ -62,7 +60,7 @@ export default function Esdeveniments() {
           action={{
             type: "internal",
             route: "/neta",
-            label: "Contacta'ns",
+            label: "Subscriu-te",
             color: "info",
           }}
         />
@@ -77,25 +75,14 @@ export default function Esdeveniments() {
             `${linearGradient(
               rgba(gradients.info.main, 0.1),
               rgba(gradients.info.state, 0.1)
-            )}, url(${
-              imatgeHero
-                ? `http://localhost:8080${imatgeHero}`
-                : "https://source.unsplash.com/1600x600/?festival,sardana"
-            })`,
+            )}, url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
       >
-        <MKBox
-          sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.2)",
-            px: 3,
-            py: 2,
-            borderRadius: "lg",
-          }}
-        >
+        <MKBox>
           <MKTypography
             variant="h2"
             color="white"
@@ -105,7 +92,7 @@ export default function Esdeveniments() {
             Esdeveniments
           </MKTypography>
           <MKTypography
-            variant="body2"
+            variant="body3"
             color="white"
             sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
           >

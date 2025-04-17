@@ -9,7 +9,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import bgImage from "assets/images/sardana/2.jpeg";
+import bgImage from "assets/images/sardana/pepa-pilar.jpeg";
 
 function PaginaNeta() {
   return (
@@ -18,12 +18,11 @@ function PaginaNeta() {
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}
-          center={false}
           action={{
-            type: "external",
-            route: "assets/images/sardana/2.jpg",
-            label: "Viu la sardana",
-            color: "groc",
+            type: "internal",
+            route: "/neta",
+            label: "Subscriu-te",
+            color: "info",
           }}
         />
       </MKBox>
@@ -68,7 +67,7 @@ function PaginaNeta() {
             py={6}
           >
             <MKTypography variant="h4" textAlign="center" color="info" mt={-1}>
-              Aquesta és una pàgina neta
+              No et perdis cap detall del món de la sardana!
             </MKTypography>
           </MKBox>
         </Grid>
