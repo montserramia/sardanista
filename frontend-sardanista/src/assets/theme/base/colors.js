@@ -55,7 +55,7 @@ export default {
   },
 
   groc: {
-    main: "#F7C400",
+    main: "#ffea4e",
     focus: "#d4aa00",
   },
 

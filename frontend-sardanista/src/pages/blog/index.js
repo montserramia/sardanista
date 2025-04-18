@@ -11,7 +11,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
-import bgImage from "assets/images/sardana/db/mans.jpeg";
+import bgImage from "assets/images/sardana/db/passos.jpg";
 
 const imatgePerDefecte = "https://source.unsplash.com/random/800x600?culture";
 

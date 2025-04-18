@@ -24,6 +24,8 @@ import MKBox from "components/MKBox";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 import CenteredBlogCard from "examples/Cards/BlogCards/CenteredBlogCard";
 
+import imgActuacio from "assets/images/actuacio-diada.jpeg";
+
 function Information() {
   return (
     <MKBox component="section" py={12}>
@@ -34,36 +36,40 @@ function Information() {
               <Grid item xs={12} md={6}>
                 <MKBox mb={5}>
                   <DefaultInfoCard
-                    icon="public"
-                    title="Fully integrated"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon="castle"
+                    title="Tradició que inspira"
+                    description="Celebrem la cultura catalana a cada pas.
+Ballar sardanes és mantenir viva una tradició que ens uneix i ens emociona."
                   />
                 </MKBox>
               </Grid>
               <Grid item xs={12} md={6}>
                 <MKBox mb={5}>
                   <DefaultInfoCard
-                    icon="payments"
-                    title="Payments functionality"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon="diversity_3"
+                    title="Comunitat acollidora"
+                    description="Som més que un grup, som una família.
+Tothom hi és benvingut, ja siguis nou o sardanista de tota la vida."
                   />
                 </MKBox>
               </Grid>
               <Grid item xs={12} md={6}>
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
-                    icon="apps"
-                    title="Prebuilt components"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon="sentiment_satisfied"
+                    title="Passió per créixer"
+                    description="Creiem en el poder de la cultura per transformar.
+Cada activitat és una oportunitat per créixer, compartir i fer pinya."
                   />
                 </MKBox>
               </Grid>
               <Grid item xs={12} md={6}>
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
-                    icon="3p"
-                    title="Improved platform"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    icon="handshake"
+                    title="Espirit col·laboratiu"
+                    description="Creixem plegats, des del respecte i el compromís.
+L’agrupació és possible gràcies a l’esforç conjunt de persones que comparteixen la mateixa passió."
                   />
                 </MKBox>
               </Grid>
@@ -71,14 +77,14 @@ function Information() {
           </Grid>
           <Grid item xs={12} lg={4} sx={{ ml: "auto", mt: { xs: 3, lg: 0 } }}>
             <CenteredBlogCard
-              image="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-              title="Get insights on Search"
-              description="Website visitors today demand a frictionless user expericence — especially when using search. Because of the hight standards."
+              image={imgActuacio}
+              title="Viu la sardana amb nosaltres"
+              description="T’hi esperem amb els braços oberts!"
               action={{
                 type: "internal",
-                route: "pages/company/about-us",
+                route: "pages/neta",
                 color: "info",
-                label: "find out more",
+                label: "Com ser part",
               }}
             />
           </Grid>
