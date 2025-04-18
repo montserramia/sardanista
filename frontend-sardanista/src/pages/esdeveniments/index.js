@@ -8,7 +8,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import bgImage from "assets/images/sardana/db/vestit-tradicional.jpg";
+import bgImage from "assets/images/sardana/db/mans.jpeg";
 
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
@@ -66,7 +66,7 @@ export default function Esdeveniments() {
         />
       </MKBox>
 
-      {/* Hero amb imatge del primer esdeveniment */}
+      {/* Hero amb imatge fixe d'esdeveniment */}
       <MKBox
         minHeight="60vh"
         width="100%"

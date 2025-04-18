@@ -21,6 +21,7 @@ import MKBox from "components/MKBox";
 import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
+import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -31,18 +32,18 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
-import bgImage from "assets/images/illustrations/illustration-reset.jpg";
+import bgImage from "assets/images/sardana/actuacio.jpeg";
 
 function ContactUs() {
   return (
     <>
-      <MKBox position="fixed" top="0.5rem" width="100%" center={false}>
+      <MKBox position="fixed" top="0.5rem" width="100%" center={false} zIndex={999}>
         <DefaultNavbar
           routes={routes}
           action={{
-            type: "external",
-            route: "https://www.creative-tim.com/product/material-kit-react",
-            label: "free download",
+            type: "internal",
+            route: "/neta",
+            label: "Subscriu-te",
             color: "info",
           }}
         />
@@ -56,7 +57,11 @@ function ContactUs() {
             borderRadius="lg"
             ml={2}
             mt={2}
-            sx={{ backgroundImage: `url(${bgImage})` }}
+            sx={{
+              backgroundImage: `url(${bgImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "bottom",
+            }}
           />
         </Grid>
         <Grid
@@ -90,20 +95,20 @@ function ContactUs() {
               mt={-3}
             >
               <MKTypography variant="h3" color="white">
-                Contact us
+                Contacte&apos;ns
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
               <MKTypography variant="body2" color="text" mb={3}>
-                For further questions, including partnership opportunities, please email
-                hello@creative-tim.com or contact using our contact form.
+                Per a qualsevol dubte o consulta, omple el formulari i ens posarem en contacte amb
+                tu.
               </MKTypography>
               <MKBox width="100%" component="form" method="post" autoComplete="off">
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <MKInput
                       variant="standard"
-                      label="Full Name"
+                      label="El teu nom"
                       InputLabelProps={{ shrink: true }}
                       fullWidth
                     />
@@ -120,8 +125,8 @@ function ContactUs() {
                   <Grid item xs={12}>
                     <MKInput
                       variant="standard"
-                      label="What can we help you?"
-                      placeholder="Describe your problem in at least 250 characters"
+                      label="En què et podem ajudar?"
+                      placeholder="Descriu la teva consulta"
                       InputLabelProps={{ shrink: true }}
                       multiline
                       fullWidth
@@ -131,7 +136,7 @@ function ContactUs() {
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
                   <MKButton type="submit" variant="gradient" color="info">
-                    Send Message
+                    Enviar
                   </MKButton>
                 </Grid>
               </MKBox>
@@ -139,6 +144,7 @@ function ContactUs() {
           </MKBox>
         </Grid>
       </Grid>
+      <Newsletter />
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>

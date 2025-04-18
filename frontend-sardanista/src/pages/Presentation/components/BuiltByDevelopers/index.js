@@ -22,10 +22,9 @@ import Icon from "@mui/material/Icon";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
-function BuiltByDevelopers() {
-  const bgImage =
-    "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/desktop.jpg";
+import bgImage from "assets/images/sardana/junt-gegants.jpeg";
 
+function BuiltByDevelopers() {
   return (
     <MKBox
       display="flex"
