@@ -18,8 +18,8 @@ const imagesPrefix =
 
 export default [
   {
-    title: "Design Blocks",
-    description: "A selection of 45 page sections that fit perfectly in any combination",
+    title: "Esdeveniments",
+    description: "Aquí veuràs tots els esdeveniments sardanítics que pots gaudir",
     items: [
       {
         image: `${imagesPrefix}/headers.jpg`,
@@ -108,8 +108,8 @@ export default [
     ],
   },
   {
-    title: "Navigation",
-    description: "30+ components that will help go through the pages",
+    title: "Notícies",
+    description: "Reportatges, articles d’interès, col-laboracions amb entitats, etc.",
     items: [
       {
         image: `${imagesPrefix}/navbars.jpg`,
@@ -132,8 +132,8 @@ export default [
     ],
   },
   {
-    title: "Input Areas",
-    description: "50+ elements that you need for text manipulation and insertion",
+    title: "Novetats",
+    description: "Conèix els projectes innovadors i les iniciatives que estem duent a terme",
     items: [
       {
         image: `${imagesPrefix}/newsletters.jpg`,
@@ -162,38 +162,8 @@ export default [
     ],
   },
   {
-    title: "Attention Catchers",
-    description: "20+ Fully coded components that popup from different places of the screen",
-    items: [
-      {
-        image: `${imagesPrefix}/alerts.jpg`,
-        name: "Alerts",
-        count: 4,
-        route: "/sections/attention-catchers/alerts",
-      },
-      {
-        image: `${imagesPrefix}/toasts.jpg`,
-        name: "Notifications",
-        count: 3,
-        pro: true,
-      },
-      {
-        image: `${imagesPrefix}/popovers.jpg`,
-        name: "Tooltips & Popovers",
-        count: 2,
-        route: "/sections/attention-catchers/tooltips-popovers",
-      },
-      {
-        image: `${imagesPrefix}/modals.jpg`,
-        name: "Modals",
-        count: 5,
-        route: "/sections/attention-catchers/modals",
-      },
-    ],
-  },
-  {
-    title: "Elements",
-    description: "80+ carefully crafted small elements that come with multiple colors and shapes",
+    title: "Reflexions",
+    description: "Anàlisis i debats sobre el que significa la sardana avui en dia",
     items: [
       {
         image: `${imagesPrefix}/buttons.jpg`,
@@ -254,6 +224,36 @@ export default [
         name: "Typography",
         count: 2,
         route: "/sections/elements/typography",
+      },
+    ],
+  },
+  {
+    title: "Vocabulari",
+    description: "Glossari de termes tècnics i expressions sardanístiques",
+    items: [
+      {
+        image: `${imagesPrefix}/alerts.jpg`,
+        name: "Alerts",
+        count: 4,
+        route: "/sections/attention-catchers/alerts",
+      },
+      {
+        image: `${imagesPrefix}/toasts.jpg`,
+        name: "Notifications",
+        count: 3,
+        pro: true,
+      },
+      {
+        image: `${imagesPrefix}/popovers.jpg`,
+        name: "Tooltips & Popovers",
+        count: 2,
+        route: "/sections/attention-catchers/tooltips-popovers",
+      },
+      {
+        image: `${imagesPrefix}/modals.jpg`,
+        name: "Modals",
+        count: 5,
+        route: "/sections/attention-catchers/modals",
       },
     ],
   },
