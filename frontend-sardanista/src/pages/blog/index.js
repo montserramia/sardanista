@@ -19,7 +19,7 @@ function BlogPage() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const API_BASE = "http://localhost:8080";
+    const API_BASE = process.env.REACT_APP_API_BASE;
 
     fetch(`${API_BASE}/jsonapi/node/article?include=field_image`)
       .then((res) => res.json())
