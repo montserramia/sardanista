@@ -67,6 +67,16 @@ function Team() {
             </MKBox>
           </Grid>
           <Grid item xs={12} lg={6}>
+            <MKBox mb={{ xs: 1, lg: 0 }}>
+              <HorizontalTeamCard
+                image={team4}
+                name="Glòria"
+                position={{ color: "info", label: "Vicepresidenta" }}
+                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
+              />
+            </MKBox>
+          </Grid>
+          <Grid item xs={12} lg={6}>
             <MKBox mb={1}>
               <HorizontalTeamCard
                 image={team2}
@@ -81,17 +91,7 @@ function Team() {
               <HorizontalTeamCard
                 image={team3}
                 name="Elvira"
-                position={{ color: "info", label: "Monitora" }}
-                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <MKBox mb={{ xs: 1, lg: 0 }}>
-              <HorizontalTeamCard
-                image={team4}
-                name="Glòria"
-                position={{ color: "info", label: "Integrant" }}
+                position={{ color: "info", label: "Vocal i Monitora" }}
                 description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
               />
             </MKBox>

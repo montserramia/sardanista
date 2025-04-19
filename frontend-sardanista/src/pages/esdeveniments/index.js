@@ -16,8 +16,9 @@ export default function Esdeveniments() {
   const [esdeveniments, setEsdeveniments] = useState([]);
 
   useEffect(() => {
+    const API_BASE = process.env.REACT_APP_API_BASE;
     axios
-      .get("http://localhost:8080/jsonapi/node/esdeveniment")
+      .get(`${API_BASE}/jsonapi/node/esdeveniment`)
       .then(async (response) => {
         const events = await Promise.all(
           response.data.data.map(async (item) => {
@@ -26,9 +27,7 @@ export default function Esdeveniments() {
             if (item.relationships.field_imatge?.data?.id) {
               const imageId = item.relationships.field_imatge.data.id;
               try {
-                const imageRes = await axios.get(
-                  `http://localhost:8080/jsonapi/file/file/${imageId}`
-                );
+                const imageRes = await axios.get(`${API_BASE}/jsonapi/file/file/${imageId}`);
                 imageUrl = imageRes.data.data.attributes.uri.url;
               } catch (error) {
                 console.error("Error carregant imatge:", error);
