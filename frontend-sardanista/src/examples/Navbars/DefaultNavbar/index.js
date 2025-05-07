@@ -43,7 +43,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
+function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative }) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
   const [dropdownName, setDropdownName] = useState("");
@@ -212,7 +212,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             {...(item.route ? routeComponent : linkComponent)}
             display="flex"
             justifyContent="space-between"
-            alignItems="center"
+            alignItems="right"
             variant="button"
             textTransform="capitalize"
             minWidth={item.description ? "14rem" : "12rem"}
@@ -475,6 +475,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             lineHeight={1}
             py={transparent ? 1.5 : 0.75}
             pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
+            pr={2}
           >
             <MKTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
               {brand}
@@ -483,8 +484,9 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           <MKBox
             color="inherit"
             display={{ xs: "none", lg: "flex" }}
-            ml="auto"
-            mr={center ? "auto" : 0}
+            justifyContent="flex-end"
+            alignItems="center"
+            flexGrow={1}
           >
             {renderNavbarItems}
           </MKBox>
@@ -551,7 +553,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {
-  brand: "Agrupació Sardanista Castelldefels",
+  brand: "Grup Sardanistes Castelldefels",
   transparent: false,
   light: false,
   action: false,

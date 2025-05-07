@@ -27,8 +27,8 @@ import RotatingCardBack from "examples/Cards/RotatingCard/RotatingCardBack";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 // Images
-import bgFront from "assets/images/rotating-card-bg-front.jpeg";
-import bgBack from "assets/images/rotating-card-bg-back.jpeg";
+import bgFront from "assets/images/sardana/pilar-pepa.jpeg";
+import bgBack from "assets/images/sardana/actuacio.jpeg";
 
 function Information() {
   return (
@@ -38,25 +38,44 @@ function Information() {
           <Grid item xs={12} lg={4} sx={{ mx: "auto" }}>
             <RotatingCard>
               <RotatingCardFront
+                color="groc"
                 image={bgFront}
                 icon="touch_app"
                 title={
                   <>
-                    Feel the
+                    Agrupació
                     <br />
-                    Material Kit
+                    Sardanista
+                    <br />
+                    Castelldefels
                   </>
                 }
-                description="All the MUI components that you need in a development have been re-design with the new look."
+                description={
+                  <>
+                    Mantenim viva la cultura catalana a través de la sardana, amb passió i
+                    comunitat.
+                    <br />
+                    Ens adaptantem als nous temps sense perdre l’essència.
+                    <br />
+                    Tu pots ser-ne part
+                  </>
+                }
               />
               <RotatingCardBack
+                color="groc"
                 image={bgBack}
-                title="Discover More"
-                description="You will save a lot of time going from prototyping to full-functional code because all elements are implemented."
+                title="Uneix-te a nosaltres"
+                description={
+                  <>
+                    Gaudir de la sardana és millor en companyia.
+                    <br />
+                    T’esperem amb els braços oberts!
+                  </>
+                }
                 action={{
                   type: "internal",
-                  route: "/sections/page-sections/page-headers",
-                  label: "start with header",
+                  route: "/contacte",
+                  label: "Contacta'ns",
                 }}
               />
             </RotatingCard>
@@ -65,33 +84,33 @@ function Information() {
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="content_copy"
-                  title="Full Documentation"
-                  description="Built by developers for developers. Check the foundation and you will find
-                    everything inside our documentation."
+                  icon="school"
+                  color="info"
+                  title="Classes de sardanes"
+                  description="Les nostres classes de sardana estan dissenyades per ensenyar als participants els passos i la coreografia d’aquesta dansa tradicional, fomentant la inclusió i l’aprenentatge col·laboratiu."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="flip_to_front"
-                  title="MUI Ready"
-                  description="The world's most popular react components library for building user interfaces."
+                  icon="people"
+                  title="Trobades i Esdeveniments"
+                  description="Les nostres trobades i esdeveniments són oportunitats excelents per gaudir de la sardana, així com per conèixer a altres ballarins, compartir experiències i reforçar la comunitat sardanista."
                 />
               </Grid>
             </Grid>
             <Grid container spacing={3} sx={{ mt: { xs: 0, md: 6 } }}>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="price_change"
-                  title="Save Time & Money"
-                  description="Creating your design from scratch with dedicated designers can be very expensive. Start with our Design System."
+                  icon="event"
+                  title="Aplecs i actuacions"
+                  description="Els espectacles de sardana que organitzem destaquen no només la dansa, sinó també la música tradicional, i solen atraure un públic divers, contribuint a la difusió de la cultura catalana."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
-                  icon="devices"
-                  title="Fully Responsive"
-                  description="Regardless of the screen size, the website content will naturally fit the given resolution."
+                  icon="favorite"
+                  title="Tradició i comunitat"
+                  description="Realitzem diverses activitats culturals al voltant de la sardana, incloent conferències i tallers, per enriquir el coneixement i apreciació d’aquesta disciplina musical i de dansa."
                 />
               </Grid>
             </Grid>

@@ -52,8 +52,8 @@ function Counters() {
             <DefaultCounterCard
               count={45}
               suffix="+"
-              title="Aplecs i trobades"
-              description="Organitzem i participem en esdeveniments arreu del país, consolidant una presència activa i festiva."
+              title="Ballades i trobades"
+              description="Organitzem i participem en esdeveniments arreu del Baix Llobregat, consolidant una presència activa i festiva."
             />
           </Grid>
         </Grid>

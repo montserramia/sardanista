@@ -73,16 +73,16 @@ function DesignBlocks() {
           <MKBadge
             variant="contained"
             color="info"
-            badgeContent="Infinite combinations"
+            badgeContent="La saradana és per a tots"
             container
             sx={{ mb: 2 }}
           />
           <MKTypography variant="h2" fontWeight="bold">
-            Huge collection of sections
+            Què pots trobar aquí?
           </MKTypography>
           <MKTypography variant="body1" color="text">
-            We have created multiple options for you to put together and customise into pixel
-            perfect pages.
+            Aquí pots trobar l’esdeveniment què més t’agradi i aprop de Castelldefels. A més,
+            Notícies i Reflexions.
           </MKTypography>
         </Grid>
       </Container>
