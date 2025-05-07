@@ -1,0 +1,7 @@
+name: Slug Sync
+type: module
+description: Copia automàticament el path alias a field_slug en articles i esdeveniments.
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - path_alias
