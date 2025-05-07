@@ -120,7 +120,7 @@ export default function Esdeveniments() {
                       component="img"
                       height="200"
                       image={
-                        event.imageUrl ? `http://localhost:8080${event.imageUrl}` : imatgePerDefecte
+                        event.imageUrl ? `${process.env.REACT_APP_API_BASE}${event.imageUrl}` : imatgePerDefecte
                       }
                       alt={event.title}
                     />
