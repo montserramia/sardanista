@@ -31,6 +31,7 @@ function Information() {
   return (
     <MKBox component="section" py={12}>
       <Container>
+        <Divider sx={{ mb: 6 }} />
         <Grid
           container
           item
@@ -44,7 +45,6 @@ function Information() {
             Amb el suport de:
           </MKTypography>
         </Grid>
-        <Divider sx={{ my: 6 }} />
         <Grid container spacing={3} justifyContent="center">
           <Grid item xs={6} md={4} lg={2}>
             <MKBox component="img" src={cultura} alt="Cultura Castelldefels" width="100%" />
