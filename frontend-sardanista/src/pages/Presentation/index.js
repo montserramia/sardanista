@@ -31,6 +31,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import Counters from "pages/Presentation/sections/Counters";
 import Information from "pages/Presentation/sections/Information";
 import Pages from "pages/Presentation/sections/Pages";
+import Logos from "pages/Presentation/sections/Logos";
 
 // Presentation page components
 import BuiltByDevelopers from "pages/Presentation/components/BuiltByDevelopers";
@@ -110,6 +111,7 @@ function Presentation() {
         <Counters />
         <Information />
         <Pages />
+        <Logos />
         <Container sx={{ mt: 6 }}>
           <BuiltByDevelopers />
         </Container>
