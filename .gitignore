@@ -33,3 +33,8 @@
 # Evita que es colin dependències Node a l'arrel
 /node_modules/
 /package-lock.json
+
+# eines de neteja / mirrors
+/bfg.jar
+/sardanista.git/
+/sardanista.git.bfg-report/
