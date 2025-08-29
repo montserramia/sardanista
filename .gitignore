@@ -1,40 +1,42 @@
-# Ignora fitxers i carpetes temporals
+# --- Sistemes i editors ---
 .DS_Store
+__MACOSX/
 .idea/
 .vscode/
+*.swp
+*~
 
-# Composer
-/drupal11/vendor/
-/drupal11/composer.lock
+# --- Composer / Drupal ---
+/drupal11/vendor/            # sempre fora de Git
+# Mantén el lock versionat
+# (treiem la línia /drupal11/composer.lock que hi havia abans)
 
 # Fitxers del sistema de fitxers públics
 /drupal11/web/sites/default/files/
 
-# Configuració sensible
+# Configuració sensible (no versionar)
 /drupal11/web/sites/default/settings.local.php
 
-# Docker
+# --- Docker ---
 *.log
 *.pid
 
-# Altres fitxers temporals
-*.swp
-
-# Fitxers de backup de text (ex: fitxer.txt~)
-*~
-
-# Config export (ja el tens controlat)
-!drupal11/config/sync/
-
-# Ignora backups si són grans o privats
+# --- Backups scripts ---
 /backup-db.sh
 /restore-db.sh
+*backup*.sql
+*backup*.gz
+*.tar.gz
+*.sql
 
-# Evita que es colin dependències Node a l'arrel
+# --- Node / React ---
 /node_modules/
 /package-lock.json
+/frontend-sardanista/node_modules/
+/frontend-sardanista/build/
+/frontend-sardanista/package-lock.json
 
-# eines de neteja / mirrors
+# --- Eines de neteja / mirrors ---
 /bfg.jar
 /sardanista.git/
 /sardanista.git.bfg-report/
