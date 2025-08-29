@@ -42,7 +42,7 @@ import Icon from "@mui/material/Icon";
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
-import Esdeveniments from "pages/esdeveniments";
+import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
 import PaginaNeta from "pages/neta";
 
@@ -54,10 +54,10 @@ const routes = [
     component: <AboutUs />,
   },
   {
-    name: "Esdeveniments",
+    name: "Agenda",
     icon: <Icon>event</Icon>,
-    route: "/esdeveniments",
-    component: <Esdeveniments />,
+    route: "/agenda",
+    component: <Agenda />,
   },
   {
     name: "Blog",

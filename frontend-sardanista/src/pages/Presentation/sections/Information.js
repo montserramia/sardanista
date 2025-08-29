@@ -93,8 +93,8 @@ function Information() {
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
                   icon="people"
-                  title="Trobades i Esdeveniments"
-                  description="Les nostres trobades i esdeveniments són oportunitats excelents per gaudir de la sardana, així com per conèixer a altres ballarins, compartir experiències i reforçar la comunitat sardanista."
+                  title="Trobades i Agenda"
+                  description="Les nostres trobades i agenda són oportunitats excelents per gaudir de la sardana, així com per conèixer a altres ballarins, compartir experiències i reforçar la comunitat sardanista."
                 />
               </Grid>
             </Grid>

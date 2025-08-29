@@ -53,7 +53,7 @@ function Counters() {
               count={45}
               suffix="+"
               title="Ballades i trobades"
-              description="Organitzem i participem en esdeveniments arreu del Baix Llobregat, consolidant una presència activa i festiva."
+              description="Organitzem i participem en agenda arreu del Baix Llobregat, consolidant una presència activa i festiva."
             />
           </Grid>
         </Grid>

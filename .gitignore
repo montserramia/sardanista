@@ -7,21 +7,15 @@ __MACOSX/
 *~
 
 # --- Composer / Drupal ---
-/drupal11/vendor/            # sempre fora de Git
-# Mantén el lock versionat
-# (treiem la línia /drupal11/composer.lock que hi havia abans)
-
-# Fitxers del sistema de fitxers públics
+/drupal11/vendor/
 /drupal11/web/sites/default/files/
-
-# Configuració sensible (no versionar)
 /drupal11/web/sites/default/settings.local.php
 
 # --- Docker ---
 *.log
 *.pid
 
-# --- Backups scripts ---
+# --- Backups / dumps ---
 /backup-db.sh
 /restore-db.sh
 *backup*.sql
@@ -31,12 +25,16 @@ __MACOSX/
 
 # --- Node / React ---
 /node_modules/
-/package-lock.json
 /frontend-sardanista/node_modules/
 /frontend-sardanista/build/
-/frontend-sardanista/package-lock.json
 
-# --- Eines de neteja / mirrors ---
+# Mantén lockfiles versionats!
+# (no ignorem package-lock.json ni composer.lock)
+
+# --- Eines / temporals ---
 /bfg.jar
 /sardanista.git/
 /sardanista.git.bfg-report/
+
+# --- Local dev (DDEV) ---
+/.ddev/
