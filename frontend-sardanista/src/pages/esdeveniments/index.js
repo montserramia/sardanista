@@ -14,42 +14,95 @@ const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
 export default function Esdeveniments() {
   const [esdeveniments, setEsdeveniments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
+    
+    console.log('Loading esdeveniments from API_BASE:', API_BASE); // Debug
+    
     axios
-      .get(`${API_BASE}/jsonapi/node/esdeveniment`)
-      .then(async (response) => {
-        const events = await Promise.all(
-          response.data.data.map(async (item) => {
-            let imageUrl = null;
+      .get(`${API_BASE}/jsonapi/node/esdeveniment?include=field_imatge`)
+      .then((response) => {
+        console.log('Esdeveniments API Response:', response.data); // Debug
+        
+        const included = response.data.included || [];
+        const imageMap = {};
 
-            if (item.relationships.field_imatge?.data?.id) {
-              const imageId = item.relationships.field_imatge.data.id;
-              try {
-                const imageRes = await axios.get(`${API_BASE}/jsonapi/file/file/${imageId}`);
-                imageUrl = imageRes.data.data.attributes.uri.url;
-              } catch (error) {
-                console.error("Error carregant imatge:", error);
-              }
+        // Construir mapa d'imatges
+        included.forEach((item) => {
+          if (item.type === "file--file") {
+            console.log('Event image file found:', item); // Debug
+            imageMap[item.id] = item.attributes.uri.url;
+          }
+        });
+
+        console.log('Event image map:', imageMap); // Debug
+
+        const events = response.data.data.map((item) => {
+          const imageId = item.relationships?.field_imatge?.data?.id;
+          let imageUrl = imatgePerDefecte;
+          
+          if (imageId && imageMap[imageId]) {
+            const rawImageUrl = imageMap[imageId];
+            console.log('Raw event image URL from API:', rawImageUrl); // Debug
+            
+            // Verificar si la URL ja és absoluta
+            if (rawImageUrl.startsWith('http://') || rawImageUrl.startsWith('https://')) {
+              imageUrl = rawImageUrl;
+            } else {
+              // Si és relativa, construir URL absoluta amb el path correcte
+              // Drupal retorna URLs com "/2025-06/event-image.jpg"
+              // Però necessitem "/sites/default/files/2025-06/event-image.jpg"
+              const cleanUrl = rawImageUrl.startsWith('/') ? rawImageUrl.substring(1) : rawImageUrl;
+              imageUrl = `${API_BASE}/sites/default/files/${cleanUrl}`;
             }
+            
+            console.log('Final event image URL:', imageUrl); // Debug
+          }
 
-            return {
-              id: item.id,
-              title: item.attributes.title,
-              lloc: item.attributes.field_lloc,
-              dataInici: item.attributes.field_data_inici,
-              imageUrl,
-            };
-          })
-        );
+          return {
+            id: item.id,
+            title: item.attributes.title,
+            lloc: item.attributes.field_lloc,
+            dataInici: item.attributes.field_data_inici,
+            imageUrl,
+          };
+        });
 
         setEsdeveniments(events);
+        setError(null);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error carregant esdeveniments:", error);
+        setError(error.message);
+        setLoading(false);
       });
   }, []);
+
+  // Funció per gestionar errors d'imatges
+  const handleImageError = (event, eventId) => {
+    console.warn(`Error carregant imatge per esdeveniment ${eventId}`);
+    event.target.src = imatgePerDefecte;
+  };
+
+  if (loading) {
+    return (
+      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <MKTypography variant="h4">Carregant esdeveniments...</MKTypography>
+      </MKBox>
+    );
+  }
+
+  if (error) {
+    return (
+      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <MKTypography variant="h4" color="error">Error: {error}</MKTypography>
+      </MKBox>
+    );
+  }
 
   return (
     <>
@@ -112,41 +165,51 @@ export default function Esdeveniments() {
       >
         <MKBox component="section" py={3}>
           <Container>
-            <Grid container spacing={4}>
-              {esdeveniments.map((event) => (
-                <Grid item key={event.id} xs={12} sm={6} md={4}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={
-                        event.imageUrl ? `${process.env.REACT_APP_API_BASE}${event.imageUrl}` : imatgePerDefecte
-                      }
-                      alt={event.title}
-                    />
-                    <CardContent>
-                      <MKTypography variant="h5" gutterBottom>
-                        {event.title}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text">
-                        📅{" "}
-                        {new Date(event.dataInici).toLocaleString("ca-ES", {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text">
-                        📍 {event.lloc || "Lloc no especificat"}
-                      </MKTypography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
+            {esdeveniments.length === 0 ? (
+              <MKBox textAlign="center" py={6}>
+                <MKTypography variant="h4" color="text">
+                  No s'han trobat esdeveniments
+                </MKTypography>
+              </MKBox>
+            ) : (
+              <Grid container spacing={4}>
+                {esdeveniments.map((event) => (
+                  <Grid item key={event.id} xs={12} sm={6} md={4}>
+                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                      <CardMedia
+                        component="img"
+                        height="200"
+                        image={event.imageUrl}
+                        alt={event.title}
+                        onError={(e) => handleImageError(e, event.id)}
+                        sx={{
+                          objectFit: 'cover',
+                        }}
+                      />
+                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                        <MKTypography variant="h5" gutterBottom>
+                          {event.title}
+                        </MKTypography>
+                        <MKTypography variant="body2" color="text" sx={{ mb: 1 }}>
+                          📅{" "}
+                          {event.dataInici ? new Date(event.dataInici).toLocaleString("ca-ES", {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }) : "Data no especificada"}
+                        </MKTypography>
+                        <MKTypography variant="body2" color="text">
+                          📍 {event.lloc || "Lloc no especificat"}
+                        </MKTypography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
           </Container>
         </MKBox>
       </Card>
