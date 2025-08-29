@@ -19,47 +19,47 @@ export default function Esdeveniments() {
 
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
-    
-    console.log('Loading esdeveniments from API_BASE:', API_BASE); // Debug
-    
+
+    console.log("Loading esdeveniments from API_BASE:", API_BASE); // Debug
+
     axios
       .get(`${API_BASE}/jsonapi/node/esdeveniment?include=field_imatge`)
       .then((response) => {
-        console.log('Esdeveniments API Response:', response.data); // Debug
-        
+        console.log("Esdeveniments API Response:", response.data); // Debug
+
         const included = response.data.included || [];
         const imageMap = {};
 
         // Construir mapa d'imatges
         included.forEach((item) => {
           if (item.type === "file--file") {
-            console.log('Event image file found:', item); // Debug
+            console.log("Event image file found:", item); // Debug
             imageMap[item.id] = item.attributes.uri.url;
           }
         });
 
-        console.log('Event image map:', imageMap); // Debug
+        console.log("Event image map:", imageMap); // Debug
 
         const events = response.data.data.map((item) => {
           const imageId = item.relationships?.field_imatge?.data?.id;
           let imageUrl = imatgePerDefecte;
-          
+
           if (imageId && imageMap[imageId]) {
             const rawImageUrl = imageMap[imageId];
-            console.log('Raw event image URL from API:', rawImageUrl); // Debug
-            
+            console.log("Raw event image URL from API:", rawImageUrl); // Debug
+
             // Verificar si la URL ja és absoluta
-            if (rawImageUrl.startsWith('http://') || rawImageUrl.startsWith('https://')) {
+            if (rawImageUrl.startsWith("http://") || rawImageUrl.startsWith("https://")) {
               imageUrl = rawImageUrl;
             } else {
               // Si és relativa, construir URL absoluta amb el path correcte
               // Drupal retorna URLs com "/2025-06/event-image.jpg"
               // Però necessitem "/sites/default/files/2025-06/event-image.jpg"
-              const cleanUrl = rawImageUrl.startsWith('/') ? rawImageUrl.substring(1) : rawImageUrl;
+              const cleanUrl = rawImageUrl.startsWith("/") ? rawImageUrl.substring(1) : rawImageUrl;
               imageUrl = `${API_BASE}/sites/default/files/${cleanUrl}`;
             }
-            
-            console.log('Final event image URL:', imageUrl); // Debug
+
+            console.log("Final event image URL:", imageUrl); // Debug
           }
 
           return {
@@ -99,7 +99,9 @@ export default function Esdeveniments() {
   if (error) {
     return (
       <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <MKTypography variant="h4" color="error">Error: {error}</MKTypography>
+        <MKTypography variant="h4" color="error">
+          Error: {error}
+        </MKTypography>
       </MKBox>
     );
   }
@@ -168,14 +170,14 @@ export default function Esdeveniments() {
             {esdeveniments.length === 0 ? (
               <MKBox textAlign="center" py={6}>
                 <MKTypography variant="h4" color="text">
-                  No s'han trobat esdeveniments
+                  No s&apos;han trobat esdeveniments
                 </MKTypography>
               </MKBox>
             ) : (
               <Grid container spacing={4}>
                 {esdeveniments.map((event) => (
                   <Grid item key={event.id} xs={12} sm={6} md={4}>
-                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                       <CardMedia
                         component="img"
                         height="200"
@@ -183,23 +185,25 @@ export default function Esdeveniments() {
                         alt={event.title}
                         onError={(e) => handleImageError(e, event.id)}
                         sx={{
-                          objectFit: 'cover',
+                          objectFit: "cover",
                         }}
                       />
-                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                      <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
                         <MKTypography variant="h5" gutterBottom>
                           {event.title}
                         </MKTypography>
                         <MKTypography variant="body2" color="text" sx={{ mb: 1 }}>
                           📅{" "}
-                          {event.dataInici ? new Date(event.dataInici).toLocaleString("ca-ES", {
-                            weekday: "long",
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          }) : "Data no especificada"}
+                          {event.dataInici
+                            ? new Date(event.dataInici).toLocaleString("ca-ES", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })
+                            : "Data no especificada"}
                         </MKTypography>
                         <MKTypography variant="body2" color="text">
                           📍 {event.lloc || "Lloc no especificat"}
