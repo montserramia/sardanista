@@ -11,10 +11,6 @@ __MACOSX/
 /drupal11/web/sites/default/files/
 /drupal11/web/sites/default/settings.local.php
 
-# --- Docker ---
-*.log
-*.pid
-
 # --- Backups / dumps ---
 /backup-db.sh
 /restore-db.sh
@@ -36,5 +32,11 @@ __MACOSX/
 /sardanista.git/
 /sardanista.git.bfg-report/
 
-# --- Local dev (DDEV) ---
-/.ddev/
+# --- DDEV (configuració local) ---
+/.ddev/.gitignore
+/.ddev/db_snapshots/
+/.ddev/import-db/
+/.ddev/import-files/
+/.ddev/.ddev-docker-compose-*.yaml
+/.ddev/config.*.yaml
+
