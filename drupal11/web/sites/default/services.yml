@@ -205,7 +205,7 @@ parameters:
     enabled: true
     allowedHeaders: ['*']
     allowedMethods: ['*']
-    allowedOrigins: ['http://localhost:3000']
+    allowedOrigins: ['http://localhost:3000', 'https://sardana.newwweb.cat', 'https://www.sardana.newwweb.cat']
     exposedHeaders: false
     maxAge: false
     supportsCredentials: true

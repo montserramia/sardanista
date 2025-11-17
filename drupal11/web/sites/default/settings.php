@@ -530,6 +530,11 @@ $settings['update_free_access'] = FALSE;
  */
 # $settings['file_public_base_url'] = 'http://downloads.example.com/files';
 
+// Configuració per producció - assegurar que les URLs de fitxers públics es generin correctament
+if (getenv('IS_DDEV_PROJECT') != 'true') {
+  $settings['file_public_base_url'] = 'https://admin.sardana.newwweb.cat';
+}
+
 /**
  * Public file path:
  *

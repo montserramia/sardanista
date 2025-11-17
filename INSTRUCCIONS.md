@@ -1,84 +1,58 @@
-# 📚 Instruccions de desenvolupament✅ Fes un commit i un push pas a pas amb GitLens i VS Code
+# 📚 Instruccions de desenvolupament
 
-🧩 1. Fer canvis al projecte
+Aquest fitxer conté guies ràpides per a tasques habituals del projecte Sardanista.
 
-Aquest fitxer conté guies ràpides per a tasques habituals del projecte Sardanista.Modifica algun fitxer del teu projecte. Per exemple, canvia un text al README.md o una línia al teu component React.
+## 📸 Recursos i enllaços
 
+- [Àlbum de fotos Flickr - Castell de Fels](https://www.flickr.com/photos/ajcastelldefels/with/54781897345)
 
+---
 
-## ✅ Fer commit i push amb VS Code i GitLens🔍 2. Revisa els canvis
-
-Ves al panell esquerre i obre la pestanya de Control d’Origen (icona de branques o símbol “<>” amb línies).
+## ✅ Fer commit i push amb VS Code i GitLens
 
 ### 🧩 1. Fer canvis al projecte
 
-Modifica algun fitxer del teu projecte. Per exemple, canvia un text al `README.md` o una línia al teu component React.Aquí veuràs la llista de fitxers modificats.
+Modifica algun fitxer del teu projecte. Per exemple, canvia un text al `README.md` o una línia al teu component React.
 
-
-
-### 🔍 2. Revisa els canvisClica sobre un fitxer per veure:
+### 🔍 2. Revisa els canvis
 
 Ves al panell esquerre i obre la pestanya de **Control d'Origen** (icona de branques o símbol "<>" amb línies).
 
-a l’esquerra el contingut abans
-
 Aquí veuràs la llista de fitxers modificats.
-
-a la dreta el contingut després
 
 Clica sobre un fitxer per veure:
 
-- A l'esquerra: el contingut **abans**💬 3. Escriu un missatge de commit
+- A l'esquerra: el contingut **abans**
+- A la dreta: el contingut **després**
 
-- A la dreta: el contingut **després**A la part superior del panell de Control d’Origen (just a sobre del botó blau), escriu un missatge curt i clar:
-
-
-
-### 💬 3. Escriu un missatge de commitAfegit enllaç als esdeveniments al footer
+### 💬 3. Escriu un missatge de commit
 
 A la part superior del panell de Control d'Origen (just a sobre del botó blau), escriu un missatge curt i clar:
 
-✅ 4. Confirma el commit
-
-```Prem el botó blau de sota que diu Confirmació (pot aparèixer com “✔ Confirmació” o en anglès “Commit”).
-
+```
 Afegit enllaç als esdeveniments al footer
-
-```🚀 5. Puja els canvis a GitHub (push)
-
-Després de fer el commit, VS Code t’ofereix fer el push.
+```
 
 ### ✅ 4. Confirma el commit
 
-Prem el botó blau de sota que diu **Confirmació** (pot aparèixer com "✔ Confirmació" o en anglès "Commit").Si no surt, fes-ho així:
+Prem el botó blau de sota que diu **Confirmació** (pot aparèixer com "✔ Confirmació" o en anglès "Commit").
 
-
-
-### 🚀 5. Puja els canvis a GitHub (push)Ves a la barra inferior (abaix de tot), i clica on diu main
+### 🚀 5. Puja els canvis a GitHub (push)
 
 Després de fer el commit, VS Code t'ofereix fer el push.
 
-O bé obre la paleta de comandes amb ⌘⇧P (Command + Shift + P)
-
 Si no surt, fes-ho així:
 
-- Ves a la barra inferior (abaix de tot), i clica on diu `main`Escriu: Git: Push i prem Enter
-
+- Ves a la barra inferior (abaix de tot), i clica on diu `main`
 - O bé obre la paleta de comandes amb `⌘⇧P` (Command + Shift + P)
-
-- Escriu: **Git: Push** i prem Enter🧠 Opcional: amb GitLens
-
-Si fas servir GitLens, pots fer:
+- Escriu: **Git: Push** i prem Enter
 
 ### 🧠 Opcional: amb GitLens
 
-Si fas servir GitLens, pots fer:Clic dret sobre un fitxer → GitLens: Commit
+Si fas servir GitLens, pots fer:
 
 - Clic dret sobre un fitxer → **GitLens: Commit**
-
-- O obrir el panell GitLens > Commits i arrossegar-hi fitxersO obrir el panell GitLens > Commits i arrossegar-hi fitxers
-
-
+- O obrir el panell GitLens > Commits i arrossegar-hi fitxers
 
 ---
 
@@ -165,6 +139,34 @@ npm run prettify        # Formata el codi
    ```
 
 5. Crea una Pull Request a GitHub
+
+---
+
+## 🚀 Desplegament a producció
+
+### Frontend (~/frontend/)
+
+Al servidor de producció, el frontend està a `~/frontend/` i NO usa Docker:
+
+```bash
+cd ~/frontend
+git pull origin main
+npm install
+npm run build
+```
+
+El servidor web (Nginx/Apache) serveix els fitxers des de `~/frontend/build/`.
+
+### Drupal
+
+```bash
+cd ~/sardanista/drupal11  # o la ruta corresponent
+git pull origin main
+composer install
+drush cr
+drush updb -y
+drush cim -y
+```
 
 ---
 
