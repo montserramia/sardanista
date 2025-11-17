@@ -120,7 +120,9 @@ export default function agenda() {
                       height="200"
                       image={
                         event.imageUrl
-                          ? `${process.env.REACT_APP_API_BASE}${event.imageUrl}`
+                          ? event.imageUrl.startsWith("http")
+                            ? event.imageUrl
+                            : `${process.env.REACT_APP_API_BASE}${event.imageUrl}`
                           : imatgePerDefecte
                       }
                       alt={event.title}

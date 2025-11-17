@@ -23,16 +23,19 @@ function ArticleDetail() {
     axios
       .get(`${API_BASE}/jsonapi/node/article?filter[field_slug]=${slug}&include=field_image`)
       .then((res) => {
-        const item = res.data.data?.[0];
-        if (!item) throw new Error("Article no trobat");
+        const node = res.data.data[0];
+        if (!node) return;
 
-        const imageUrl = res.data.included?.[0]?.attributes?.uri?.url
-          ? `${API_BASE}${res.data.included[0].attributes.uri.url}`
-          : "https://source.unsplash.com/random/800x600?culture";
+        const imageUri = res.data.included?.[0]?.attributes?.uri?.url;
+        const imageUrl = imageUri
+          ? imageUri.startsWith("http")
+            ? imageUri
+            : `${API_BASE}${imageUri}`
+          : null;
 
         setArticle({
-          title: item.attributes.title,
-          body: item.attributes.body?.value || "Contingut no disponible",
+          title: node.attributes.title,
+          body: node.attributes.body?.value || "Contingut no disponible",
           image: imageUrl,
         });
       })

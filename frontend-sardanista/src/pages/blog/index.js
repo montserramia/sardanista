@@ -35,8 +35,12 @@ function BlogPage() {
 
         const formatted = data.data.map((item) => {
           const imageId = item.relationships?.field_image?.data?.id;
-          const imageUrl =
-            imageId && imageMap[imageId] ? `${API_BASE}${imageMap[imageId]}` : imatgePerDefecte;
+          const imageUri = imageId && imageMap[imageId] ? imageMap[imageId] : null;
+          const imageUrl = imageUri
+            ? imageUri.startsWith("http")
+              ? imageUri
+              : `${API_BASE}${imageUri}`
+            : imatgePerDefecte;
 
           return {
             id: item.id,
