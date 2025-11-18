@@ -86,6 +86,10 @@ La configuració exportada del Drupal es guarda a `drupal11/config/`. Recorda ex
 4. Exporta la configuració (`ddev drush cex`).
 5. Commit, push i Pull Request.
 
+## 📂 Informació de desplegament
+
+> 🔒 Per motius de seguretat, la informació detallada sobre rutes docRoot i el procediment de desplegament es troba a la documentació interna privada. Consulta la wiki o el fitxer local `DEPLOYMENT-local.md` per a més detalls.
+
 ## 🌐 Entorn de producció (VPS Hetzner)
 
 - **Servidor**: VPS Hetzner (Ubuntu 22.04 LTS) amb un stack LEMP: Nginx + PHP-FPM 8.2 + MariaDB 10.6.
