@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.esdeveniment.field_data_inici
     - field.field.node.esdeveniment.field_imatge
     - field.field.node.esdeveniment.field_lloc
+    - field.field.node.esdeveniment.field_slug
     - node.type.esdeveniment
   module:
     - datetime
@@ -43,6 +44,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_slug:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

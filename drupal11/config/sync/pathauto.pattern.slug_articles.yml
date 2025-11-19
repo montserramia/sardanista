@@ -1,0 +1,23 @@
+uuid: af2efdb7-79fd-49df-8f31-bf007a6f4406
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+id: slug_articles
+label: Slug
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  c762dc32-7fac-4606-b273-c3629923000f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c762dc32-7fac-4606-b273-c3629923000f
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      esdeveniment: esdeveniment
+selection_logic: and
+weight: -5
+relationships: {  }

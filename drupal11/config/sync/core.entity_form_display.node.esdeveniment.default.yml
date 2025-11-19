@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.esdeveniment.field_data_inici
     - field.field.node.esdeveniment.field_imatge
     - field.field.node.esdeveniment.field_lloc
+    - field.field.node.esdeveniment.field_slug
     - image.style.thumbnail
     - node.type.esdeveniment
   module:
@@ -40,6 +41,14 @@ content:
   field_lloc:
     type: string_textfield
     weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_slug:
+    type: string_textfield
+    weight: 124
     region: content
     settings:
       size: 60
