@@ -8,8 +8,11 @@ __MACOSX/
 
 # --- Composer / Drupal ---
 /drupal11/vendor/
-/drupal11/web/sites/default/files/
+/drupal11/web/sites/default/files/*
+!/drupal11/web/sites/default/files/.gitkeep
 /drupal11/web/sites/default/settings.local.php
+/drupal11/web/sites/default/settings.php
+/drupal11/web/sites/default/services.yml
 
 # --- Backups / dumps ---
 /backup-db.sh
@@ -34,9 +37,10 @@ __MACOSX/
 
 # --- DDEV (configuració local) ---
 /.ddev/.gitignore
-/.ddev/db_snapshots/
-/.ddev/import-db/
-/.ddev/import-files/
 /.ddev/.ddev-docker-compose-*.yaml
-/.ddev/config.*.yaml
-
+/.ddev/config.local.yaml
+/.ddev/config.*.local.yaml
+/.ddev/db_snapshots/
+/.ddev/import-*/
+/.ddev/.sshkeys/
+/.ddev/.downloads/
