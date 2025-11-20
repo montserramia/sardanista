@@ -1,4 +1,5 @@
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -19,8 +20,8 @@ function PaginaCurset() {
           routes={routes}
           action={{
             type: "internal",
-            route: "/neta",
-            label: "Subscriu-te",
+            route: "/contacte",
+            label: "Contacta'ns",
             color: "info",
           }}
         />
@@ -107,8 +108,8 @@ function PaginaCurset() {
               <MKTypography variant="body2" color="text" mb={1}>
                 Si vols més informació,{" "}
                 <MKTypography
-                  component="a"
-                  href="/contacte"
+                  component={Link}
+                  to="/contacte"
                   variant="body2"
                   color="info"
                   fontWeight="bold"

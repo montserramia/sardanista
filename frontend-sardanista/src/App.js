@@ -28,6 +28,7 @@ import Presentation from "layouts/pages/presentation";
 import ArticleDetail from "pages/blog/ArticleDetail";
 import SignIn from "layouts/pages/authentication/sign-in";
 import PaginaNeta from "pages/neta";
+import ContactUs from "layouts/pages/landing-pages/contact-us";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -60,6 +61,7 @@ export default function App() {
         <Route path="/" element={<Presentation />} />
         <Route path="/presentation" element={<Navigate to="/" />} />
         <Route path="/neta" element={<PaginaNeta />} />
+        <Route path="/contacte" element={<ContactUs />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/blog/:slug" element={<ArticleDetail />} />
         <Route path="/pages/authentication/sign-in" element={<SignIn />} />

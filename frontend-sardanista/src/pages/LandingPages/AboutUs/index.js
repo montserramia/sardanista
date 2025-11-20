@@ -45,8 +45,8 @@ function AboutUs() {
           routes={routes}
           action={{
             type: "internal",
-            route: "/neta",
-            label: "Subscriu-te",
+            route: "/contacte",
+            label: "Contacta'ns",
             color: "info",
           }}
         />

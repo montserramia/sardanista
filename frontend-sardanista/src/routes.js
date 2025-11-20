@@ -41,7 +41,6 @@ import Icon from "@mui/material/Icon";
 
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
-import ContactUs from "layouts/pages/landing-pages/contact-us";
 import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
 import PaginaCurset from "pages/curset";
@@ -70,12 +69,6 @@ const routes = [
     icon: <Icon>book</Icon>,
     route: "/curset",
     component: <PaginaCurset />,
-  },
-  {
-    name: "Contacta'ns",
-    icon: <Icon>message</Icon>,
-    route: "/contacte",
-    component: <ContactUs />,
   },
 ];
 

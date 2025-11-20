@@ -57,8 +57,7 @@ function BuiltByDevelopers() {
           </MKTypography>
           <MKTypography
             component="a"
-            href="/neta"
-            target="_blank"
+            href="/curset"
             rel="noreferrer"
             variant="body2"
             color="white"

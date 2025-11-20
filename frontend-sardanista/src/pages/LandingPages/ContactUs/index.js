@@ -59,10 +59,11 @@ function ContactUs() {
     setSubmitStatus(null);
 
     try {
-      const apiUrl = process.env.NODE_ENV === 'production' 
-        ? 'https://65.109.231.124/drupal11/web/api/contact'
-        : 'https://sardanista.ddev.site:8443/api/contact';
-      
+      const apiUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://65.109.231.124/drupal11/web/api/contact"
+          : "https://sardanista.ddev.site:8443/api/contact";
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -92,8 +93,8 @@ function ContactUs() {
           routes={routes}
           action={{
             type: "internal",
-            route: "/neta",
-            label: "Subscriu-te",
+            route: "/contacte",
+            label: "Contacta'ns",
             color: "info",
           }}
         />
