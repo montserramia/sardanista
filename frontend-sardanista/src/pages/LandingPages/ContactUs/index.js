@@ -59,7 +59,11 @@ function ContactUs() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://65.109.231.124/drupal11/web/api/contact", {
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://65.109.231.124/drupal11/web/api/contact'
+        : 'https://sardanista.ddev.site:8443/api/contact';
+      
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

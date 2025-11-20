@@ -40,7 +40,11 @@ function Newsletter() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://65.109.231.124/drupal11/web/api/newsletter", {
+      const apiUrl = process.env.NODE_ENV === 'production'
+        ? 'https://65.109.231.124/drupal11/web/api/newsletter'
+        : 'https://sardanista.ddev.site:8443/api/newsletter';
+      
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
