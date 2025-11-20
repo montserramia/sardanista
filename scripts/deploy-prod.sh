@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 echo -e "${GREEN}🚀 Iniciant desplegament a producció...${NC}"
 
 # Variables
-BACKUP_DIR="backups"
+BACKUP_DIR="$HOME/sardanista/backups"
 TIMESTAMP=$(date +%F-%H%M)
 
 # 1. Assegurar-nos que estem al directori correcte
@@ -27,7 +27,7 @@ mkdir -p "$BACKUP_DIR"
 # 3. Backup de la base de dades
 echo -e "${YELLOW}📦 Creant backup de la base de dades...${NC}"
 cd drupal11
-./vendor/bin/drush sql:dump --result-file=../$BACKUP_DIR/prod-$TIMESTAMP.sql.gz --gzip
+./vendor/bin/drush sql:dump --result-file=$BACKUP_DIR/prod-$TIMESTAMP.sql --gzip
 echo -e "${GREEN}✓ Backup creat: $BACKUP_DIR/prod-$TIMESTAMP.sql.gz${NC}"
 
 # 4. Backup dels fitxers (opcional, pot ser lent)
