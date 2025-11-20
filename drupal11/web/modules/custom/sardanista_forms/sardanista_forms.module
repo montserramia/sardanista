@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Provides REST endpoints for contact and newsletter forms.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function sardanista_forms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.sardanista_forms':
+      return '<p>' . t('Custom form handlers for Sardanista contact and newsletter forms.') . '</p>';
+  }
+}

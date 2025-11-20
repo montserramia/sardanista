@@ -1,0 +1,15 @@
+sardanista_forms.contact:
+  path: '/api/contact'
+  defaults:
+    _controller: '\Drupal\sardanista_forms\Controller\FormsController::contact'
+  requirements:
+    _permission: 'access content'
+  methods: [POST, OPTIONS]
+
+sardanista_forms.newsletter:
+  path: '/api/newsletter'
+  defaults:
+    _controller: '\Drupal\sardanista_forms\Controller\FormsController::newsletter'
+  requirements:
+    _permission: 'access content'
+  methods: [POST, OPTIONS]

@@ -40,15 +40,12 @@ function Newsletter() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://65.109.231.124/drupal11/web/webform_rest/submit", {
+      const response = await fetch("https://65.109.231.124/drupal11/web/api/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          webform_id: "newsletter",
-          email: email,
-        }),
+        body: JSON.stringify({ email }),
       });
 
       if (response.ok) {

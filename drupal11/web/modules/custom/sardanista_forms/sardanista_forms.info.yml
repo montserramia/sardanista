@@ -1,0 +1,8 @@
+name: Sardanista Forms
+type: module
+description: 'Custom form handlers for sardanista.cat'
+core_version_requirement: ^11
+package: Custom
+dependencies:
+  - drupal:contact
+  - drupal:contact_storage

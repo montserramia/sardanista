@@ -59,15 +59,12 @@ function ContactUs() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://65.109.231.124/drupal11/web/webform_rest/submit", {
+      const response = await fetch("https://65.109.231.124/drupal11/web/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          webform_id: "contacte",
-          ...formData,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
