@@ -67,9 +67,9 @@ export default {
     {
       name: "legal",
       items: [
-        { name: "terms & conditions", href: "https://www.creative-tim.com/terms" },
-        { name: "privacy policy", href: "https://www.creative-tim.com/privacy" },
-        { name: "licenses (EULA)", href: "https://www.creative-tim.com/license" },
+        { name: "terms & conditions", href: "/neta" },
+        { name: "privacy policy", href: "/neta" },
+        { name: "licenses (EULA)", href: "/neta" },
       ],
     },
   ],

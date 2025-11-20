@@ -99,7 +99,7 @@ function Contact() {
                         ml={2}
                         fontWeight="regular"
                       >
-                        hello@creative-tim.com
+                        info@sardanista.cat
                       </MKTypography>
                     </MKBox>
                     <MKBox display="flex" color="white" p={1}>

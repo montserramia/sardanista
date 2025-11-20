@@ -55,7 +55,7 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com"
+                  href="/neta"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -68,7 +68,7 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com/presentation"
+                  href="/neta"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -81,7 +81,7 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com/blog"
+                  href="/neta"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -94,7 +94,7 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com"
+                  href="/neta"
                   target="_blank"
                   rel="noreferrer"
                 >

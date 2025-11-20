@@ -65,7 +65,7 @@ function Download() {
               color="info"
               size="large"
               component="a"
-              href="https://www.creative-tim.com/product/material-kit-react"
+              href="/neta"
               sx={{ mb: 2 }}
             >
               Download Now
@@ -84,7 +84,7 @@ function Download() {
                 <Tooltip title="Bootstrap 5 - Most popular front-end component library">
                   <MKBox
                     component="a"
-                    href="https://www.creative-tim.com/product/material-kit"
+                    href="/neta"
                     target="_blank"
                   >
                     <MKBox
@@ -150,7 +150,7 @@ function Download() {
                 <Tooltip title="Comming soon">
                   <MKBox
                     component="a"
-                    href="https://www.creative-tim.com/product/material-kit-react"
+                    href="/neta"
                     target="_blank"
                   >
                     <MKBox
