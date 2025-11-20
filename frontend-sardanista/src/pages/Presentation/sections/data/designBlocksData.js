@@ -228,7 +228,7 @@ export default [
     ],
   },
   {
-    title: "Vocabulari",
+    title: "Curset",
     description: "Glossari de termes tècnics i expressions sardanístiques",
     items: [
       {

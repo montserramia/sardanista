@@ -27,6 +27,7 @@ import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 import ArticleDetail from "pages/blog/ArticleDetail";
 import SignIn from "layouts/pages/authentication/sign-in";
+import PaginaNeta from "pages/neta";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -56,8 +57,10 @@ export default function App() {
       <CssBaseline />
       <Routes>
         {getRoutes(routes)}
-        <Route path="/presentation" element={<Presentation />} />
-        <Route path="*" element={<Navigate to="/presentation" />} />
+        <Route path="/" element={<Presentation />} />
+        <Route path="/presentation" element={<Navigate to="/" />} />
+        <Route path="/neta" element={<PaginaNeta />} />
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/blog/:slug" element={<ArticleDetail />} />
         <Route path="/pages/authentication/sign-in" element={<SignIn />} />
       </Routes>

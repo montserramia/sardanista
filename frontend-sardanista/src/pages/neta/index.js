@@ -8,7 +8,7 @@ import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import bgImage from "assets/images/sardana/pepa-pilar.jpeg";
+import bgImage from "assets/images/sardana/escut.jpg";
 
 function PaginaNeta() {
   return (

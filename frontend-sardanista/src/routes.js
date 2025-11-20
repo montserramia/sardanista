@@ -44,13 +44,13 @@ import AboutUs from "layouts/pages/landing-pages/about-us";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
 import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
-import PaginaNeta from "pages/neta";
+import PaginaCurset from "pages/curset";
 
 const routes = [
   {
     name: "Qui som",
     icon: <Icon>groups</Icon>,
-    route: "/pages/landing-pages/about-us",
+    route: "/quisom",
     component: <AboutUs />,
   },
   {
@@ -66,15 +66,15 @@ const routes = [
     component: <BlogPage />,
   },
   {
-    name: "Vocabulari",
+    name: "Curset",
     icon: <Icon>book</Icon>,
-    route: "/neta",
-    component: <PaginaNeta />,
+    route: "/curset",
+    component: <PaginaCurset />,
   },
   {
     name: "Contacta'ns",
     icon: <Icon>message</Icon>,
-    route: "/pages/landing-pages/contact-us",
+    route: "/contacte",
     component: <ContactUs />,
   },
 ];

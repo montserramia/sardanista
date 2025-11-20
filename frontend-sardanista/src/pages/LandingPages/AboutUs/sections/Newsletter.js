@@ -14,6 +14,8 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useState } from "react";
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -28,6 +30,41 @@ import MKButton from "components/MKButton";
 import macbook from "assets/images/macbook.png";
 
 function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch("https://65.109.231.124/drupal11/web/webform_rest/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          webform_id: "newsletter",
+          email: email,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setEmail("");
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error enviant subscripció:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <MKBox component="section" pt={6} my={6}>
       <Container>
@@ -38,13 +75,40 @@ function Newsletter() {
               Inscriu-te a la nostra newsletter i rebràs les últimes novetats de la nostra
               associació.
             </MKTypography>
-            <Grid container spacing={1}>
+            {submitStatus === "success" && (
+              <MKBox mb={2} p={1} bgColor="success" borderRadius="lg">
+                <MKTypography variant="body2" color="white">
+                  ✓ T&apos;has subscrit correctament!
+                </MKTypography>
+              </MKBox>
+            )}
+            {submitStatus === "error" && (
+              <MKBox mb={2} p={1} bgColor="error" borderRadius="lg">
+                <MKTypography variant="body2" color="white">
+                  ✗ Error en la subscripció. Intenta-ho més tard.
+                </MKTypography>
+              </MKBox>
+            )}
+            <Grid container spacing={1} component="form" onSubmit={handleSubmit}>
               <Grid item xs={8}>
-                <MKInput type="email" label="El teu email aquí..." fullWidth />
+                <MKInput
+                  type="email"
+                  label="El teu email aquí..."
+                  fullWidth
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </Grid>
               <Grid item xs={4}>
-                <MKButton variant="gradient" color="info" sx={{ height: "100%" }}>
-                  Subscriu-te
+                <MKButton
+                  type="submit"
+                  variant="gradient"
+                  color="info"
+                  sx={{ height: "100%" }}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "..." : "Subscriu-te"}
                 </MKButton>
               </Grid>
             </Grid>

@@ -13,6 +13,8 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -35,6 +37,53 @@ import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/actuacio.jpeg";
 
 function ContactUs() {
+  const [formData, setFormData] = useState({
+    nom: "",
+    email: "",
+    missatge: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch("https://65.109.231.124/drupal11/web/webform_rest/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          webform_id: "contacte",
+          ...formData,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ nom: "", email: "", missatge: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error enviant formulari:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%" center={false} zIndex={999}>
@@ -56,7 +105,7 @@ function ContactUs() {
             height="calc(100vh - 2rem)"
             borderRadius="lg"
             ml={2}
-            mt={2}
+            mt={"6rem"}
             sx={{
               backgroundImage: `url(${bgImage})`,
               backgroundSize: "cover",
@@ -103,14 +152,32 @@ function ContactUs() {
                 Per a qualsevol dubte o consulta, omple el formulari i ens posarem en contacte amb
                 tu.
               </MKTypography>
-              <MKBox width="100%" component="form" method="post" autoComplete="off">
+              {submitStatus === "success" && (
+                <MKBox mb={2} p={2} bgColor="success" borderRadius="lg">
+                  <MKTypography variant="body2" color="white">
+                    ✓ El teu missatge s&apos;ha enviat correctament. Ens posarem en contacte aviat!
+                  </MKTypography>
+                </MKBox>
+              )}
+              {submitStatus === "error" && (
+                <MKBox mb={2} p={2} bgColor="error" borderRadius="lg">
+                  <MKTypography variant="body2" color="white">
+                    ✗ Hi ha hagut un error. Si us plau, intenta-ho més tard.
+                  </MKTypography>
+                </MKBox>
+              )}
+              <MKBox width="100%" component="form" method="post" autoComplete="off" onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <MKInput
                       variant="standard"
                       label="El teu nom"
+                      name="nom"
+                      value={formData.nom}
+                      onChange={handleChange}
                       InputLabelProps={{ shrink: true }}
                       fullWidth
+                      required
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -118,8 +185,12 @@ function ContactUs() {
                       type="email"
                       variant="standard"
                       label="Email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       InputLabelProps={{ shrink: true }}
                       fullWidth
+                      required
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -127,16 +198,20 @@ function ContactUs() {
                       variant="standard"
                       label="En què et podem ajudar?"
                       placeholder="Descriu la teva consulta"
+                      name="missatge"
+                      value={formData.missatge}
+                      onChange={handleChange}
                       InputLabelProps={{ shrink: true }}
                       multiline
                       fullWidth
                       rows={6}
+                      required
                     />
                   </Grid>
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKButton type="submit" variant="gradient" color="info">
-                    Enviar
+                  <MKButton type="submit" variant="gradient" color="info" disabled={isSubmitting}>
+                    {isSubmitting ? "Enviant..." : "Enviar"}
                   </MKButton>
                 </Grid>
               </MKBox>

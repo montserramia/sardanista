@@ -60,7 +60,7 @@ function BlogPage() {
 
   return (
     <>
-      <MKBox position="fixed" top="0" width="100%" zIndex={999}>
+      <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}
           action={{
@@ -110,7 +110,7 @@ function BlogPage() {
         sx={{
           p: 3,
           mx: { xs: 2, lg: 3 },
-          mt: -6,
+          mt: -8,
           mb: 6,
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
