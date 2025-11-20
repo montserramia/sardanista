@@ -59,18 +59,24 @@ echo -e "${GREEN}✓ Codi actualitzat${NC}"
 # 8. Recuperar configuració local
 echo -e "${YELLOW}🔧 Recuperant configuració local...${NC}"
 if [ -f "drupal11/web/sites/default/settings.php.local" ]; then
-    mv drupal11/web/sites/default/settings.php.local drupal11/web/sites/default/settings.php
+    mv -f drupal11/web/sites/default/settings.php.local drupal11/web/sites/default/settings.php
 fi
 if [ -f "drupal11/web/sites/default/services.yml.local" ]; then
-    mv drupal11/web/sites/default/services.yml.local drupal11/web/sites/default/services.yml
+    mv -f drupal11/web/sites/default/services.yml.local drupal11/web/sites/default/services.yml
 fi
 echo -e "${GREEN}✓ Configuració restaurada${NC}"
 
 # 9. Actualitzar dependències Drupal
-echo -e "${YELLOW}📚 Instal·lant dependències Drupal...${NC}"
+echo -e "${YELLOW}📚 Actualitzant dependències Drupal...${NC}"
 cd drupal11
-composer install --no-dev --optimize-autoloader
-echo -e "${GREEN}✓ Dependències instal·lades${NC}"
+# Primer provem install, si falla fem update
+if ! composer install --no-dev --optimize-autoloader 2>&1 | tee /tmp/composer-output.log | grep -q "lock file is not up to date"; then
+    echo -e "${GREEN}✓ Dependències instal·lades${NC}"
+else
+    echo -e "${YELLOW}⚠️  Lock file desactualitzat, fent composer update...${NC}"
+    composer update --no-dev --optimize-autoloader
+    echo -e "${GREEN}✓ Dependències actualitzades${NC}"
+fi
 
 # 10. Actualitzar Drupal
 echo -e "${YELLOW}🔄 Aplicant actualitzacions Drupal...${NC}"
