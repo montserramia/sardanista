@@ -40,10 +40,10 @@ cd ~/sardanista
 # 5. Guardar configuració local sensible
 echo -e "${YELLOW}💾 Guardant configuració local...${NC}"
 if [ -f "drupal11/web/sites/default/settings.php" ]; then
-    cp drupal11/web/sites/default/settings.php drupal11/web/sites/default/settings.php.local
+    cp -f drupal11/web/sites/default/settings.php drupal11/web/sites/default/settings.php.local 2>/dev/null || true
 fi
 if [ -f "drupal11/web/sites/default/services.yml" ]; then
-    cp drupal11/web/sites/default/services.yml drupal11/web/sites/default/services.yml.local
+    cp -f drupal11/web/sites/default/services.yml drupal11/web/sites/default/services.yml.local 2>/dev/null || true
 fi
 echo -e "${GREEN}✓ Configuració guardada${NC}"
 
