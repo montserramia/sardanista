@@ -1,84 +1,142 @@
-# Configuració de Webforms
+# Configuració de Formularis (Contact Storage)
 
-## Instal·lació de mòduls
+## ✅ Implementació completada
 
-Al servidor de producció (o local amb ddev):
+El sistema de formularis està implementat amb un mòdul custom de Drupal que proporciona endpoints REST per:
+- Formulari de contacte: `/api/contact`
+- Subscripció newsletter: `/api/newsletter`
+
+## Estructura del mòdul
+
+```
+drupal11/web/modules/custom/sardanista_forms/
+├── sardanista_forms.info.yml       # Definició del mòdul
+├── sardanista_forms.module          # Hook implementations
+├── sardanista_forms.routing.yml     # Definició de rutes
+└── src/
+    └── Controller/
+        └── FormsController.php      # Controlador amb endpoints
+```
+
+## Instal·lació a producció
+
+### 1. Copiar el mòdul al servidor
+
+```bash
+# Des del teu laptop
+cd /Users/montse/Docker/sardanista
+git add drupal11/web/modules/custom/sardanista_forms
+git commit -m "Add custom forms module"
+git push origin main
+
+# Al servidor
+ssh sarda1219@65.109.231.124
+cd ~/sardanista
+git pull origin main
+```
+
+### 2. Instal·lar dependències i habilitar mòdul
 
 ```bash
 cd ~/sardanista/drupal11
-./vendor/bin/drush en webform webform_rest webform_ui -y
+composer require drupal/contact_storage
+./vendor/bin/drush en contact contact_storage sardanista_forms -y
 ./vendor/bin/drush cr
 ```
 
-## Opció 1: Crear webforms via interfície web
-
-1. Ves a **Estructura → Webforms → Add webform** (`/admin/structure/webform`)
-2. Per al formulari de contacte:
-   - ID: `contacte`
-   - Títol: `Formulari de contacte`
-   - Afegeix camps:
-     - `nom` (Textfield, requerit)
-     - `email` (Email, requerit)
-     - `missatge` (Textarea, requerit)
-   - Confirmació: "Gràcies! El teu missatge s'ha enviat correctament."
-
-3. Per al newsletter:
-   - ID: `newsletter`
-   - Títol: `Butlletí de notícies`
-   - Afegeix camp:
-     - `email` (Email, requerit)
-   - Confirmació: "Gràcies per subscriure't al nostre butlletí!"
-
-## Opció 2: Importar webforms des de fitxers YAML
+### 3. Verificar que funciona
 
 ```bash
-cd ~/sardanista/drupal11
-
-# Copiar els fitxers de configuració
-cp webform-contacte.yml config/sync/webform.webform.contacte.yml
-cp webform-newsletter.yml config/sync/webform.webform.newsletter.yml
-
-# Importar configuració
-./vendor/bin/drush config:import --partial --source=config/sync -y
-./vendor/bin/drush cr
-```
-
-## Configuració de REST API
-
-1. Habilitar CORS al `.htaccess` o `settings.php`:
-
-```php
-// A web/sites/default/settings.php
-if (PHP_SAPI !== 'cli') {
-  header('Access-Control-Allow-Origin: *');
-  header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-  header('Access-Control-Allow-Headers: Content-Type');
-}
-```
-
-2. Configurar permisos:
-   - Ves a **Configuració → Permisos** (`/admin/people/permissions`)
-   - Assegura't que "Anonymous user" pot "Submit webform"
-
-## Verificar funcionament
-
-1. Prova l'endpoint REST:
-```bash
-curl -X POST https://sardanista.cat/webform_rest/submit \
+# Test contacte
+curl -X POST https://65.109.231.124/drupal11/web/api/contact \
   -H "Content-Type: application/json" \
   -d '{
-    "webform_id": "contacte",
     "nom": "Prova",
     "email": "prova@test.cat",
     "missatge": "Missatge de prova"
   }'
+
+# Test newsletter
+curl -X POST https://65.109.231.124/drupal11/web/api/newsletter \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "newsletter@test.cat"
+  }'
 ```
 
-2. Revisa les submissions:
-   - Ves a **Estructura → Webforms** (`/admin/structure/webform`)
-   - Clica "Results" al webform corresponent
+Hauria de retornar: `{"message":"Form submitted successfully","id":X}`
 
 ## Endpoints disponibles
 
-- Contacte: `POST /webform_rest/submit` amb `webform_id: "contacte"`
-- Newsletter: `POST /webform_rest/submit` amb `webform_id: "newsletter"`
+### POST /api/contact
+**Request body:**
+```json
+{
+  "nom": "Nom complet",
+  "email": "email@example.com",
+  "missatge": "Text del missatge"
+}
+```
+
+**Response (200):**
+```json
+{
+  "message": "Form submitted successfully",
+  "id": 123
+}
+```
+
+### POST /api/newsletter
+**Request body:**
+```json
+{
+  "email": "email@example.com"
+}
+```
+
+**Response (200):**
+```json
+{
+  "message": "Subscription successful",
+  "id": 124
+}
+```
+
+## Veure les submissions
+
+1. Accedeix a l'administració de Drupal
+2. Ves a **Estructura → Formularis de contacte** (`/admin/structure/contact`)
+3. Clica **List messages** per veure totes les submissions
+4. O consulta els logs: **Reports → Recent log messages** (`/admin/reports/dblog`)
+
+## Característiques
+
+✅ **CORS configurat** - Accepta peticions des del frontend
+✅ **Validació d'email** - Comprova format vàlid
+✅ **Camps requerits** - Valida que no faltin dades
+✅ **Logging** - Registra totes les submissions
+✅ **Storage persistent** - Guarda missatges a la base de dades
+✅ **Errors controlats** - Retorna missatges d'error adequats
+
+## Solució de problemes
+
+Si els endpoints no funcionen:
+
+1. Verifica que el mòdul està habilitat:
+   ```bash
+   ./vendor/bin/drush pm:list | grep sardanista_forms
+   ```
+
+2. Neteja la cache:
+   ```bash
+   ./vendor/bin/drush cr
+   ```
+
+3. Comprova els permisos:
+   - A **People → Permissions** (`/admin/people/permissions`)
+   - Assegura't que "Anonymous" té "Access content"
+
+4. Revisa els logs:
+   ```bash
+   ./vendor/bin/drush watchdog:show --filter=sardanista_forms
+   ```

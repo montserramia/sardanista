@@ -163,7 +163,13 @@ function ContactUs() {
                   </MKTypography>
                 </MKBox>
               )}
-              <MKBox width="100%" component="form" method="post" autoComplete="off" onSubmit={handleSubmit}>
+              <MKBox
+                width="100%"
+                component="form"
+                method="post"
+                autoComplete="off"
+                onSubmit={handleSubmit}
+              >
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <MKInput
