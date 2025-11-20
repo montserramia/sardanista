@@ -49,11 +49,12 @@
 7. **Instal·la dependències i aplica actualitzacions Drupal**
    ```bash
    cd drupal11
-   composer install --no-dev --optimize-autoloader
+   composer install --optimize-autoloader
    ./vendor/bin/drush updb -y
    ./vendor/bin/drush cim -y
    ./vendor/bin/drush cr
    ```
+   > ⚠️ **Nota:** No usem `--no-dev` perquè necessitem Drush a producció.
 
 8. **Rebuild del frontend React**
    ```bash

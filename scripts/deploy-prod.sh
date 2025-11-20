@@ -70,11 +70,12 @@ echo -e "${GREEN}✓ Configuració restaurada${NC}"
 echo -e "${YELLOW}📚 Actualitzant dependències Drupal...${NC}"
 cd drupal11
 # Primer provem install, si falla fem update
-if ! composer install --no-dev --optimize-autoloader 2>&1 | tee /tmp/composer-output.log | grep -q "lock file is not up to date"; then
+# NOTA: No usem --no-dev perquè necessitem drush a producció
+if ! composer install --optimize-autoloader 2>&1 | tee /tmp/composer-output.log | grep -q "lock file is not up to date"; then
     echo -e "${GREEN}✓ Dependències instal·lades${NC}"
 else
     echo -e "${YELLOW}⚠️  Lock file desactualitzat, fent composer update...${NC}"
-    composer update --no-dev --optimize-autoloader
+    composer update --optimize-autoloader
     echo -e "${GREEN}✓ Dependències actualitzades${NC}"
 fi
 
