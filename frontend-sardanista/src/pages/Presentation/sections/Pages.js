@@ -55,7 +55,7 @@ function Pages() {
           <MKBadge
             variant="contained"
             color="info"
-            badgeContent="La saradana és per a tothom"
+            badgeContent="La sardana és per a tothom"
             container
             sx={{ mb: 2 }}
           />

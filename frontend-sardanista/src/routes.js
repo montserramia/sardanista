@@ -44,6 +44,7 @@ import AboutUs from "layouts/pages/landing-pages/about-us";
 import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
 import PaginaCurset from "pages/curset";
+import PaginaNeta from "pages/neta";
 
 const routes = [
   {
@@ -69,6 +70,12 @@ const routes = [
     icon: <Icon>book</Icon>,
     route: "/curset",
     component: <PaginaCurset />,
+  },
+  {
+    name: "Com ser part?",
+    icon: <Icon>contact_mail</Icon>,
+    route: "/neta",
+    component: <PaginaNeta />,
   },
 ];
 

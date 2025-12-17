@@ -29,6 +29,8 @@ import team1 from "assets/images/sardana/som/pilar.jpeg";
 import team2 from "assets/images/sardana/som/pepa.jpeg";
 import team3 from "assets/images/sardana/som/elvira.jpg";
 import team4 from "assets/images/sardana/som/gloria.jpeg";
+import team5 from "assets/images/sardana/som/jesus.jpg";
+import team6 from "assets/images/sardana/som/quim.jpg";
 
 function Team() {
   return (
@@ -62,7 +64,7 @@ function Team() {
                 image={team1}
                 name="Pilar"
                 position={{ color: "info", label: "Presidenta" }}
-                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
+                description="Lidera l'agrupació amb dedicació i impulsant el creixement de la sardana a la comunitat."
               />
             </MKBox>
           </Grid>
@@ -72,7 +74,7 @@ function Team() {
                 image={team4}
                 name="Glòria"
                 position={{ color: "info", label: "Vicepresidenta" }}
-                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
+                description="La seva experiència és clau per mantenir viva la tradició sardanista."
               />
             </MKBox>
           </Grid>
@@ -82,17 +84,37 @@ function Team() {
                 image={team2}
                 name="Pepa"
                 position={{ color: "info", label: "Secretària" }}
-                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
+                description="S'assegura que tot estigui en ordre vetllant pel bon funcionament de l'entitat."
               />
             </MKBox>
           </Grid>
           <Grid item xs={12} lg={6}>
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
+                image={team5}
+                name="Jesus"
+                position={{ color: "info", label: "Tresorer" }}
+                description="Gràcies a la seva gestió permet mantenir les activitats i invertir en el futur de la sardana."
+              />
+            </MKBox>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <MKBox mb={1}>
+              <HorizontalTeamCard
                 image={team3}
                 name="Elvira"
-                position={{ color: "info", label: "Vocal i Monitora" }}
-                description="Artista és un terme aplicat a una persona que participa en una activitat considerada com un art."
+                position={{ color: "info", label: "Monitora" }}
+                description="Ensenya els passos i la tècnica de la sardana amb el compromís de transmetre la tradició."
+              />
+            </MKBox>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <MKBox mb={{ xs: 1, lg: 0 }}>
+              <HorizontalTeamCard
+                image={team6}
+                name="Quim"
+                position={{ color: "info", label: "Monitor" }}
+                description="El seu entusiasme fa que aprendre sardana sigui una experiència gratificant."
               />
             </MKBox>
           </Grid>

@@ -69,7 +69,7 @@ Cada activitat és una oportunitat per créixer, compartir i fer pinya."
                     icon="handshake"
                     title="Espirit col·laboratiu"
                     description="Creixem plegats, des del respecte i el compromís.
-L’agrupació és possible gràcies a l’esforç conjunt de persones que comparteixen la mateixa passió."
+Estem federats a Som Sardana, compartint la passió per aquesta tradició amb agrupacions d'arreu."
                   />
                 </MKBox>
               </Grid>

@@ -1,7 +1,6 @@
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
 // Material Kit 2 React components
@@ -20,16 +19,16 @@ export default {
   },
   socials: [
     {
-      icon: <FacebookIcon />,
-      link: "https://www.facebook.com/",
+      icon: <InstagramIcon />,
+      link: "https://www.instagram.com/grup_sardanista_castelldefels/",
     },
     {
-      icon: <TwitterIcon />,
-      link: "https://twitter.com/",
+      icon: <WhatsAppIcon />,
+      link: "https://wa.me/34616430148",
     },
     {
-      icon: <GitHubIcon />,
-      link: "https://github.com/",
+      icon: <WhatsAppIcon />,
+      link: "https://wa.me/34699098028",
     },
     {
       icon: <YouTubeIcon />,
@@ -40,10 +39,10 @@ export default {
     {
       name: "Nosaltres",
       items: [
-        {
-          name: "contacte'ns",
-          href: "https://www.castelldefels.org/es/servicios/cultura/cultura-popular-tradicional/bailes-populares/la-sardana",
-        },
+        { name: "Qui som", href: "/quisom" },
+        { name: "Vols ser part?", href: "/neta" },
+        { name: "Glòria: 616 43 01 48", href: "tel:+34616430148" },
+        { name: "Pepa: 699 09 80 28", href: "tel:+34699098028" },
       ],
     },
     {
@@ -60,7 +59,6 @@ export default {
       items: [
         { name: "Ajuntament", href: "https://www.castelldefels.org/" },
         { name: "Cultura", href: "https://www.castelldefels.org/cultura" },
-        { name: "Esports", href: "https://www.castelldefels.org/esports" },
         { name: "Agenda", href: "https://www.castelldefels.org/agenda" },
       ],
     },

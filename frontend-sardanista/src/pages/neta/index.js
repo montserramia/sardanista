@@ -78,9 +78,47 @@ function PaginaNeta() {
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
+              <MKTypography variant="h5" color="dark" mb={2}>
+                Vols ser soci?
+              </MKTypography>
               <MKTypography variant="body2" color="text" mb={3}>
-                Per a qualsevol dubte o consulta, omple el formulari i ens posarem en contacte amb
-                tu.
+                Per a qualsevol dubte o consulta, pots contactar-nos a:
+              </MKTypography>
+
+              <MKBox mb={2}>
+                <MKTypography variant="body2" color="text" fontWeight="bold">
+                  📧 Email:
+                </MKTypography>
+                <MKTypography
+                  variant="body2"
+                  color="info"
+                  component="a"
+                  href="mailto:contacte@grupsardanistacastelldefels.cat"
+                >
+                  contacte@grupsardanistacastelldefels.cat
+                </MKTypography>
+              </MKBox>
+
+              <MKBox mb={2}>
+                <MKTypography variant="body2" color="text" fontWeight="bold">
+                  📱 Telèfons de contacte:
+                </MKTypography>
+                <MKTypography variant="body2" color="text">
+                  Glòria:{" "}
+                  <MKTypography component="a" href="tel:+34616430148" variant="body2" color="info">
+                    616 43 01 48
+                  </MKTypography>
+                </MKTypography>
+                <MKTypography variant="body2" color="text">
+                  Pepa:{" "}
+                  <MKTypography component="a" href="tel:+34699098028" variant="body2" color="info">
+                    699 09 80 28
+                  </MKTypography>
+                </MKTypography>
+              </MKBox>
+
+              <MKTypography variant="body2" color="text" mb={3}>
+                També pots utilitzar el formulari de contacte i ens posarem en contacte amb tu.
               </MKTypography>
             </MKBox>
           </MKBox>

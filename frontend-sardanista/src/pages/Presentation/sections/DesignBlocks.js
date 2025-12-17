@@ -73,7 +73,7 @@ function DesignBlocks() {
           <MKBadge
             variant="contained"
             color="info"
-            badgeContent="La saradana és per a tots"
+            badgeContent="La sardana és per a tots"
             container
             sx={{ mb: 2 }}
           />

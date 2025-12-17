@@ -51,7 +51,7 @@ function BuiltByDevelopers() {
             Tallers de sardanes per totes les edats
           </MKTypography>
           <MKTypography variant="body1" color="white" opacity={0.8} mb={2}>
-            La saradana ben ballada és una de les millors formes d’expressar la cultura popular
+            La sardana ben ballada és una de les millors formes d’expressar la cultura popular
             catalana. Volem que tothom pugui gaudir de la sardana, i per això oferim tallers
             adaptats a totes les edats i nivells.
           </MKTypography>

@@ -84,15 +84,15 @@ function PaginaCurset() {
               </MKTypography>
 
               <MKTypography variant="body2" color="text" mb={2}>
-                T&apos;esperem:
+                T&apos;esperem tots els:
               </MKTypography>
 
               <MKBox mb={2}>
                 <MKTypography variant="body2" color="text" fontWeight="bold">
-                  📅 Dimecres 1 d&apos;octubre a les 17h
+                  📅 Dimecres de 17 a 19h
                 </MKTypography>
                 <MKTypography variant="body2" color="text" fontWeight="bold">
-                  📅 Dissabte 4 d&apos;octubre a les 11h
+                  📅 Dissabtes de 11 a 13h
                 </MKTypography>
               </MKBox>
 

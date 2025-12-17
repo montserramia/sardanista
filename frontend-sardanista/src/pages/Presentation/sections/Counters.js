@@ -31,29 +31,25 @@ function Counters() {
         <Grid container item xs={12} lg={9} sx={{ mx: "auto" }}>
           <Grid item xs={12} md={4}>
             <DefaultCounterCard
-              count={900}
-              suffix="+"
-              title="Socis Actius"
+              count={140}
+              title="Socis"
               description="L’Agrupació compta amb una base sòlida de membres compromesos que mantenen viva la sardana."
             />
           </Grid>
           <Grid item xs={12} md={4} display="flex">
             <Divider orientation="vertical" sx={{ display: { xs: "none", md: "block" }, mx: 0 }} />
             <DefaultCounterCard
-              count={33}
+              count={32}
               title="Anys d'història"
-              description="Tres dècades de dansa, cultura i tradició al cor de Castelldefels, oberts a totes les generacions.
-
-"
+              description="Fundada l'octubre de 1993, més de tres dècades al cor de Castelldefels, oberts a totes les generacions."
             />
             <Divider orientation="vertical" sx={{ display: { xs: "none", md: "block" }, ml: 0 }} />
           </Grid>
           <Grid item xs={12} md={4}>
             <DefaultCounterCard
-              count={45}
-              suffix="+"
-              title="Ballades i trobades"
-              description="Organitzem i participem en agenda arreu del Baix Llobregat, consolidant una presència activa i festiva."
+              count={13}
+              title="Ballades anuals"
+              description="Organitzem ballades d'estiu, participem en trobades i oferim 28 dies de curset per a nous sardanistes."
             />
           </Grid>
         </Grid>
