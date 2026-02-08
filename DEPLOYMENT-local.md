@@ -50,11 +50,12 @@
    ```bash
    cd drupal11
    composer install --optimize-autoloader
-   ./vendor/bin/drush updb -y
-   ./vendor/bin/drush cim -y
-   ./vendor/bin/drush cr
+   drush updb -y
+   drush cim -y
+   drush cr
    ```
    > ⚠️ **Nota:** No usem `--no-dev` perquè necessitem Drush a producció.
+   > 💡 **Drush alias**: Configurat automàticament via `~/.bash_profile` per executar amb PHP 8.3.
 
 8. **Rebuild del frontend React**
    ```bash
@@ -66,9 +67,17 @@
 9. **Verifica que el lloc funcioni correctament**
    ```bash
    cd ~/sardanista/drupal11
-   ./vendor/bin/drush status
-   ./vendor/bin/drush core:requirements --severity=2
+   drush status
+   drush core:requirements --severity=2
+   
+   # Verifica CORS
+   curl -H "Origin: https://grupsardanistacastelldefels.cat" \
+     -H "Access-Control-Request-Method: GET" \
+     -X OPTIONS \
+     https://admin.sardana.newwweb.cat/jsonapi \
+     -v 2>&1 | grep -i "access-control"
    ```
-   - Accedeix al web i revisa els logs: `/var/log/nginx/` i `web/sites/default/files/php/logs/`
+   - Accedeix al web i revisa els logs
+   - Verifica que les peticions API des del frontend funcionin correctament
 
 > 💡 **Important:** No restauris ni facis checkout de `settings.php` ni `services.yml` des de Git si són específics de producció. Mantingues sempre una còpia local abans de fer canvis.

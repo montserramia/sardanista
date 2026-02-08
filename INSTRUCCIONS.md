@@ -144,29 +144,63 @@ npm run prettify        # Formata el codi
 
 ## 🚀 Desplegament a producció
 
-### Frontend (~/frontend/)
-
-Al servidor de producció, el frontend està a `~/frontend/` i NO usa Docker:
+### Configuració inicial del servidor (només primera vegada)
 
 ```bash
-cd ~/frontend
+# Crear ~/.bash_profile per carregar drush automàticament
+cat > ~/.bash_profile << 'EOF'
+# Carregar .bashrc si existeix
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+EOF
+
+# Configurar alias drush a ~/.bashrc
+cat >> ~/.bashrc << 'EOF'
+
+# Configuració PATH i Drush alias
+export PATH=~/bin:$PATH
+
+# Drush alias per a Sardana Drupal 11
+alias drush='cd ~/sardanista/drupal11 && /usr/local/lsws/lsphp83/bin/php8.3 vendor/drush/drush/drush.php'
+EOF
+
+# Carregar configuració
+source ~/.bash_profile
+```
+
+### Frontend
+
+Al servidor de producció (`~/sardanista/frontend-sardanista/`):
+
+```bash
+cd ~/sardanista/frontend-sardanista
 git pull origin main
-npm install
+npm ci
 npm run build
 ```
 
-El servidor web (Nginx/Apache) serveix els fitxers des de `~/frontend/build/`.
+El servidor web serveix els fitxers des de `build/`.
 
-### Drupal
+### Backend Drupal
 
 ```bash
-cd ~/sardanista/drupal11  # o la ruta corresponent
+cd ~/sardanista/drupal11
 git pull origin main
-composer install
-drush cr
+composer install --optimize-autoloader
 drush updb -y
 drush cim -y
+drush cr
+
+# Verifica CORS
+curl -H "Origin: https://grupsardanistacastelldefels.cat" \
+  -H "Access-Control-Request-Method: GET" \
+  -X OPTIONS \
+  https://admin.sardana.newwweb.cat/jsonapi \
+  -v 2>&1 | grep -i "access-control"
 ```
+
+> 💡 **Nota**: L'alias `drush` ja està configurat amb PHP 8.3 i carrega automàticament cada vegada que fas SSH.
 
 ---
 

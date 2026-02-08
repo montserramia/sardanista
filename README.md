@@ -92,11 +92,15 @@ La configuració exportada del Drupal es guarda a `drupal11/config/`. Recorda ex
 
 ## 🌐 Entorn de producció (VPS Hetzner)
 
-- **Servidor**: VPS Hetzner (Ubuntu 22.04 LTS) amb un stack LEMP: Nginx + PHP-FPM 8.2 + MariaDB 10.6.
-- **Ubicació del projecte**: `/var/www/sardanista` (document root a `web/`).
-- **Gestió de serveis**: `systemctl` (`php8.2-fpm`, `nginx`, `mariadb`).
-- **Certificats**: `certbot` amb Let's Encrypt (renovació automàtica via cron).
-- **Crons**: `crontab -u www-data -l` inclou `drush cron` cada hora.
+- **Servidor**: VPS Hetzner (Ubuntu 22.04 LTS) amb LiteSpeed Web Server + PHP 8.3 + MariaDB.
+- **Ubicació del projecte**: `/home/sardana.newwweb.cat/sardanista/` (document root backend: `drupal11/web/`, frontend: `frontend-sardanista/build/`).
+- **Dominis**:
+  - Frontend: `https://grupsardanistacastelldefels.cat`
+  - Backend API: `https://admin.sardana.newwweb.cat`
+- **Gestió de serveis**: LiteSpeed Web Server amb OpenLiteSpeed.
+- **Certificats**: Let's Encrypt (renovació automàtica).
+- **Crons**: `crontab` inclou `drush cron` executat amb PHP 8.3.
+- **CORS**: Configurat nativamente a través de `services.yml` (vegeu `CORS-CONFIG.md`).
 
 ### Desplegament manual
 
