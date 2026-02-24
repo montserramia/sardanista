@@ -1,0 +1,20 @@
+uuid: 5af7f987-b7e9-4c8f-8d1a-9fef9c61f3c4
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_is_public
+field_name: field_is_public
+entity_type: node
+type: boolean
+settings:
+  on_label: 'Publica'
+  off_label: 'Privada'
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: { }
+persist_with_no_fields: false
+custom_storage: false

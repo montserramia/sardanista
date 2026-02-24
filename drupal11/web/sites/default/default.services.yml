@@ -201,26 +201,20 @@ parameters:
   # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
   # for more information about the topic in general.
   # Note: By default the configuration is disabled.
+
   cors.config:
-    enabled: false
-    # Specifies allowed headers and sets the Access-Control-Allow-Headers
-    # header. For example, ['X-Custom-Header']. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
-    allowedHeaders: []
-    # Specifies allowed request methods and sets the
-    # Access-Control-Allow-Methods header. For example, ['POST', 'GET',
-    # 'OPTIONS'] or ['*'] to allow all. Note the wildcard is not yet implemented
-    # in all browsers. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
-    allowedMethods: []
-    # Configure requests allowed from specific origins and sets the
-    # Access-Control-Allow-Origin header. For example,
-    # ['https://www.drupal.org'] or ['*'] to allow any origin to access your
-    # resource. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
-    allowedOrigins: ['*']
-    # Configure requests allowed from origins, matching against regex patterns.
-    allowedOriginsPatterns: []
+    enabled: true
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With']
+    allowedMethods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
+    allowedOrigins: 
+      - 'https://grupsardanistacastelldefels.cat'
+      - 'https://www.grupsardanistacastelldefels.cat'
+      - 'https://sardanista.pages.dev'
+      - 'http://localhost:3000'
+    exposedHeaders: false
+    maxAge: 86400
+    supportsCredentials: true
+    
     # Sets the Access-Control-Expose-Headers header. The default is false which
     # means the header will not be set. To set the header use a comma delimited
     # list within square brackets. For example, ['Content-Type', 'Expires'] or

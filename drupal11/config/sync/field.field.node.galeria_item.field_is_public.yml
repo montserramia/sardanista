@@ -1,0 +1,21 @@
+uuid: 5cae6dc2-60d8-4c96-b5f0-2c857cc7d2a2
+langcode: ca
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_public
+    - node.type.galeria_item
+id: node.galeria_item.field_is_public
+field_name: field_is_public
+entity_type: node
+bundle: galeria_item
+label: "Visible al web"
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+settings:
+  on_label: 'Visible'
+  off_label: 'Oculta'
+field_type: boolean

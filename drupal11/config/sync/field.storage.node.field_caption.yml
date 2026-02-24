@@ -1,0 +1,19 @@
+uuid: 8f9c7c34-9bb4-4f2d-b0cb-3d02c77a3df1
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_caption
+field_name: field_caption
+entity_type: node
+type: text_long
+settings: { }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: { }
+persist_with_no_fields: false
+custom_storage: false
