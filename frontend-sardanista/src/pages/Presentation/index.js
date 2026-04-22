@@ -76,6 +76,7 @@ function Presentation() {
               color="white"
               mt={-6}
               mb={1}
+              textAlign="center"
               sx={({ breakpoints, typography: { size } }) => ({
                 textShadow: "2px 2px 4px rgba(3, 22, 99, 0.8)",
                 [breakpoints.down("md")]: {
