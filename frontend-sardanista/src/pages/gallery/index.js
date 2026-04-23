@@ -67,7 +67,12 @@ function GalleryPage() {
       const imageMap = {};
       included.forEach((item) => {
         if (item.type === "file--file") {
-          imageMap[item.id] = item.attributes.uri.url;
+          // Convert public:// to actual file path
+          const imageUrl = item.attributes.uri.url.replace("public://", "/sites/default/files/");
+          // Construct the full image URL
+          imageMap[item.id] = `${
+            process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat"
+          }${imageUrl}`;
         }
       });
 
@@ -81,22 +86,13 @@ function GalleryPage() {
           images:
             item.relationships.field_images?.data
               ?.map((imgRef) => {
-                // Get the image URI from the image map
-                const imageUri = imgRef.id && imageMap[imgRef.id] ? imageMap[imgRef.id] : null;
-
-                // Construct the full image URL
-                const imageUrl = imageUri
-                  ? imageUri.startsWith("http")
-                    ? imageUri
-                    : `${
-                        process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat"
-                      }${imageUri}`
-                  : ""; // Empty string for invalid images that will be filtered out
+                // Get the image URL from the image map
+                const imageUrl = imgRef?.id && imageMap[imgRef.id] ? imageMap[imgRef.id] : null;
 
                 return {
-                  id: imgRef.id,
+                  id: imgRef?.id,
                   url: imageUrl,
-                  alt: imgRef.meta?.alt || `Imatge de galeria ${item.attributes.title}`,
+                  alt: imgRef?.meta?.alt || `Imatge de galeria ${item.attributes.title}`,
                 };
               })
               .filter((img) => img.url) || [], // Filter out any invalid images
