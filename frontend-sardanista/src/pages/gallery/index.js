@@ -50,87 +50,52 @@ function GalleryPage() {
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
     try {
-      // TODO: Replace with actual Drupal API endpoint
-      // const response = await fetch(`${process.env.REACT_APP_DRUPAL_API_URL}/node/gallery`);
-      // const data = await response.json();
+      // Using the correct endpoint as confirmed by the user
+      const apiUrl = process.env.REACT_APP_DRUPAL_API_URL || 'https://admin.sardana.newwweb.cat/jsonapi';
+      const response = await fetch(`${apiUrl}/node/galeria`);
       
-      // For now, we'll use sample data - replace this with actual API call
-      const sampleGalleries = [
-        {
-          id: 1,
-          title: "Actuació de Nadal",
-          description: "Fotografies de la nostra actuació de Nadal",
-          category: "events",
-          images: [
-            { 
-              id: 1, 
-              url: "https://images.unsplash.com/photo-1523441114522-8da17c0d51bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Sardanes Nadal 1" 
-            },
-            { 
-              id: 2, 
-              url: "https://images.unsplash.com/photo-1517232115329-9d49ae33eb18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Sardanes Nadal 2" 
-            },
-            { 
-              id: 3, 
-              url: "https://images.unsplash.com/photo-1587500488538-755a1e158412?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Sardanes Nadal 3" 
-            },
-          ]
-        },
-        {
-          id: 2,
-          title: "Assaig Setmanal",
-          description: "Imatges de l'assaig setmanal",
-          category: "rehearsals",
-          images: [
-            { 
-              id: 4, 
-              url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Assaig sardanes 1" 
-            },
-            { 
-              id: 5, 
-              url: "https://images.unsplash.com/photo-1571330735066-03aaa9429d8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Assaig sardanes 2" 
-            },
-          ]
-        },
-        {
-          id: 3,
-          title: "Dia de la Sardana",
-          description: "Celebració del dia de la sardana a Castelldefels",
-          category: "events",
-          images: [
-            { 
-              id: 6, 
-              url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Dia de la sardana 1" 
-            },
-            { 
-              id: 7, 
-              url: "https://images.unsplash.com/photo-1544620343-0786666d6f88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Dia de la sardana 2" 
-            },
-            { 
-              id: 8, 
-              url: "https://images.unsplash.com/photo-1567309254102-64af7a431ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Dia de la sardana 3" 
-            },
-            { 
-              id: 9, 
-              url: "https://images.unsplash.com/photo-1571330735066-03aaa9429d8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
-              alt: "Dia de la sardana 4" 
-            },
-          ]
-        }
-      ];
-
-      setGalleries(sampleGalleries);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      // Process the JSON:API response according to our data contract
+      const processedGalleries = data.data.map(item => ({
+        id: item.id,
+        title: item.attributes.title,
+        description: item.attributes.field_description?.processed || '',
+        category: item.attributes.field_category || '',
+        images: item.relationships.field_images?.data?.map(imgRef => {
+          // Find the image in included array
+          const imgData = data.included?.find(img => 
+            img.id === imgRef.id && img.type === 'file--file'
+          );
+          
+          // Handle both regular and WebP formats
+          let imageUrl = '';
+          if (imgData) {
+            // Convert public:// to actual file path
+            imageUrl = imgData.attributes.uri.url.replace('public://', '/sites/default/files/');
+            
+            // If the site is configured for WebP, we might need to handle that
+            // For now, we'll use the original file path
+            imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
+          }
+          
+          return {
+            id: imgData?.id || imgRef.id,
+            url: imageUrl,
+            alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`
+          };
+        }).filter(img => img.url) || [] // Filter out any invalid images
+      })).filter(gallery => gallery.images.length > 0); // Filter out galleries without images
+      
+      setGalleries(processedGalleries);
       setLoading(false);
     } catch (err) {
-      setError(err.message);
+      console.error('Error fetching galleries:', err);
+      setError(`Error carregant galeries: ${err.message}`);
       setLoading(false);
     }
   };
@@ -177,7 +142,7 @@ function GalleryPage() {
   if (error) {
     return (
       <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
-        <MKTypography variant="h5" color="error">Error carregant galeries: {error}</MKTypography>
+        <MKTypography variant="h5" color="error">{error}</MKTypography>
       </MKBox>
     );
   }
