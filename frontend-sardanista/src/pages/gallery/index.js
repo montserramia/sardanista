@@ -53,13 +53,23 @@ function GalleryPage() {
       // Using the correct endpoint as confirmed by the user
       const apiUrl =
         process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
-      const response = await fetch(`${apiUrl}/node/galeria`);
+      // Include the related files in the response
+      const response = await fetch(`${apiUrl}/node/galeria?include=field_images`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      const included = data.included || [];
+
+      // Create a map of file IDs to their URIs
+      const imageMap = {};
+      included.forEach((item) => {
+        if (item.type === "file--file") {
+          imageMap[item.id] = item.attributes.uri.url;
+        }
+      });
 
       // Process the JSON:API response according to our data contract
       const processedGalleries = data.data
@@ -71,50 +81,25 @@ function GalleryPage() {
           images:
             item.relationships.field_images?.data
               ?.map((imgRef) => {
-                // Find the image in included array
-                const imgData = data.included?.find(
-                  (img) => img.id === imgRef.id && img.type === "file--file"
-                );
+                // Get the image URI from the image map
+                const imageUri = imgRef.id && imageMap[imgRef.id] ? imageMap[imgRef.id] : null;
 
-                // Handle both cases: when image is in included and when we have to use meta data
-                let imageUrl = "";
-                let altText = imgRef.meta?.alt || `Imatge de galeria ${item.attributes.title}`;
-
-                if (imgData) {
-                  // Convert public:// to actual file path
-                  imageUrl = imgData.attributes.uri.url.replace(
-                    "public://",
-                    "/sites/default/files/"
-                  );
-
-                  // If the site is configured for WebP, we might need to handle that
-                  // For now, we'll use the original file path
-                  imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
-
-                  // Use the alt text from the image data if available
-                  altText = imgData.attributes?.meta?.alt || altText;
-                } else if (imgRef.meta) {
-                  // If we don't have the full file data in 'included', try to construct the URL from the meta info
-                  // In some cases, we might be able to determine the URL from the target_id
-                  imageUrl = `${
-                    process.env.REACT_APP_DRUPAL_BASE_URL || "https://admin.sardana.newwweb.cat"
-                  }/sites/default/files/${imgRef.meta.filename}`;
-                }
+                // Construct the full image URL
+                const imageUrl = imageUri
+                  ? imageUri.startsWith("http")
+                    ? imageUri
+                    : `${
+                        process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat"
+                      }${imageUri}`
+                  : ""; // Empty string for invalid images that will be filtered out
 
                 return {
-                  id: imgData?.id || imgRef.id,
+                  id: imgRef.id,
                   url: imageUrl,
-                  alt: altText,
+                  alt: imgRef.meta?.alt || `Imatge de galeria ${item.attributes.title}`,
                 };
               })
-              .filter(
-                (img) =>
-                  img.url &&
-                  img.url !==
-                    `${
-                      process.env.REACT_APP_DRUPAL_BASE_URL || "https://admin.sardana.newwweb.cat"
-                    }/sites/default/files/`
-              ) || [], // Filter out any invalid images
+              .filter((img) => img.url) || [], // Filter out any invalid images
         }))
         .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
 
