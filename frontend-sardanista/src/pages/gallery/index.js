@@ -50,11 +50,11 @@ function GalleryPage() {
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
     try {
-      // Using the correct endpoint as confirmed by the user
-      const apiUrl =
-        process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
+      // Using the same API_BASE as the blog implementation
+      const API_BASE = process.env.REACT_APP_API_BASE;
+
       // Include the related files in the response
-      const response = await fetch(`${apiUrl}/node/galeria?include=field_images`);
+      const response = await fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -69,10 +69,8 @@ function GalleryPage() {
         if (item.type === "file--file") {
           // Convert public:// to actual file path
           const imageUrl = item.attributes.uri.url.replace("public://", "/sites/default/files/");
-          // Construct the full image URL
-          imageMap[item.id] = `${
-            process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat"
-          }${imageUrl}`;
+          // Construct the full image URL using the API_BASE
+          imageMap[item.id] = `${API_BASE}${imageUrl}`;
         }
       });
 
