@@ -45,6 +45,7 @@ import BlogPage from "pages/blog";
 import PaginaCurset from "pages/curset";
 import PaginaNeta from "pages/neta";
 import GalleryPage from "pages/gallery";
+import AgendaPage from "pages/agenda";
 
 const routes = [
   {
@@ -70,6 +71,12 @@ const routes = [
     icon: <Icon>book</Icon>,
     route: "/curset",
     component: <PaginaCurset />,
+  },
+  {
+    name: "Agenda",
+    icon: <Icon>calendar_month</Icon>,
+    route: "/agenda",
+    component: <AgendaPage />,
   },
   {
     name: "Com ser part?",
