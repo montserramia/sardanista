@@ -51,7 +51,8 @@ function GalleryPage() {
   const fetchGalleriesFromDrupal = async () => {
     try {
       // Using the correct endpoint as confirmed by the user
-      const apiUrl = process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
+      const apiUrl =
+        process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
       const response = await fetch(`${apiUrl}/node/galeria`);
       
       if (!response.ok) {
@@ -61,35 +62,42 @@ function GalleryPage() {
       const data = await response.json();
       
       // Process the JSON:API response according to our data contract
-      const processedGalleries = data.data.map((item) => ({
-        id: item.id,
-        title: item.attributes.title,
-        description: item.attributes.field_description?.processed || "",
-        category: item.attributes.field_category || "",
-        images: item.relationships.field_images?.data?.map((imgRef) => {
-          // Find the image in included array
-          const imgData = data.included?.find((img) =>
-            img.id === imgRef.id && img.type === "file--file"
-          );
-          
-          // Handle both regular and WebP formats
-          let imageUrl = "";
-          if (imgData) {
-            // Convert public:// to actual file path
-            imageUrl = imgData.attributes.uri.url.replace("public://", "/sites/default/files/");
-            
-            // If the site is configured for WebP, we might need to handle that
-            // For now, we'll use the original file path
-            imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
-          }
-          
-          return {
-            id: imgData?.id || imgRef.id,
-            url: imageUrl,
-            alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`
-          };
-        }).filter((img) => img.url) || [] // Filter out any invalid images
-      })).filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
+      const processedGalleries = data.data
+        .map((item) => ({
+          id: item.id,
+          title: item.attributes.title,
+          description: item.attributes.field_description?.processed || "",
+          category: item.attributes.field_category || "",
+          images: item.relationships.field_images?.data
+            ?.map((imgRef) => {
+              // Find the image in included array
+              const imgData = data.included?.find(
+                (img) => img.id === imgRef.id && img.type === "file--file"
+              );
+
+              // Handle both regular and WebP formats
+              let imageUrl = "";
+              if (imgData) {
+                // Convert public:// to actual file path
+                imageUrl = imgData.attributes.uri.url.replace(
+                  "public://",
+                  "/sites/default/files/"
+                );
+
+                // If the site is configured for WebP, we might need to handle that
+                // For now, we'll use the original file path
+                imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
+              }
+
+              return {
+                id: imgData?.id || imgRef.id,
+                url: imageUrl,
+                alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`,
+              };
+            })
+            .filter((img) => img.url) || [], // Filter out any invalid images
+        }))
+        .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
       
       setGalleries(processedGalleries);
       setLoading(false);
@@ -367,6 +375,7 @@ function GalleryPage() {
                 right: "20px",
               }}
             >
+              {" "}
               <IconButton
                 aria-label="close"
                 onClick={closeLightbox}

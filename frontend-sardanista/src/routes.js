@@ -41,7 +41,6 @@ import Icon from "@mui/material/Icon";
 
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
-import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
 import PaginaCurset from "pages/curset";
 import PaginaNeta from "pages/neta";
@@ -53,12 +52,6 @@ const routes = [
     icon: <Icon>groups</Icon>,
     route: "/quisom",
     component: <AboutUs />,
-  },
-  {
-    name: "Agenda",
-    icon: <Icon>event</Icon>,
-    route: "/agenda",
-    component: <Agenda />,
   },
   {
     name: "Blog",

@@ -59,10 +59,8 @@ function ContactUs() {
     setSubmitStatus(null);
 
     try {
-      const apiUrl =
-        process.env.NODE_ENV === "production"
-          ? "https://65.109.231.124/drupal11/web/api/contact"
-          : "https://sardanista.ddev.site:8443/api/contact";
+      // Utilitza la variable d'entorn per a l'endpoint d'API
+      const apiUrl = `${process.env.REACT_APP_API_BASE}/api/contact`;
 
       const response = await fetch(apiUrl, {
         method: "POST",

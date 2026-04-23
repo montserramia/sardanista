@@ -40,7 +40,7 @@ export default {
       name: "Nosaltres",
       items: [
         { name: "Qui som", href: "/quisom" },
-        { name: "Vols ser part?", href: "/neta" },
+        { name: "Agenda", href: "/agenda" },
         { name: "Glòria: 616 43 01 48", href: "tel:+34616430148" },
         { name: "Pepa: 699 09 80 28", href: "tel:+34699098028" },
       ],
