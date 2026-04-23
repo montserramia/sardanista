@@ -76,8 +76,10 @@ function GalleryPage() {
                   (img) => img.id === imgRef.id && img.type === "file--file"
                 );
 
-                // Handle both regular and WebP formats
+                // Handle both cases: when image is in included and when we have to use meta data
                 let imageUrl = "";
+                let altText = imgRef.meta?.alt || `Imatge de galeria ${item.attributes.title}`;
+
                 if (imgData) {
                   // Convert public:// to actual file path
                   imageUrl = imgData.attributes.uri.url.replace(
@@ -88,15 +90,31 @@ function GalleryPage() {
                   // If the site is configured for WebP, we might need to handle that
                   // For now, we'll use the original file path
                   imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
+
+                  // Use the alt text from the image data if available
+                  altText = imgData.attributes?.meta?.alt || altText;
+                } else if (imgRef.meta) {
+                  // If we don't have the full file data in 'included', try to construct the URL from the meta info
+                  // In some cases, we might be able to determine the URL from the target_id
+                  imageUrl = `${
+                    process.env.REACT_APP_DRUPAL_BASE_URL || "https://admin.sardana.newwweb.cat"
+                  }/sites/default/files/${imgRef.meta.filename}`;
                 }
 
                 return {
                   id: imgData?.id || imgRef.id,
                   url: imageUrl,
-                  alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`,
+                  alt: altText,
                 };
               })
-              .filter((img) => img.url) || [], // Filter out any invalid images
+              .filter(
+                (img) =>
+                  img.url &&
+                  img.url !==
+                    `${
+                      process.env.REACT_APP_DRUPAL_BASE_URL || "https://admin.sardana.newwweb.cat"
+                    }/sites/default/files/`
+              ) || [], // Filter out any invalid images
         }))
         .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
 
@@ -323,19 +341,9 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{
-                    minWidth: "auto",
-                    width: "60px",
-                    height: "60px",
-                    mr: 2,
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "transform 0.2s ease",
-                    },
-                  }}
+                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
                 >
-                  <i className="fas fa-chevron-left" style={{ fontSize: "1.6rem" }} />
+                  <i className="fas fa-chevron-left" />
                 </MKButton>
                 <MKButton
                   onClick={goToNextImage}
@@ -344,19 +352,9 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{
-                    minWidth: "auto",
-                    width: "60px",
-                    height: "60px",
-                    ml: 2,
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "transform 0.2s ease",
-                    },
-                  }}
+                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
                 >
-                  <i className="fas fa-chevron-right" style={{ fontSize: "1.6rem" }} />
+                  <i className="fas fa-chevron-right" />
                 </MKButton>
               </MKBox>
               <MKBox
@@ -400,22 +398,9 @@ function GalleryPage() {
               <IconButton
                 aria-label="close"
                 onClick={closeLightbox}
-                sx={{
-                  color: "white",
-                  background: "rgba(0,0,0,0.6)",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  ml: 2,
-                  "&:hover": {
-                    background: "rgba(0,0,0,0.8)",
-                  },
-                }}
+                sx={{ color: "white", background: "rgba(0,0,0,0.6)" }}
               >
-                <i className="fas fa-times" style={{ fontSize: "1.2rem" }} />
+                <i className="fas fa-times" />
               </IconButton>
             </MKBox>
           </>
