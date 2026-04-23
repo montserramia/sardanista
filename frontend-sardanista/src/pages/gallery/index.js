@@ -51,7 +51,7 @@ function GalleryPage() {
   const fetchGalleriesFromDrupal = async () => {
     try {
       // Using the correct endpoint as confirmed by the user
-      const apiUrl = process.env.REACT_APP_DRUPAL_API_URL || 'https://admin.sardana.newwweb.cat/jsonapi';
+      const apiUrl = process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
       const response = await fetch(`${apiUrl}/node/galeria`);
       
       if (!response.ok) {
@@ -61,22 +61,22 @@ function GalleryPage() {
       const data = await response.json();
       
       // Process the JSON:API response according to our data contract
-      const processedGalleries = data.data.map(item => ({
+      const processedGalleries = data.data.map((item) => ({
         id: item.id,
         title: item.attributes.title,
-        description: item.attributes.field_description?.processed || '',
-        category: item.attributes.field_category || '',
-        images: item.relationships.field_images?.data?.map(imgRef => {
+        description: item.attributes.field_description?.processed || "",
+        category: item.attributes.field_category || "",
+        images: item.relationships.field_images?.data?.map((imgRef) => {
           // Find the image in included array
-          const imgData = data.included?.find(img => 
-            img.id === imgRef.id && img.type === 'file--file'
+          const imgData = data.included?.find((img) =>
+            img.id === imgRef.id && img.type === "file--file"
           );
           
           // Handle both regular and WebP formats
-          let imageUrl = '';
+          let imageUrl = "";
           if (imgData) {
             // Convert public:// to actual file path
-            imageUrl = imgData.attributes.uri.url.replace('public://', '/sites/default/files/');
+            imageUrl = imgData.attributes.uri.url.replace("public://", "/sites/default/files/");
             
             // If the site is configured for WebP, we might need to handle that
             // For now, we'll use the original file path
@@ -88,13 +88,13 @@ function GalleryPage() {
             url: imageUrl,
             alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`
           };
-        }).filter(img => img.url) || [] // Filter out any invalid images
-      })).filter(gallery => gallery.images.length > 0); // Filter out galleries without images
+        }).filter((img) => img.url) || [] // Filter out any invalid images
+      })).filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
       
       setGalleries(processedGalleries);
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching galleries:', err);
+      console.error("Error fetching galleries:", err);
       setError(`Error carregant galeries: ${err.message}`);
       setLoading(false);
     }
@@ -142,7 +142,9 @@ function GalleryPage() {
   if (error) {
     return (
       <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
-        <MKTypography variant="h5" color="error">{error}</MKTypography>
+        <MKTypography variant="h5" color="error">
+          {error}
+        </MKTypography>
       </MKBox>
     );
   }
@@ -181,7 +183,13 @@ function GalleryPage() {
             >
               Galeria de Fotos
             </MKTypography>
-            <MKTypography variant="body1" color="white" textAlign="center" px={{ xs: 6, lg: 12 }} mt={1}>
+            <MKTypography
+              variant="body1"
+              color="white"
+              textAlign="center"
+              px={{ xs: 6, lg: 12 }}
+              mt={1}
+            >
               Descobreix els nostres moments més especials
             </MKTypography>
           </Grid>
@@ -194,7 +202,8 @@ function GalleryPage() {
           mx: { xs: 2, lg: 3 },
           mt: -8,
           mb: 4,
-          backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
+          backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
+            rgba(white.main, 0.8),
           backdropFilter: "saturate(200%) blur(30px)",
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
