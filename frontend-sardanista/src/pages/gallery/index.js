@@ -93,9 +93,7 @@ function GalleryPage() {
                 return {
                   id: imgData?.id || imgRef.id,
                   url: imageUrl,
-                  alt:
-                    imgData?.attributes?.alt ||
-                    `Imatge de galeria ${item.attributes.title}`,
+                  alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`,
                 };
               })
               .filter((img) => img.url) || [], // Filter out any invalid images
@@ -213,8 +211,7 @@ function GalleryPage() {
           mx: { xs: 2, lg: 3 },
           mt: -8,
           mb: 4,
-          backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
-            rgba(white.main, 0.8),
+          backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
           backdropFilter: "saturate(200%) blur(30px)",
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
@@ -302,7 +299,8 @@ function GalleryPage() {
                 }}
               >
                 <MKTypography variant="body2">
-                  {currentImageIndex + 1} de {selectedGallery.images.length}: {selectedGallery.title}
+                  {currentImageIndex + 1} de {selectedGallery.images.length}:{" "}
+                  {selectedGallery.title}
                 </MKTypography>
               </MKBox>
               <MKBox
@@ -325,9 +323,19 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
+                  sx={{
+                    minWidth: "auto",
+                    width: "60px",
+                    height: "60px",
+                    mr: 2,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "transform 0.2s ease",
+                    },
+                  }}
                 >
-                  <i className="fas fa-chevron-left" />
+                  <i className="fas fa-chevron-left" style={{ fontSize: "1.6rem" }} />
                 </MKButton>
                 <MKButton
                   onClick={goToNextImage}
@@ -336,9 +344,19 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
+                  sx={{
+                    minWidth: "auto",
+                    width: "60px",
+                    height: "60px",
+                    ml: 2,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "transform 0.2s ease",
+                    },
+                  }}
                 >
-                  <i className="fas fa-chevron-right" />
+                  <i className="fas fa-chevron-right" style={{ fontSize: "1.6rem" }} />
                 </MKButton>
               </MKBox>
               <MKBox
@@ -382,9 +400,22 @@ function GalleryPage() {
               <IconButton
                 aria-label="close"
                 onClick={closeLightbox}
-                sx={{ color: "white", background: "rgba(0,0,0,0.6)" }}
+                sx={{
+                  color: "white",
+                  background: "rgba(0,0,0,0.6)",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  ml: 2,
+                  "&:hover": {
+                    background: "rgba(0,0,0,0.8)",
+                  },
+                }}
               >
-                <i className="fas fa-times" />
+                <i className="fas fa-times" style={{ fontSize: "1.2rem" }} />
               </IconButton>
             </MKBox>
           </>
