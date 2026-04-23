@@ -54,13 +54,13 @@ function GalleryPage() {
       const apiUrl =
         process.env.REACT_APP_DRUPAL_API_URL || "https://admin.sardana.newwweb.cat/jsonapi";
       const response = await fetch(`${apiUrl}/node/galeria`);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
+
       // Process the JSON:API response according to our data contract
       const processedGalleries = data.data
         .map((item) => ({
@@ -98,7 +98,7 @@ function GalleryPage() {
             .filter((img) => img.url) || [], // Filter out any invalid images
         }))
         .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
-      
+
       setGalleries(processedGalleries);
       setLoading(false);
     } catch (err) {
