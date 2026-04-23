@@ -247,7 +247,7 @@ function GalleryPage() {
                       {gallery.title}
                     </MKTypography>
                     <MKTypography variant="body2" color="text" textAlign="center">
-                      {gallery.description}
+                      <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
                     </MKTypography>
                     <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
                       {gallery.images.length} imatges
@@ -295,7 +295,7 @@ function GalleryPage() {
                   borderRadius: "20px",
                 }}
               >
-                <MKTypography variant="body2">
+                <MKTypography variant="body2" color="white">
                   {currentImageIndex + 1} de {selectedGallery.images.length}:{" "}
                   {selectedGallery.title}
                 </MKTypography>
@@ -320,9 +320,19 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
+                  sx={{
+                    minWidth: "auto",
+                    width: "60px",
+                    height: "60px",
+                    mr: 2,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "transform 0.2s ease",
+                    },
+                  }}
                 >
-                  <i className="fas fa-chevron-left" />
+                  <i className="fas fa-chevron-left" style={{ fontSize: "1.6rem" }} />
                 </MKButton>
                 <MKButton
                   onClick={goToNextImage}
@@ -331,9 +341,19 @@ function GalleryPage() {
                   size="large"
                   circular
                   iconOnly
-                  sx={{ minWidth: "auto", width: "50px", height: "50px" }}
+                  sx={{
+                    minWidth: "auto",
+                    width: "60px",
+                    height: "60px",
+                    ml: 2,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "transform 0.2s ease",
+                    },
+                  }}
                 >
-                  <i className="fas fa-chevron-right" />
+                  <i className="fas fa-chevron-right" style={{ fontSize: "1.6rem" }} />
                 </MKButton>
               </MKBox>
               <MKBox
@@ -377,9 +397,22 @@ function GalleryPage() {
               <IconButton
                 aria-label="close"
                 onClick={closeLightbox}
-                sx={{ color: "white", background: "rgba(0,0,0,0.6)" }}
+                sx={{
+                  color: "white",
+                  background: "rgba(0,0,0,0.6)",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  ml: 2,
+                  "&:hover": {
+                    background: "rgba(0,0,0,0.8)",
+                  },
+                }}
               >
-                <i className="fas fa-times" />
+                <i className="fas fa-times" style={{ fontSize: "1.2rem" }} />
               </IconButton>
             </MKBox>
           </>
