@@ -68,34 +68,37 @@ function GalleryPage() {
           title: item.attributes.title,
           description: item.attributes.field_description?.processed || "",
           category: item.attributes.field_category || "",
-          images: item.relationships.field_images?.data
-            ?.map((imgRef) => {
-              // Find the image in included array
-              const imgData = data.included?.find(
-                (img) => img.id === imgRef.id && img.type === "file--file"
-              );
-
-              // Handle both regular and WebP formats
-              let imageUrl = "";
-              if (imgData) {
-                // Convert public:// to actual file path
-                imageUrl = imgData.attributes.uri.url.replace(
-                  "public://",
-                  "/sites/default/files/"
+          images:
+            item.relationships.field_images?.data
+              ?.map((imgRef) => {
+                // Find the image in included array
+                const imgData = data.included?.find(
+                  (img) => img.id === imgRef.id && img.type === "file--file"
                 );
 
-                // If the site is configured for WebP, we might need to handle that
-                // For now, we'll use the original file path
-                imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
-              }
+                // Handle both regular and WebP formats
+                let imageUrl = "";
+                if (imgData) {
+                  // Convert public:// to actual file path
+                  imageUrl = imgData.attributes.uri.url.replace(
+                    "public://",
+                    "/sites/default/files/"
+                  );
 
-              return {
-                id: imgData?.id || imgRef.id,
-                url: imageUrl,
-                alt: imgData?.attributes?.alt || `Imatge de galeria ${item.attributes.title}`,
-              };
-            })
-            .filter((img) => img.url) || [], // Filter out any invalid images
+                  // If the site is configured for WebP, we might need to handle that
+                  // For now, we'll use the original file path
+                  imageUrl = `${window.location.protocol}//${window.location.hostname}${imageUrl}`;
+                }
+
+                return {
+                  id: imgData?.id || imgRef.id,
+                  url: imageUrl,
+                  alt:
+                    imgData?.attributes?.alt ||
+                    `Imatge de galeria ${item.attributes.title}`,
+                };
+              })
+              .filter((img) => img.url) || [], // Filter out any invalid images
         }))
         .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
 
