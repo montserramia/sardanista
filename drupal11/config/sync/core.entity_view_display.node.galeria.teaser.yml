@@ -1,0 +1,54 @@
+uuid: df1b967e-9ee1-48b0-b533-b5b9960ec1c0
+langcode: ca
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.galeria.field_category
+    - field.field.node.galeria.field_description
+    - field.field.node.galeria.field_images
+    - image.style.800x600
+    - node.type.galeria
+  module:
+    - image
+    - options
+    - text
+    - user
+id: node.galeria.teaser
+targetEntityType: node
+bundle: galeria
+mode: teaser
+content:
+  field_category:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_description:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_images:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: 800x600
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

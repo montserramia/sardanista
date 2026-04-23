@@ -1,0 +1,21 @@
+uuid: de94eb81-c03e-4c92-9d98-1d4ebfeff83e
+langcode: ca
+status: true
+dependencies: {  }
+name: 800x600
+label: 800x600
+effects:
+  0cb6d69a-66fd-49b2-be05-c5d6020b7965:
+    uuid: 0cb6d69a-66fd-49b2-be05-c5d6020b7965
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: 600
+      upscale: false
+  cc8cda6f-581e-4d3f-8573-cf9ac0ba439a:
+    uuid: cc8cda6f-581e-4d3f-8573-cf9ac0ba439a
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

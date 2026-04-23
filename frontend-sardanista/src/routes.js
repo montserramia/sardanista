@@ -45,6 +45,7 @@ import Agenda from "pages/agenda";
 import BlogPage from "pages/blog";
 import PaginaCurset from "pages/curset";
 import PaginaNeta from "pages/neta";
+import GalleryPage from "pages/gallery";
 
 const routes = [
   {
@@ -64,6 +65,12 @@ const routes = [
     icon: <Icon>newspaper</Icon>,
     route: "/blog",
     component: <BlogPage />,
+  },
+  {
+    name: "Galeria",
+    icon: <Icon>collections</Icon>,
+    route: "/galeria",
+    component: <GalleryPage />,
   },
   {
     name: "Curset",

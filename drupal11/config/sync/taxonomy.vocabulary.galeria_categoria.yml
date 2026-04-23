@@ -1,9 +1,0 @@
-uuid: 3b6af13c-e31f-4f38-8617-74f5a9c6c48c
-langcode: ca
-status: true
-dependencies: { }
-name: "Categories galeria"
-vid: galeria_categoria
-description: "Categories per a la galeria (Ballades d'estiu, Curset, Actuacions, ...)."
-weight: 0
-new_revision: false

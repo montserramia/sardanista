@@ -1,0 +1,33 @@
+uuid: 9194860e-812f-4166-9861-d8c2fcb59a22
+langcode: ca
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_category
+field_name: field_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: esdeveniments
+      label: Esdeveniments
+    -
+      value: activitats
+      label: Activitats
+    -
+      value: actuacions
+      label: Actuacions
+    -
+      value: assajos
+      label: Assajos
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

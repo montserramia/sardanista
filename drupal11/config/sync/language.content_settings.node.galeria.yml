@@ -1,0 +1,11 @@
+uuid: 8d0bac0e-e325-461f-a81c-d49cf0764c9f
+langcode: ca
+status: true
+dependencies:
+  config:
+    - node.type.galeria
+id: node.galeria
+target_entity_type_id: node
+target_bundle: galeria
+default_langcode: site_default
+language_alterable: false

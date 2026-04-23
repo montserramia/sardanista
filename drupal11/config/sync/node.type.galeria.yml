@@ -1,4 +1,4 @@
-uuid: 4f7d53a2-7e61-4d15-b6c9-4f1b5b7b6a1f
+uuid: 0cfda17b-071d-4ac8-96db-c1591aabe861
 langcode: ca
 status: true
 dependencies:
@@ -10,8 +10,8 @@ third_party_settings:
       - main
     parent: 'main:'
 name: Galeria
-type: galeria_item
-description: 'Element de la galeria d''imatges'
+type: galeria
+description: "Contingut per a galeries d'imatges"
 help: null
 new_revision: true
 preview_mode: 1

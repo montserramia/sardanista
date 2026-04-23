@@ -1,0 +1,21 @@
+uuid: e2b97965-b29c-4ef8-afc4-e3606406f643
+langcode: ca
+status: true
+dependencies: {  }
+name: 300x200
+label: 300x200
+effects:
+  21427e82-80a8-44a1-87b8-89c33610151b:
+    uuid: 21427e82-80a8-44a1-87b8-89c33610151b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 200
+      anchor: center-center
+  ed213c6d-cae2-4b9b-b9c8-5c9124396052:
+    uuid: ed213c6d-cae2-4b9b-b9c8-5c9124396052
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
