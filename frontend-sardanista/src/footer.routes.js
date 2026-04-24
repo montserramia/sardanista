@@ -65,9 +65,11 @@ export default {
     {
       name: "legal",
       items: [
-        { name: "terms & conditions", href: "/neta" },
-        { name: "privacy policy", href: "/neta" },
-        { name: "licenses (EULA)", href: "/neta" },
+        { name: "terms & conditions", route: "/legal/terms" },
+        { name: "privacy policy", route: "/legal/privacy" },
+        { name: "licenses (EULA)", route: "/legal/licenses" },
+        { name: "GDPR compliance", route: "/legal/gdpr" },
+        { name: "cookie policy", route: "/legal/cookies" },
       ],
     },
   ],

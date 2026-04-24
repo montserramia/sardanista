@@ -33,7 +33,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Gallery images
-import bgImage from "assets/images/collage.jpg";
+import bgImage from "assets/images/Collage.jpg";
 
 // Routes
 import routes from "routes";

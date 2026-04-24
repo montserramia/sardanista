@@ -29,6 +29,12 @@ import ArticleDetail from "pages/blog/ArticleDetail";
 import SignIn from "layouts/pages/authentication/sign-in";
 import PaginaNeta from "pages/neta";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
+import AgendaPage from "pages/agenda";
+import TermsPage from "pages/legal/terms";
+import PrivacyPage from "pages/legal/privacy";
+import LicensesPage from "pages/legal/licenses";
+import GdprPage from "pages/legal/gdpr";
+import CookiesPage from "pages/legal/cookies";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -62,6 +68,12 @@ export default function App() {
         <Route path="/presentation" element={<Navigate to="/" />} />
         <Route path="/neta" element={<PaginaNeta />} />
         <Route path="/contacte" element={<ContactUs />} />
+        <Route path="/legal/terms" element={<TermsPage />} />
+        <Route path="/legal/privacy" element={<PrivacyPage />} />
+        <Route path="/legal/licenses" element={<LicensesPage />} />
+        <Route path="/legal/gdpr" element={<GdprPage />} />
+        <Route path="/legal/cookies" element={<CookiesPage />} />
+        <Route path="/agenda" element={<AgendaPage />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/blog/:slug" element={<ArticleDetail />} />
         <Route path="/pages/authentication/sign-in" element={<SignIn />} />
