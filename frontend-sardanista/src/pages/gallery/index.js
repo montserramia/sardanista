@@ -180,46 +180,38 @@ function GalleryPage() {
       </MKBox>
 
       <MKBox
-        minHeight="75vh"
+        minHeight="60vh"
         width="100%"
         sx={{
-          backgroundImage: `linear-gradient(to bottom, rgba(3, 22, 99, 0.1), rgba(3, 22, 99, 0.4)), url(${bgImage})`,
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.info.main, 0.1),
+              rgba(gradients.info.state, 0.1)
+            )}, url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
       >
-        <Container>
-          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
-            <MKTypography
-              variant="h1"
-              color="white"
-              mt={-6}
-              mb={1}
-              textAlign="center"
-              sx={({ breakpoints, typography: { size } }) => ({
-                textShadow: "2px 2px 4px rgba(3, 22, 99, 0.8)",
-                [breakpoints.down("md")]: {
-                  fontSize: size["3xl"],
-                },
-              })}
-            >
-              Galeria de Fotos
-            </MKTypography>
-            <MKTypography
-              variant="body1"
-              color="white"
-              textAlign="center"
-              px={{ xs: 6, lg: 12 }}
-              mt={1}
-            >
-              Descobreix els nostres moments més especials
-            </MKTypography>
-          </Grid>
-        </Container>
+        <MKBox>
+          <MKTypography
+            variant="h2"
+            color="white"
+            textAlign="center"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Galeria de Fotos
+          </MKTypography>
+          <MKTypography
+            variant="body3"
+            color="white"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Descobreix els nostres moments més especials
+          </MKTypography>
+        </MKBox>
       </MKBox>
-
       <Card
         sx={{
           p: 2,
