@@ -214,10 +214,6 @@ function GalleryPage() {
         }}
       >
         <Container sx={{ py: 6 }}>
-          <MKTypography variant="h2" textAlign="center" mb={6}>
-            Les nostres galeries
-          </MKTypography>
-
           {galleries.length === 0 ? (
             <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
               <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
@@ -332,7 +328,10 @@ function GalleryPage() {
                     },
                   }}
                 >
-                  <i className="fas fa-chevron-left" style={{ fontSize: "1.6rem" }} />
+                  <i
+                    className="fas fa-chevron-left"
+                    style={{ fontSize: "1.6rem", color: "white" }}
+                  />
                 </MKButton>
                 <MKButton
                   onClick={goToNextImage}
@@ -353,7 +352,10 @@ function GalleryPage() {
                     },
                   }}
                 >
-                  <i className="fas fa-chevron-right" style={{ fontSize: "1.6rem" }} />
+                  <i
+                    className="fas fa-chevron-right"
+                    style={{ fontSize: "1.6rem", color: "white" }}
+                  />
                 </MKButton>
               </MKBox>
               <MKBox
@@ -412,7 +414,7 @@ function GalleryPage() {
                   },
                 }}
               >
-                <i className="fas fa-times" style={{ fontSize: "1.2rem" }} />
+                <i className="fas fa-times" style={{ fontSize: "1.2rem", color: "white" }} />
               </IconButton>
             </MKBox>
           </>
