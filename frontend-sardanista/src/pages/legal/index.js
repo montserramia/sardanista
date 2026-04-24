@@ -10,249 +10,258 @@ import PropTypes from "prop-types";
 
 const legalContent = {
   terms: {
-    title: "Terms & Conditions",
+    title: "Termes i Condicions",
     content: `
-      <h2>Terms & Conditions</h2>
-      <p>Last updated: [DATE]</p>
-      <p>Welcome to [WEBSITE NAME]. These terms and conditions outline the rules and regulations for the use of [COMPANY NAME]'s Website, located at [WEBSITE URL].</p>
-      <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use [WEBSITE NAME] if you do not agree to take all of the terms and conditions stated on this page.</p>
+      <h2>Termes i Condicions d'Ús</h2>
+      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p>Benvingut/uda al lloc web del <strong>Grup Sardanista Castelldefels</strong>. En accedir i utilitzar aquest lloc web, accepteu complir els següents termes i condicions. Si no hi esteu d'acord, us demanem que no utilitzeu el nostre lloc web.</p>
       
-      <h3>Cookies</h3>
-      <p>We employ the use of cookies. By accessing [WEBSITE NAME], you agreed to use cookies in agreement with the [COMPANY NAME]'s Privacy Policy.</p>
+      <h3>1. Informació general</h3>
+      <p>Aquest lloc web és propietat del <strong>Grup Sardanista Castelldefels</strong> (d'ara endavant, "l'Associació"), entitat cultural sense ànim de lucre dedicada a la promoció de la sardana i la cultura popular a Castelldefels.</p>
       
-      <h3>License</h3>
-      <p>Unless otherwise stated, [COMPANY NAME] and/or its licensors own the intellectual property rights for all material on [WEBSITE NAME]. All intellectual property rights are reserved. You may access this from [WEBSITE NAME] for your own personal use subjected to restrictions set in these terms and conditions.</p>
+      <h3>2. Ús del lloc web</h3>
+      <p>L'usuari es compromet a utilitzar el lloc web de manera lícita, respectant la legislació vigent, la moral, l'ordre públic i els drets de tercers. Queda prohibit qualsevol ús que pugui danyar, inutilitzar o saturar el lloc web o que interfereixi en l'ús d'altres usuaris.</p>
       
-      <h3>User Comments</h3>
-      <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. [COMPANY NAME] does not filter, edit, publish or review Comments prior to their presence on the website.</p>
+      <h3>3. Continguts i propietat intel·lectual</h3>
+      <p>Els continguts d'aquest lloc web (textos, imatges, logotips, disseny, etc.) són propietat de l'Associació o dels seus llicenciants i estan protegits per la legislació de propietat intel·lectual. No es permet la reproducció, distribució o modificació sense autorització prèvia per escrit, llevat de l'ús personal i no comercial.</p>
       
-      <h3>Hyperlinking to our Content</h3>
-      <p>The following organizations may link to our Website without prior written approval:</p>
+      <h3>4. Registre i dades personals</h3>
+      <p>Per accedir a determinats serveis (com ara inscripcions, butlletins o àrea de socis), pot ser necessari registrar-se i facilitar dades personals. L'usuari garanteix que les dades proporcionades són veraces i actualitzades. El tractament d'aquestes dades es regeix per la nostra <a href="/legal/privacy?type=privacy">Política de Privacitat</a>.</p>
+      
+      <h3>5. Enllaços a tercers</h3>
+      <p>El nostre lloc web pot contenir enllaços a pàgines externes. No ens fem responsables del contingut ni de les pràctiques de privacitat d'aquests llocs. Us recomanem llegir les seves polítiques abans d'utilitzar-los.</p>
+      
+      <h3>6. Limitació de responsabilitat</h3>
+      <p>L'Associació no es responsabilitza dels danys derivats de:</p>
       <ul>
-        <li>Government agencies;</li>
-        <li>Search engines;</li>
-        <li>News organizations;</li>
-        <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses.</li>
+        <li>Interrupcions en el funcionament del lloc web per causes tècniques o de manteniment.</li>
+        <li>Errors o omissions en els continguts.</li>
+        <li>Ús inadequat del lloc web per part de l'usuari.</li>
+        <li>Virus o programes maliciosos que puguin accedir al sistema de l'usuari a través del lloc web, malgrat les mesures de seguretat adoptades.</li>
       </ul>
       
-      <h3>iFrames</h3>
-      <p>Without prior approval and written permission, you may not create frames around our Webpages that do not falsely imply or suggest sponsorship, endorsement or approval of the linking party and its products or services.</p>
+      <h3>7. Modificacions</h3>
+      <p>Ens reservem el dret de modificar aquests termes i condicions en qualsevol moment. Els canvis entraran en vigor des de la seva publicació en aquesta pàgina. Us recomanem revisar-los periòdicament.</p>
       
-      <h3>Reservation of Rights</h3>
-      <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time.</p>
+      <h3>8. Legislació aplicable i jurisdicció</h3>
+      <p>Aquests termes es regeixen per la legislació espanyola. Per a qualsevol controvèrsia, les parts es sotmeten als jutjats i tribunals de Castelldefels (Barcelona), amb renúncia a qualsevol altre fur que els pugui correspondre.</p>
       
-      <h3>Removal of links from our website</h3>
-      <p>If you find any link on our Website that is offensive for any reason, you are free to contact us and inform us at any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
-      
-      <p>By using this website, you agree to be bound by these Terms and Conditions.</p>
+      <p>En utilitzar aquest lloc web, accepteu íntegrament aquests termes i condicions.</p>
     `,
   },
   privacy: {
-    title: "Privacy Policy",
+    title: "Política de Privacitat",
     content: `
-      <h2>Privacy Policy</h2>
-      <p>Last updated: [DATE]</p>
-      <p>Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website.</p>
+      <h2>Política de Privacitat</h2>
+      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p><strong>Responsable:</strong> Grup Sardanista Castelldefels</p>
+      <p><strong>Web:</strong> https://grupsardanistacastelldefels.cat</p>
       
-      <h3>Information We Collect</h3>
-      <p>We may collect information from you when you register on our site, subscribe to a newsletter, fill out a form or enter information on our site.</p>
-      <p>We collect the following types of information:</p>
+      <h3>1. Qui som i per què aquesta política és diferent?</h3>
+      <p>Som el <strong>Grup Sardanista Castelldefels</strong>, una entitat cultural sense ànim de lucre dedicada a la promoció i difusió de la sardana i la cultura popular a Castelldefels.</p>
+      <p>A diferència de moltes pàgines web que comparteixen les vostres dades amb tercers amb finalitats comercials, nosaltres <strong>no venem ni cedim les vostres dades</strong>. Les utilitzem únicament per gestionar la vostra relació amb l'entitat: inscripcions, comunicacions internes, activitats pròpies i millora de la nostra pàgina web. La vostra confiança és el nostre principal actiu.</p>
+      
+      <h3>2. Responsable del Tractament</h3>
+      <p><strong>Identitat:</strong> Grup Sardanista Castelldefels<br />
+      <strong>Activitat:</strong> Associació cultural sardanista<br />
+      <strong>Contacte:</strong> proteccio@grupsardanistacastelldefels.cat<br />
+      <strong>Domicili:</strong> [Carrer de la Sardana, 12, 08860 Castelldefels, Barcelona]</p>
+      
+      <h3>3. Quines dades recollim i per a què?</h3>
+      <p>Recollim únicament les dades necessàries per a la relació associativa i el funcionament del lloc web.</p>
+      
+      <h4>A. Formularis de registre, subscripció o sol·licitud d'informació</h4>
       <ul>
-        <li>Name and email address</li>
-        <li>Mailing address</li>
-        <li>Phone number</li>
-        <li>Payment information (encrypted)</li>
-        <li>Demographic information</li>
+        <li><strong>Dades recollides:</strong> Nom, adreça electrònica, adreça postal, telèfon, dades demogràfiques (edat, població, etc.).</li>
+        <li><strong>Finalitat:</strong> Gestionar la vostra inscripció com a soci o sòcia; enviar butlletins, convocatòries o informació de les activitats; respondre consultes.</li>
+        <li><strong>Legitimació:</strong> Consentiment explícit (en marcar la casella de verificació).</li>
+        <li><strong>Conservació:</strong> Mentre duri la relació associativa i, posteriorment, durant els terminis legals de prescripció de responsabilitats (comptables, fiscals, etc.).</li>
       </ul>
       
-      <h3>How We Use Your Information</h3>
-      <p>We may use the information we collect from you in the following ways:</p>
+      <h4>B. Pagaments (quota d'inscripció o activitats)</h4>
       <ul>
-        <li>To personalize your experience (your information helps us to better respond to your individual needs)</li>
-        <li>To improve our website (we continually strive to improve our website offerings based on the information and feedback we receive from you)</li>
-        <li>To improve customer service (your information helps us to more effectively respond to your customer service requests and support needs)</li>
-        <li>To process transactions</li>
-        <li>To administer a contest, promotion, survey or other site feature</li>
-        <li>To send periodic emails</li>
+        <li><strong>Dades recollides:</strong> Informació de pagament (xifrada, no emmagatzemem directament les dades completes de targeta).</li>
+        <li><strong>Finalitat:</strong> Processar les quotes i inscripcions a activitats puntuals (cursos, ballades, excursions).</li>
+        <li><strong>Legitimació:</strong> Execució d'un contracte o mesura precontractual.</li>
+        <li><strong>Conservació:</strong> Segons el termini legal aplicable a transaccions econòmiques.</li>
       </ul>
       
-      <h3>How We Protect Your Information</h3>
-      <p>We implement a variety of security measures to maintain the safety of your personal information when you enter, submit, or access your personal information.</p>
+      <h4>C. Dades de navegació i cookies</h4>
+      <ul>
+        <li>Utilitzem cookies per <strong>analitzar el trànsit</strong> (mesurar quanta gent ens visita, quines pàgines veuen) i <strong>recordar preferències</strong> (per exemple, idioma o acceptació de cookies).</li>
+        <li><strong>Finalitat:</strong> Millorar l'experiència d'usuari i el contingut del web.</li>
+        <li><strong>Legitimació:</strong> Consentiment previ mitjançant el <strong>banner de cookies</strong> que veieu en entrar.</li>
+        <li><strong>Compartició:</strong> No utilitzem cookies de màrqueting extern ni venem dades de navegació.</li>
+      </ul>
       
-      <h3>Cookies</h3>
-      <p>We use cookies to understand and save your preferences for future visits and compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.</p>
+      <h3>4. Compartició de dades amb tercers</h3>
+      <ul>
+        <li><strong>No venem, no lloguem ni cedim les vostres dades personals</strong> a tercers aliens a l'associació.</li>
+        <li><strong>Proveïdors tècnics (encarregats del tractament):</strong> Per poder funcionar, confiem en alguns serveis (per exemple, empresa d'allotjament del web, plataforma de pagament segur, sistema d'enviament de correus electrònics). Tots ells han signat un contracte de confidencialitat i compleixen el RGPD.</li>
+        <li><strong>Transferències internacionals:</strong> Evitem enviar dades fora de l'Espai Econòmic Europeu. Si algun proveïdor ho requereix, exigim garanties adequades (clàusules tipus de la UE).</li>
+      </ul>
       
-      <h3>Third-party Disclosure</h3>
-      <p>We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to maintain the confidentiality of your information.</p>
+      <h3>5. Seguretat de les dades</h3>
+      <p>Apliquem mesures tècniques i organitzatives per protegir la vostra informació:</p>
+      <ul>
+        <li>Xifratge SSL/TLS a tot el lloc web.</li>
+        <li>Accés restringit a les dades només a les persones autoritzades de l'entitat (secretariat, tresoreria).</li>
+        <li>Mantenim còpies de seguretat regulars i entorns segurs.</li>
+      </ul>
+      <p>En el cas que utilitzem plataformes de pagament externes, les dades bancàries es xifren i no les emmagatzemem directament als nostres servidors.</p>
       
-      <h3>Third-party Links</h3>
-      <p>Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites.</p>
+      <h3>6. Els vostres drets</h3>
+      <p>Com a persona titular de les dades, teniu dret a:</p>
+      <ul>
+        <li><strong>Accés:</strong> saber quines dades vostres tenim.</li>
+        <li><strong>Rectificació:</strong> modificar dades inexactes o incompletes.</li>
+        <li><strong>Supressió ("dret a l'oblit"):</strong> sol·licitar que les eliminem quan ja no siguin necessàries.</li>
+        <li><strong>Limitació del tractament</strong> o <strong>oposició</strong> en determinats supòsits.</li>
+        <li><strong>Portabilitat:</strong> rebre les vostres dades en un format estructurat i comú.</li>
+        <li><strong>Retirar el consentiment</strong> en qualsevol moment (sense que afecti la licitud del tractament anterior).</li>
+      </ul>
+      <p>Per exercir aquests drets, envieu un correu a <strong>grupsardanistacastelldefels@gmail.com</strong> adjuntant una còpia del vostre DNI o document identificatiu.</p>
+      <p>Si no esteu satisfets amb la resposta, teniu dret a presentar una reclamació davant l'<strong>Autoritat Catalana de Protecció de Dades (APDCAT)</strong> o l'<strong>Agència Espanyola de Protecció de Dades (AEPD)</strong>.</p>
       
-      <h3>California Online Privacy Protection Act</h3>
-      <p>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require a person or company in the United States (and conceivably the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared.</p>
+      <h3>7. Menors d'edat</h3>
+      <p>No recollim conscientment dades personals de menors de 13 anys. Si descobrim que ho hem fet, les eliminarem de la nostra base de dades. Si sou pare, mare o tutor i creieu que un menor ens ha facilitat dades, contacteu amb nosaltres.</p>
       
-      <h3>Children's Online Privacy Protection Act</h3>
-      <p>We believe in protecting the privacy of children. We do not knowingly collect personally identifiable information from children under 13. If we discover that a child under 13 has provided us with personal information, we will delete such information from our database.</p>
+      <h3>8. Canvis en aquesta política</h3>
+      <p>Podem actualitzar aquesta política per adaptar-nos a canvis normatius o a noves formes de gestionar l'associació. Quan ho fem, publicarem la nova versió en aquesta mateixa pàgina i us ho notificarem per correu electrònic si el canvi és important.</p>
       
-      <h3>Your Consent</h3>
-      <p>By using our site, you consent to our privacy policy.</p>
-      
-      <h3>Changes to our Privacy Policy</h3>
-      <p>If we decide to change our privacy policy, we will post those changes on this page.</p>
-    `,
-  },
-  licenses: {
-    title: "Licenses (EULA)",
-    content: `
-      <h2>End-User License Agreement (EULA)</h2>
-      <p>Last updated: [DATE]</p>
-      <p>This End-User License Agreement ("EULA") is a legal agreement between you and [COMPANY NAME] regarding the use of [PRODUCT/SERVICE NAME].</p>
-      
-      <h3>Grant of License</h3>
-      <p>[COMPANY NAME] grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with these terms.</p>
-      
-      <h3>Restrictions</h3>
-      <p>You agree not to, and you will not permit others to license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.</p>
-      
-      <h3>Modifications to Application</h3>
-      <p>[COMPANY NAME] reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.</p>
-      
-      <h3>Term and Termination</h3>
-      <p>This EULA shall remain in effect unless and until terminated by either you or [COMPANY NAME]. [COMPANY NAME] may, in its sole discretion, at any time and for any reason, suspend or terminate this EULA with or without prior notice.</p>
-      
-      <h3>Severability</h3>
-      <p>If any provision of this EULA is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
-      
-      <p>By using this application, you acknowledge that you have read this EULA, understood it, and agree to be bound by its terms and conditions.</p>
+      <p><strong>Consentiment:</strong> En utilitzar aquest lloc web, accepteu la nostra política de privacitat. Quan faciliteu dades mitjançant formularis, doneu el vostre consentiment explícit per al tractament descrit.</p>
     `,
   },
   gdpr: {
-    title: "GDPR Compliance",
+    title: "Compliment del RGPD",
     content: `
-      <h2>General Data Protection Regulation (GDPR) Compliance</h2>
-      <p>Last updated: [DATE]</p>
-      <p>This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+      <h2>Compliment del Reglament General de Protecció de Dades (RGPD)</h2>
+      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p>Aquesta pàgina us informa sobre les nostres polítiques relatives a la recollida, ús i divulgació de dades personals quan utilitzeu el nostre servei (aquest lloc web) i les opcions que teniu associades a aquestes dades.</p>
       
-      <h3>Information Collection and Use</h3>
-      <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+      <h3>Recollida i ús de la informació</h3>
+      <p>Recollim diferents tipus d'informació per a diverses finalitats, amb l'objectiu de proporcionar-vos i millorar el nostre servei.</p>
       
-      <h4>Types of Data Collected</h4>
-      <h5>Personal Data</h5>
-      <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data").</p>
-      <p>Personally identifiable information may include, but is not limited to:</p>
+      <h4>Tipus de dades recollides</h4>
+      <h5>Dades personals</h5>
+      <p>Quan utilitzeu el nostre servei, és possible que us demanem que ens proporcioneu determinada informació personalment identificable que es pot utilitzar per contactar o identificar-vos ("Dades personals"). Aquesta informació pot incloure, entre d'altres:</p>
       <ul>
-        <li>Email address</li>
-        <li>First name and last name</li>
-        <li>Phone number</li>
-        <li>Address, State, Province, ZIP/Postal code</li>
-        <li>Cookies and Usage Data</li>
+        <li>Adreça electrònica</li>
+        <li>Nom i cognoms</li>
+        <li>Número de telèfon</li>
+        <li>Adreça postal, població, codi postal</li>
+        <li>Cookies i dades d'ús</li>
       </ul>
       
-      <h5>Usage Data</h5>
-      <p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+      <h5>Dades d'ús</h5>
+      <p>També podem recollir informació sobre com s'accedeix i s'utilitza el servei ("Dades d'ús"). Aquestes Dades d'ús poden incloure informació com l'adreça del protocol d'Internet (IP) del vostre ordinador, tipus de navegador, versió del navegador, les pàgines del nostre servei que visiteu, l'hora i la data de la vostra visita, el temps que passeu en aquestes pàgines, identificadors únics del dispositiu i altres dades de diagnòstic.</p>
       
-      <h3>Use of Data</h3>
-      <p>[COMPANY NAME] uses the collected data for various purposes:</p>
+      <h3>Ús de les dades</h3>
+      <p>El Grup Sardanista Castelldefels utilitza les dades recollides per a diverses finalitats:</p>
       <ul>
-        <li>To provide and maintain the Service</li>
-        <li>To notify you about changes to our Service</li>
-        <li>To allow you to participate in interactive features of our Service when you choose to do so</li>
-        <li>To provide customer care and support</li>
-        <li>To provide analysis or valuable information so that we can improve the Service</li>
-        <li>To monitor the usage of the Service</li>
-        <li>To detect, prevent and address technical issues</li>
+        <li>Per oferir i mantenir el servei</li>
+        <li>Per notificar-vos canvis en el nostre servei</li>
+        <li>Per permetre-us participar en funcions interactives del nostre servei quan trieu fer-ho</li>
+        <li>Per oferir atenció al soci i suport</li>
+        <li>Per proporcionar anàlisi o informació valuosa per tal de millorar el servei</li>
+        <li>Per controlar l'ús del servei</li>
+        <li>Per detectar, prevenir i abordar problemes tècnics</li>
       </ul>
       
-      <h3>Legal Basis for Processing</h3>
-      <p>[COMPANY NAME] legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it.</p>
-      <p>[COMPANY NAME] may process your Personal Data because:</p>
+      <h3>Base legal per al tractament</h3>
+      <p>La base legal del Grup Sardanista Castelldefels per recollir i utilitzar la informació personal descrita en aquesta Política de Privacitat depèn de les Dades personals que recollim i del context específic en què les recollim.</p>
+      <p>El Grup Sardanista Castelldefels pot tractar les vostres Dades personals perquè:</p>
       <ul>
-        <li>We need to perform a contract with you</li>
-        <li>You have given us permission to do so</li>
-        <li>The processing is in our legitimate interests and it's not overridden by your rights</li>
-        <li>For payment processing purposes</li>
-        <li>To comply with the law</li>
+        <li>Necessitem executar un contracte amb vosaltres (per exemple, la inscripció com a soci)</li>
+        <li>Ens heu donat permís per fer-ho</li>
+        <li>El tractament respon a un interès legítim i no està per sobre dels vostres drets</li>
+        <li>Per complir amb la llei</li>
       </ul>
       
-      <h3>Retention of Data</h3>
-      <p>[COMPANY NAME] will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+      <h3>Conservació de les dades</h3>
+      <p>El Grup Sardanista Castelldefels conservarà les vostres Dades personals només durant el temps que sigui necessari per a les finalitats establertes en aquesta Política de Privacitat. Conservarem i utilitzarem les vostres Dades personals en la mesura necessària per complir amb les nostres obligacions legals (per exemple, si ens exigeixen conservar les vostres dades per complir amb les lleis aplicables), resoldre disputes i fer complir els nostres acords i polítiques legals.</p>
       
-      <h3>Transfer of Data</h3>
-      <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.</p>
+      <h3>Transferència de dades</h3>
+      <p>La vostra informació, incloses les Dades personals, es pot transferir a — i mantenir en — ordinadors situats fora del vostre estat, província, país o altra jurisdicció governamental on les lleis de protecció de dades poden diferir de les de la vostra jurisdicció. Malgrat això, evitem al màxim les transferències internacionals i, quan es produeixen, exigim garanties adequades.</p>
       
-      <h3>Disclosure of Data</h3>
-      <h4>Legal Requirements</h4>
-      <p>[COMPANY NAME] may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
+      <h3>Divulgació de dades</h3>
+      <h4>Requisits legals</h4>
+      <p>El Grup Sardanista Castelldefels pot divulgar les vostres Dades personals creient de bona fe que aquesta acció és necessària per:</p>
       <ul>
-        <li>To comply with a legal obligation</li>
-        <li>To protect and defend the rights or property of [COMPANY NAME]</li>
-        <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
-        <li>To protect the personal safety of users of the Service or the public</li>
-        <li>To protect against legal liability</li>
+        <li>Complir amb una obligació legal</li>
+        <li>Protegir i defensar els drets o la propietat del Grup Sardanista Castelldefels</li>
+        <li>Prevenir o investigar possibles actes il·lícits en relació amb el servei</li>
+        <li>Protegir la seguretat personal dels usuaris del servei o del públic</li>
+        <li>Protegir-se contra responsabilitat legal</li>
       </ul>
       
-      <h3>Security of Data</h3>
-      <p>The security of your Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+      <h3>Seguretat de les dades</h3>
+      <p>La seguretat de les vostres dades és important per a nosaltres, però recordeu que cap mètode de transmissió per Internet o mètode d'emmagatzematge electrònic és 100% segur. Tot i que ens esforcem per utilitzar mitjans comercialment acceptables per protegir les vostres Dades personals, no podem garantir la seva seguretat absoluta.</p>
       
-      <h3>Your Data Protection Rights Under GDPR</h3>
-      <p>If you are a resident of the European Economic Area (EEA), you have certain data protection rights. [COMPANY NAME] aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data.</p>
+      <h3>Els vostres drets de protecció de dades segons el RGPD</h3>
+      <p>Si sou resident de l'Espai Econòmic Europeu (EEE), teniu determinats drets de protecció de dades. El Grup Sardanista Castelldefels té la intenció de prendre mesures raonables per permetre-us corregir, esmenar, suprimir o limitar l'ús de les vostres Dades personals.</p>
       
-      <p>If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us.</p>
+      <p>Si voleu ser informat sobre quines Dades personals tenim sobre vosaltres i si voleu que es suprimeixin dels nostres sistemes, poseu-vos en contacte amb nosaltres.</p>
       
-      <p>In certain circumstances, you have the following data protection rights:</p>
+      <p>En determinades circumstàncies, teniu els següents drets de protecció de dades:</p>
       <ul>
-        <li>The right to access, update or to delete the information we have on you</li>
-        <li>The right of rectification</li>
-        <li>The right to object</li>
-        <li>The right of restriction</li>
-        <li>The right to data portability</li>
-        <li>The right to withdraw consent</li>
+        <li>Dret a accedir, actualitzar o suprimir la informació que tenim sobre vosaltres</li>
+        <li>Dret de rectificació</li>
+        <li>Dret d'oposició</li>
+        <li>Dret a la limitació del tractament</li>
+        <li>Dret a la portabilitat de les dades</li>
+        <li>Dret a retirar el consentiment</li>
       </ul>
       
-      <h3>Service Providers</h3>
-      <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+      <h3>Proveïdors de serveis</h3>
+      <p>Podem contractar empreses i persones terceres per facilitar el nostre servei ("Proveïdors de serveis"), per proporcionar el servei en nom nostre, per realitzar serveis relacionats amb el servei o per ajudar-nos a analitzar com s'utilitza el nostre servei.</p>
       
-      <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+      <p>Aquests tercers tenen accés a les vostres Dades personals només per realitzar aquestes tasques en nom nostre i estan obligats a no divulgar-les ni utilitzar-les per a cap altre propòsit.</p>
+      
+      <p>Per a més informació sobre els vostres drets o per exercir-los, consulteu l'apartat 6 de la nostra <a href="/legal/privacy?type=privacy">Política de Privacitat</a> o escriviu-nos a proteccio@grupsardanistacastelldefels.cat.</p>
     `,
   },
   cookies: {
-    title: "Cookie Policy",
+    title: "Política de Cookies",
     content: `
-      <h2>Cookie Policy</h2>
-      <p>Last updated: [DATE]</p>
-      <p>This Cookie Policy explains how [COMPANY NAME] ("Company", "we", "us", and "our") uses cookies and similar technologies to recognize you when you visit our website at [DOMAIN] ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
+      <h2>Política de Cookies</h2>
+      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p>Aquesta Política de Cookies explica com el <strong>Grup Sardanista Castelldefels</strong> ("l'Associació", "nosaltres", "ens" o "el nostre") utilitza les cookies i tecnologies similars per reconèixer-vos quan visiteu el nostre lloc web a <strong>https://grupsardanistacastelldefels.cat</strong> ("el Lloc web"). Explica què són aquestes tecnologies i per què les utilitzem, així com els vostres drets per controlar el nostre ús d'aquestes.</p>
       
-      <h3>What are cookies?</h3>
-      <p>Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners in order to make their websites work, or to work more efficiently, as well as to provide reporting information.</p>
+      <h3>Què són les cookies?</h3>
+      <p>Les cookies són petits fitxers de dades que es col·loquen al vostre ordinador o dispositiu mòbil quan visiteu un lloc web. Les cookies són àmpliament utilitzades pels propietaris de llocs web per fer que els seus llocs funcionin, o perquè funcionin de manera més eficient, així com per proporcionar informes.</p>
       
-      <h3>Why do we use cookies?</h3>
-      <p>We use cookies to recognize you when you visit our Website, to provide personalized features, and to analyze our traffic and usage patterns.</p>
+      <h3>Per què utilitzem cookies?</h3>
+      <p>Utilitzem cookies per reconèixer-vos quan visiteu el nostre Lloc web, per oferir funcions personalitzades i per analitzar el nostre trànsit i patrons d'ús. A diferència d'altres llocs, <strong>no utilitzem cookies de màrqueting extern ni venem dades de navegació</strong>.</p>
       
-      <h3>What types of cookies do we use?</h3>
+      <h3>Quins tipus de cookies utilitzem?</h3>
       
-      <h4>Essential website cookies</h4>
-      <p>These cookies are strictly necessary to provide you with services available through our Website and to use some of its features, such as access to secure areas.</p>
+      <h4>Cookies essencials</h4>
+      <p>Aquestes cookies són estrictament necessàries per proporcionar-vos els serveis disponibles a través del nostre Lloc web i per utilitzar algunes de les seves funcions, com ara accedir a àrees segures (per exemple, l'àrea de socis). No es poden desactivar dels nostres sistemes.</p>
       
-      <h4>Performance and functionality cookies</h4>
-      <p>These cookies are used to enhance the performance and functionality of our Website but are non-essential to their use. However, without these cookies, certain functionality may become unavailable.</p>
+      <h4>Cookies de rendiment i funcionalitat</h4>
+      <p>Aquestes cookies s'utilitzen per millorar el rendiment i la funcionalitat del nostre Lloc web, però no són essencials per al seu ús. Sense aquestes cookies, és possible que determinades funcionalitats (com recordar les vostres preferències d'acceptació de cookies) quedin indisponibles.</p>
       
-      <h4>Analytics and customization cookies</h4>
-      <p>These cookies collect information that is used either in aggregate form to help us understand how our Website is being used or to help us customize our Website for you.</p>
+      <h4>Cookies analítiques i de personalització</h4>
+      <p>Aquestes cookies recullen informació que s'utilitza de forma agregada per ajudar-nos a entendre com s'utilitza el nostre Lloc web (per exemple, quines pàgines es visiten més) o per personalitzar la vostra experiència. Nosaltres <strong>no utilitzem eines de rastreig intrusives</strong> com Google Analytics estàndard; en el seu lloc, fem servir analítiques respectuoses amb la privadesa que anonimitzen les adreces IP.</p>
       
-      <h4>Advertising cookies</h4>
-      <p>These cookies are used to make advertising messages more relevant to you. They perform functions like preventing the same ad from continuously reappearing, ensuring that ads are properly displayed for advertisers, and in some cases selecting advertisements that are based on your interests.</p>
+      <h3>Com podeu controlar les cookies?</h3>
+      <p>Teniu dret a decidir si accepteu o rebutgeu les cookies. Podeu configurar o modificar els controls del vostre navegador web per acceptar o rebutjar les cookies. Si trieu rebutjar les cookies, encara podeu utilitzar el nostre Lloc web, tot i que algunes funcions poden veure's limitades.</p>
+      <p>La majoria de navegadors us permeten:</p>
+      <ul>
+        <li>Veure quines cookies teniu actives</li>
+        <li>Esborrar totes les cookies</li>
+        <li>Blocar les cookies de llocs específics o de tots els llocs</li>
+      </ul>
       
-      <h4>Social networking cookies</h4>
-      <p>These cookies are used when you share information using a social media sharing button or "like" button on our Site or you link your account or engage with our content on or through a social networking website such as Facebook, Twitter or Google+.</p>
+      <h3>Amb quina freqüència actualitzarem aquesta Política de Cookies?</h3>
+      <p>Podem actualitzar aquesta Política de Cookies periòdicament per reflectir, per exemple, canvis en les cookies que utilitzem o per altres motius operatius, legals o reglamentaris. Per tant, us recomanem revisar aquesta Política de Cookies regularment per mantenir-vos informat sobre l'ús de les cookies i tecnologies relacionades.</p>
       
-      <h3>How can you control cookies?</h3>
-      <p>You have the right to decide whether to accept or reject cookies. You can set or amend your web browser controls to accept or refuse cookies.</p>
+      <h3>On podeu obtenir més informació?</h3>
+      <p>Si teniu cap pregunta sobre l'ús de cookies o altres tecnologies, envieu-nos un correu electrònic a <strong>proteccio@grupsardanistacastelldefels.cat</strong>.</p>
       
-      <h3>How often will you update this Cookie Policy?</h3>
-      <p>We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal or regulatory reasons. Please therefore re-visit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.</p>
-      
-      <h3>Where can you get further information?</h3>
-      <p>If you have any questions about our use of cookies or other technologies, please email us at [CONTACT EMAIL].</p>
+      <h3>Consentiment</h3>
+      <p>Quan entreu al nostre Lloc web per primera vegada, us mostrem un banner de cookies on podeu acceptar o rebutjar les cookies no essencials. En continuar navegant després de configurar les vostres preferències, ens doneu el vostre consentiment per a l'ús de cookies segons la vostra elecció.</p>
     `,
   },
 };

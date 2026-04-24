@@ -32,8 +32,6 @@ import ContactUs from "layouts/pages/landing-pages/contact-us";
 import AgendaPage from "pages/agenda";
 import TermsPage from "pages/legal/terms";
 import PrivacyPage from "pages/legal/privacy";
-import LicensesPage from "pages/legal/licenses";
-import GdprPage from "pages/legal/gdpr";
 import CookiesPage from "pages/legal/cookies";
 import CookieConsent from "components/CookieConsent";
 
@@ -72,8 +70,6 @@ export default function App() {
         <Route path="/agenda" element={<AgendaPage />} />
         <Route path="/legal/terms" element={<TermsPage />} />
         <Route path="/legal/privacy" element={<PrivacyPage />} />
-        <Route path="/legal/licenses" element={<LicensesPage />} />
-        <Route path="/legal/gdpr" element={<GdprPage />} />
         <Route path="/legal/cookies" element={<CookiesPage />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/blog/:slug" element={<ArticleDetail />} />

@@ -67,8 +67,6 @@ export default {
       items: [
         { name: "terms & conditions", route: "/legal/terms" },
         { name: "privacy policy", route: "/legal/privacy" },
-        { name: "licenses (EULA)", route: "/legal/licenses" },
-        { name: "GDPR compliance", route: "/legal/gdpr" },
         { name: "cookie policy", route: "/legal/cookies" },
       ],
     },
