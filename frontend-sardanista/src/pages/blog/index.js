@@ -21,7 +21,7 @@ function BlogPage() {
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
 
-    fetch(`${API_BASE}/jsonapi/node/article?include=field_image`)
+    fetch(`${API_BASE}/jsonapi/node/article?include=field_image&sort=-created`)
       .then((res) => res.json())
       .then((data) => {
         const included = data.included || [];
