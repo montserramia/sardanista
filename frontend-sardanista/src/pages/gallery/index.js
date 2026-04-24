@@ -33,7 +33,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Gallery images
-import bgImage from "assets/images/bg-sardanistes.jpeg";
+import bgImage from "assets/images/collage.jpg";
 
 // Routes
 import routes from "routes";
