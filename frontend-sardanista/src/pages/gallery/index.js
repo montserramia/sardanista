@@ -14,6 +14,7 @@ Coded by www.creative-tim.com
 */
 
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 // @mui material components
 import Container from "@mui/material/Container";
@@ -40,6 +41,7 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 function GalleryPage() {
+  const location = useLocation();
   const [galleries, setGalleries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -98,6 +100,22 @@ function GalleryPage() {
         .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
 
       setGalleries(processedGalleries);
+
+      // Check if there's a gallery slug in the URL to open automatically
+      const pathSegments = location.pathname.split("/");
+      if (pathSegments.length >= 3 && pathSegments[1] === "galeria") {
+        const gallerySlug = pathSegments[2];
+        const galleryToOpen = processedGalleries.find(
+          (gallery) => gallery.title.toLowerCase().replace(/\s+/g, "-") === gallerySlug
+        );
+
+        if (galleryToOpen) {
+          setSelectedGallery(galleryToOpen);
+          setCurrentImageIndex(0);
+          setOpenLightbox(true);
+        }
+      }
+
       setLoading(false);
     } catch (err) {
       console.error("Error fetching galleries:", err);
@@ -108,7 +126,7 @@ function GalleryPage() {
 
   useEffect(() => {
     fetchGalleriesFromDrupal();
-  }, []);
+  }, [location.pathname]);
 
   const openGallery = (gallery) => {
     setSelectedGallery(gallery);

@@ -30,6 +30,7 @@ import SignIn from "layouts/pages/authentication/sign-in";
 import PaginaNeta from "pages/neta";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
 import AgendaPage from "pages/agenda";
+import GalleryPage from "pages/gallery";
 import TermsPage from "pages/legal/terms";
 import PrivacyPage from "pages/legal/privacy";
 import CookiesPage from "pages/legal/cookies";
@@ -68,6 +69,8 @@ export default function App() {
         <Route path="/neta" element={<PaginaNeta />} />
         <Route path="/contacte" element={<ContactUs />} />
         <Route path="/agenda" element={<AgendaPage />} />
+        <Route path="/galeria" element={<GalleryPage />} />
+        <Route path="/galeria/:galleryTitle" element={<GalleryPage />} />
         <Route path="/legal/terms" element={<TermsPage />} />
         <Route path="/legal/privacy" element={<PrivacyPage />} />
         <Route path="/legal/cookies" element={<CookiesPage />} />
