@@ -5,13 +5,13 @@ import MKButton from "components/MKButton";
 const generateGallerySlug = (title) => {
   return title
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '')  // Elimina caràcters especials
-    .replace(/\s+/g, '-');     // Substitueix espais per guions
+    .replace(/[^\w\s-]/g, "") // Elimina caràcters especials
+    .replace(/\s+/g, "-"); // Substitueix espais per guions
 };
 
 const GalleryLink = ({ title, children, ...props }) => {
   const slug = generateGallerySlug(title);
-  
+
   return (
     <Link to={`/galeria/${slug}`} {...props}>
       {children}
@@ -21,7 +21,7 @@ const GalleryLink = ({ title, children, ...props }) => {
 
 const GalleryButton = ({ title, children, ...otherProps }) => {
   const slug = generateGallerySlug(title);
-  
+
   return (
     <MKButton
       component={Link}

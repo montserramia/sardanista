@@ -82,7 +82,7 @@ Estem federats a Som Sardana, compartint la passió per aquesta tradició amb ag
               description="T’hi esperem amb els braços oberts!"
               action={{
                 type: "internal",
-                route: "pages/neta",
+                route: "/neta",
                 color: "info",
                 label: "Com ser part",
               }}

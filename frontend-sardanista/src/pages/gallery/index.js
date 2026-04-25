@@ -49,7 +49,9 @@ function GalleryPage() {
   const [openLightbox, setOpenLightbox] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  {/* Navbar flotant */}
+  {
+    /* Navbar flotant */
+  }
   <MKBox position="fixed" top="0.5rem" width="100%" center={false} zIndex={999}>
     <DefaultNavbar
       routes={routes}
@@ -60,7 +62,7 @@ function GalleryPage() {
         color: "info",
       }}
     />
-  </MKBox>
+  </MKBox>;
 
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
