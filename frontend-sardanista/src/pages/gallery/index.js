@@ -34,7 +34,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Gallery images
-import bgImage from "assets/images/Collage-nou.jpg";
+import bgImage from "assets/images/nouCollage.jpg";
 
 // Routes
 import routes from "routes";
@@ -48,6 +48,19 @@ function GalleryPage() {
   const [selectedGallery, setSelectedGallery] = useState(null);
   const [openLightbox, setOpenLightbox] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  {/* Navbar flotant */}
+  <MKBox position="fixed" top="0.5rem" width="100%" center={false} zIndex={999}>
+    <DefaultNavbar
+      routes={routes}
+      action={{
+        type: "internal",
+        route: "/contacte",
+        label: "Contacta'ns",
+        color: "info",
+      }}
+    />
+  </MKBox>
 
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
