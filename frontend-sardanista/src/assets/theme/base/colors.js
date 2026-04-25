@@ -60,8 +60,8 @@ export default {
   },
 
   info: {
-    main: "#F7C400",
-    focus: "#d4aa00",
+    main: "#6F9ABF",
+    focus: "#32628C",
   },
 
   success: {
