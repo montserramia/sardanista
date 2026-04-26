@@ -17,9 +17,9 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // @mui material components
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
+import Container from "@mui/material/Container"; // Used for layout
+import Grid from "@mui/material/Grid"; // Used for grid layout
+import Card from "@mui/material/Card"; // Used in rendering
 import ImageGallery from "react-image-gallery";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -207,17 +207,37 @@ function GalleryPage() {
         }}
       />
 
+      <MKBox>
+        <MKTypography
+          variant="h2"
+          color="white"
+          textAlign="center"
+          sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+        >
+          Galeria d&apos;imatges
+        </MKTypography>
+        <MKTypography
+          variant="body3"
+          color="white"
+          textAlign="center"
+          sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+        >
+          Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació Sardanista
+          de Castelldefels.
+        </MKTypography>
+      </MKBox>
+
       <Container>
-        <Grid container spacing={3} mt={-22}>
+        <Grid container spacing={3} mt={-12}>
+          {" "}
+          {/* Adjusted negative margin since we moved the header outside */}
           <Grid item xs={12} md={8} lg={6} ml={5} mb={6}>
             <Card>
               <MKBox p={6}>
-                <MKTypography variant="h2" align="center" fontWeight="bold" gutterBottom>
-                  Galeria d&apos;imatges
-                </MKTypography>
+                {/* This card now serves as an info panel only, as the header is above */}
                 <MKTypography variant="body2" color="text" align="justify" lineHeight={1.75}>
-                  Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació
-                  Sardanista de Castelldefels.
+                  Aquí trobaràs les fotografies dels diferents esdeveniments organitzats per
+                  l&apos;Agrupació Sardanista de Castelldefels.
                 </MKTypography>
               </MKBox>
             </Card>
@@ -265,7 +285,7 @@ function GalleryPage() {
                         <MKTypography variant="h5" fontWeight="bold" textAlign="center">
                           {gallery.title}
                         </MKTypography>
-                        <MKTypography variant="body2" color="text" textAlign="center" mb={2}>
+                        <MKTypography variant="body2" color="text" textAlign="center">
                           <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
                         </MKTypography>
                         <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
