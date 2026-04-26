@@ -240,63 +240,65 @@ function GalleryPage() {
             boxShadow: ({ boxShadows: { xxl } }) => xxl,
           }}
         >
-          <Container sx={{ py: 6 }}>
-            {galleries.length === 0 ? (
-              <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
-                <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
-              </MKBox>
-            ) : (
-              <Grid container spacing={3} mt={-12}>
-                {/* Adjusted negative margin since we moved the header outside */}
-                {galleries.map((gallery) => {
-                  return (
-                    <Grid item xs={12} md={6} lg={4} key={gallery.id}>
-                      <MKBox
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                        sx={{ cursor: "pointer", position: "relative" }}
-                      >
+          <MKBox component="section" py={3}>
+            <Container sx={{ py: 6 }}>
+              {galleries.length === 0 ? (
+                <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
+                  <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
+                </MKBox>
+              ) : (
+                <Grid container spacing={3} mt={-12}>
+                  {/* Adjusted negative margin since we moved the header outside */}
+                  {galleries.map((gallery) => {
+                    return (
+                      <Grid item xs={12} md={6} lg={4} key={gallery.id}>
                         <MKBox
-                          component="img"
-                          src={gallery.images[0]?.url || bgImage}
-                          alt={gallery.title}
-                          borderRadius="lg"
-                          shadow="lg"
-                          width="100%"
-                          maxHeight="250px"
-                          sx={{ objectFit: "cover", mb: 2 }}
-                          onClick={() => openGallery(gallery)}
-                        />
-                        <MKTypography variant="h5" fontWeight="bold" textAlign="center">
-                          {gallery.title}
-                        </MKTypography>
-                        <MKTypography variant="body2" color="text" textAlign="center">
-                          <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
-                        </MKTypography>
-                        <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
-                          {gallery.images.length} imatges
-                        </MKTypography>
-                        <MKButton
-                          variant="gradient"
-                          color="info"
-                          size="small"
-                          onClick={() => {
-                            const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
-                            window.history.pushState({}, "", `/galeria/${gallerySlug}`);
-                            openGallery(gallery);
-                          }}
-                          sx={{ mt: 2 }}
+                          display="flex"
+                          flexDirection="column"
+                          alignItems="center"
+                          sx={{ cursor: "pointer", position: "relative" }}
                         >
-                          Veure la galeria
-                        </MKButton>
-                      </MKBox>
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            )}
-          </Container>
+                          <MKBox
+                            component="img"
+                            src={gallery.images[0]?.url || bgImage}
+                            alt={gallery.title}
+                            borderRadius="lg"
+                            shadow="lg"
+                            width="100%"
+                            maxHeight="250px"
+                            sx={{ objectFit: "cover", mb: 2 }}
+                            onClick={() => openGallery(gallery)}
+                          />
+                          <MKTypography variant="h5" fontWeight="bold" textAlign="center">
+                            {gallery.title}
+                          </MKTypography>
+                          <MKTypography variant="body2" color="text" textAlign="center">
+                            <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
+                          </MKTypography>
+                          <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
+                            {gallery.images.length} imatges
+                          </MKTypography>
+                          <MKButton
+                            variant="gradient"
+                            color="info"
+                            size="small"
+                            onClick={() => {
+                              const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
+                              window.history.pushState({}, "", `/galeria/${gallerySlug}`);
+                              openGallery(gallery);
+                            }}
+                            sx={{ mt: 2 }}
+                          >
+                            Veure la galeria
+                          </MKButton>
+                        </MKBox>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              )}
+            </Container>
+          </MKBox>
         </MKBox>
       </Container>
 
