@@ -99,7 +99,7 @@ function Contact() {
                         ml={2}
                         fontWeight="regular"
                       >
-                        info@sardanista.cat
+                        hola@grupsardanistacastelldefels.cat
                       </MKTypography>
                     </MKBox>
                     <MKBox display="flex" color="white" p={1}>

@@ -64,7 +64,7 @@ const legalContent = {
       <h3>2. Responsable del Tractament</h3>
       <p><strong>Identitat:</strong> Grup Sardanista Castelldefels<br />
       <strong>Activitat:</strong> Associació cultural sardanista<br />
-      <strong>Contacte:</strong> proteccio@grupsardanistacastelldefels.cat<br />
+      <strong>Contacte:</strong> sardanistacastelldefels.cat<br />
       <strong>Domicili:</strong> [Carrer de la Sardana, 12, 08860 Castelldefels, Barcelona]</p>
       
       <h3>3. Quines dades recollim i per a què?</h3>
@@ -218,7 +218,7 @@ const legalContent = {
       
       <p>Aquests tercers tenen accés a les vostres Dades personals només per realitzar aquestes tasques en nom nostre i estan obligats a no divulgar-les ni utilitzar-les per a cap altre propòsit.</p>
       
-      <p>Per a més informació sobre els vostres drets o per exercir-los, consulteu l'apartat 6 de la nostra <a href="/legal/privacy?type=privacy">Política de Privacitat</a> o escriviu-nos a proteccio@grupsardanistacastelldefels.cat.</p>
+      <p>Per a més informació sobre els vostres drets o per exercir-los, consulteu l'apartat 6 de la nostra <a href="/legal/privacy?type=privacy">Política de Privacitat</a> o escriviu-nos a sardanistacastelldefels.cat.</p>
     `,
   },
   cookies: {
@@ -245,6 +245,45 @@ const legalContent = {
       <h4>Cookies analítiques i de personalització</h4>
       <p>Aquestes cookies recullen informació que s'utilitza de forma agregada per ajudar-nos a entendre com s'utilitza el nostre Lloc web (per exemple, quines pàgines es visiten més) o per personalitzar la vostra experiència. Nosaltres <strong>no utilitzem eines de rastreig intrusives</strong> com Google Analytics estàndard; en el seu lloc, fem servir analítiques respectuoses amb la privadesa que anonimitzen les adreces IP.</p>
       
+      <h4>Cookies de contingut multimèdia (Vimeo)</h4>
+      <p>Quan reproduïu un vídeo de Vimeo incrustat al nostre Lloc web, aquesta plataforma pot establir cookies al vostre navegador per al funcionament del reproductor, analítiques pròpies o personalització. Per a la vostra privacitat, utilitzem Vimeo amb el paràmetre <code>dnt=1</code> (Do Not Track), que limita la recollida de dades. No obstant això, aquests vídeos només es carreguen després d'obtenir el vostre consentiment exprés mitjançant el banner de cookies. Podeu obtenir més informació sobre les cookies de Vimeo a la seva <a href="https://vimeo.com/cookie_policy" target="_blank" rel="noopener noreferrer">Política de Cookies</a>.</p>
+      
+      <h3>Resum de cookies utilitzades</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Tipus</th>
+            <th>Finalitat</th>
+            <th>Durada</th>
+            <th>Proveïdor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cookieConsent</td>
+            <td>Essencial</td>
+            <td>Guardar la preferència de consentiment de cookies</td>
+            <td>1 any</td>
+            <td>Pròpia</td>
+          </tr>
+          <tr>
+            <td>_ga, _gid</td>
+            <td>Analítica</td>
+            <td>Google Analytics (mesura d’audiència)</td>
+            <td>2 anys / 24h</td>
+            <td>Google</td>
+          </tr>
+          <tr>
+            <td>vuid, player</td>
+            <td>Multimèdia</td>
+            <td>Funcionament i analítica del reproductor de Vimeo</td>
+            <td>2 anys / Sessió</td>
+            <td>Vimeo</td>
+          </tr>
+        </tbody>
+      </table>
+      
       <h3>Com podeu controlar les cookies?</h3>
       <p>Teniu dret a decidir si accepteu o rebutgeu les cookies. Podeu configurar o modificar els controls del vostre navegador web per acceptar o rebutjar les cookies. Si trieu rebutjar les cookies, encara podeu utilitzar el nostre Lloc web, tot i que algunes funcions poden veure's limitades.</p>
       <p>La majoria de navegadors us permeten:</p>
@@ -258,10 +297,10 @@ const legalContent = {
       <p>Podem actualitzar aquesta Política de Cookies periòdicament per reflectir, per exemple, canvis en les cookies que utilitzem o per altres motius operatius, legals o reglamentaris. Per tant, us recomanem revisar aquesta Política de Cookies regularment per mantenir-vos informat sobre l'ús de les cookies i tecnologies relacionades.</p>
       
       <h3>On podeu obtenir més informació?</h3>
-      <p>Si teniu cap pregunta sobre l'ús de cookies o altres tecnologies, envieu-nos un correu electrònic a <strong>proteccio@grupsardanistacastelldefels.cat</strong>.</p>
+      <p>Si teniu cap pregunta sobre l'ús de cookies o altres tecnologies, envieu-nos un correu electrònic a <strong>hola@grupsardanistacastelldefels.cat</strong>.</p>
       
       <h3>Consentiment</h3>
-      <p>Quan entreu al nostre Lloc web per primera vegada, us mostrem un banner de cookies on podeu acceptar o rebutjar les cookies no essencials. En continuar navegant després de configurar les vostres preferències, ens doneu el vostre consentiment per a l'ús de cookies segons la vostra elecció.</p>
+      <p>En accedir al nostre lloc web, us mostrem un banner de cookies on podeu acceptar o rebutjar l’ús de cookies no essencials (analítiques, multimèdia, etc.). Les cookies de Vimeo i altres serveis externs només es carreguen després d’obtenir el vostre consentiment exprés. Podeu canviar o retirar el vostre consentiment en qualsevol moment des de la configuració de cookies del web.</p>
     `,
   },
 };

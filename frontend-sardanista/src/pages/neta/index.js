@@ -93,9 +93,9 @@ function PaginaNeta() {
                   variant="body2"
                   color="info"
                   component="a"
-                  href="mailto:contacte@grupsardanistacastelldefels.cat"
+                  href="mailto:sardanistacastelldefels.cat"
                 >
-                  contacte@grupsardanistacastelldefels.cat
+                  sardanistacastelldefels.cat
                 </MKTypography>
               </MKBox>
 
