@@ -23,11 +23,14 @@ import Card from "@mui/material/Card";
 import ImageGallery from "react-image-gallery";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -42,7 +45,7 @@ import footerRoutes from "footer.routes";
 
 // Helper functions for videos
 function getYoutubeId(url) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 }
@@ -67,7 +70,8 @@ function GalleryPage() {
   const [selectedGallery, setSelectedGallery] = useState(null);
   const [openLightbox, setOpenLightbox] = useState(false);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
@@ -131,7 +135,6 @@ function GalleryPage() {
 
         if (galleryToOpen) {
           setSelectedGallery(galleryToOpen);
-          setCurrentImageIndex(0);
           setOpenLightbox(true);
         }
       }
@@ -157,22 +160,6 @@ function GalleryPage() {
   const closeLightbox = () => {
     setOpenLightbox(false);
     setSelectedGallery(null);
-  };
-
-  const goToPreviousImage = () => {
-    if (selectedGallery && currentImageIndex > 0) {
-      setCurrentImageIndex(currentImageIndex - 1);
-    } else if (selectedGallery) {
-      setCurrentImageIndex(selectedGallery.images.length - 1);
-    }
-  };
-
-  const goToNextImage = () => {
-    if (selectedGallery && currentImageIndex < selectedGallery.images.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
-    } else if (selectedGallery) {
-      setCurrentImageIndex(0);
-    }
   };
 
   if (loading) {
@@ -226,10 +213,10 @@ function GalleryPage() {
             <Card>
               <MKBox p={6}>
                 <MKTypography variant="h2" align="center" fontWeight="bold" gutterBottom>
-                  Galeria d'imatges
+                  Galeria d&apos;imatges
                 </MKTypography>
                 <MKTypography variant="body2" color="text" align="justify" lineHeight={1.75}>
-                  Recull de fotografies dels actes i activitats realitzades per l'Agrupació
+                  Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació
                   Sardanista de Castelldefels.
                 </MKTypography>
               </MKBox>
@@ -256,9 +243,6 @@ function GalleryPage() {
             ) : (
               <Grid container spacing={4}>
                 {galleries.map((gallery) => {
-                  // Genera el slug de la galeria
-                  const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
-                  const galleryUrl = `${window.location.origin}/galeria/${gallerySlug}`;
                   return (
                     <Grid item xs={12} md={6} lg={4} key={gallery.id}>
                       <MKBox
@@ -281,7 +265,7 @@ function GalleryPage() {
                         <MKTypography variant="h5" fontWeight="bold" textAlign="center">
                           {gallery.title}
                         </MKTypography>
-                        <MKTypography variant="body2" color="text" textAlign="center">
+                        <MKTypography variant="body2" color="text" textAlign="center" mb={2}>
                           <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
                         </MKTypography>
                         <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
@@ -314,7 +298,10 @@ function GalleryPage() {
       >
         {selectedGallery && (
           <>
-            <DialogContent dividers sx={{ padding: "20px !important" }}>
+            <DialogContent
+              dividers
+              sx={{ padding: isMobile ? "10px !important" : "20px !important" }}
+            >
               <MKButton
                 variant="gradient"
                 color="error"
@@ -338,7 +325,7 @@ function GalleryPage() {
               <MKTypography variant="body2" color="white" mb={2}>
                 <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
               </MKTypography>
-              <MKBox width={{ xs: "100vw", sm: "80vw", md: "60vw" }}>
+              <MKBox width={isMobile ? "90vw" : "60vw"}>
                 <ImageGallery
                   items={selectedGallery.images.map((img) => {
                     // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
@@ -383,10 +370,12 @@ function GalleryPage() {
                     };
                   })}
                   showPlayButton={false}
-                  showFullscreenButton={false}
+                  showFullscreenButton={true}
                   startIndex={currentGalleryIndex}
                   onSlide={(idx) => setCurrentGalleryIndex(idx)}
                   additionalClass="custom-gallery"
+                  infinite={true}
+                  autoPlay={false}
                 />
               </MKBox>
             </DialogContent>
