@@ -21,6 +21,8 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import ImageGallery from "react-image-gallery";
+import IconButton from "@mui/material/IconButton";
+import Dialog from "@mui/material/Dialog";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -38,6 +40,25 @@ import bgImage from "assets/images/nouCollage.jpg";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
+// Helper functions for videos
+function getYoutubeId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+}
+
+function getVideoEmbedUrl(url) {
+  if (url.includes("youtube.com") || url.includes("youtu.be")) {
+    const id = getYoutubeId(url);
+    return id ? `https://www.youtube.com/embed/${id}` : url;
+  }
+  if (url.includes("vimeo.com")) {
+    const vimeoId = url.split("/").pop();
+    return `https://player.vimeo.com/video/${vimeoId}`;
+  }
+  return url;
+}
+
 function GalleryPage() {
   const location = useLocation();
   const [galleries, setGalleries] = useState([]);
@@ -46,21 +67,7 @@ function GalleryPage() {
   const [selectedGallery, setSelectedGallery] = useState(null);
   const [openLightbox, setOpenLightbox] = useState(false);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
-
-  {
-    /* Navbar flotant */
-  }
-  <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
-    <DefaultNavbar
-      routes={routes}
-      action={{
-        type: "internal",
-        route: "/contacte",
-        label: "Contacta'ns",
-        color: "info",
-      }}
-    />
-  </MKBox>;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Function to fetch galleries from Drupal JSON:API
   const fetchGalleriesFromDrupal = async () => {
@@ -189,7 +196,15 @@ function GalleryPage() {
   return (
     <>
       <MKBox position="fixed" top="0" width="100%" zIndex={999}>
-        <DefaultNavbar routes={routes} />
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/contacte",
+            label: "Contacta'ns",
+            color: "info",
+          }}
+        />
       </MKBox>
 
       <MKBox
@@ -202,168 +217,177 @@ function GalleryPage() {
               rgba(gradients.info.state, 0.1)
             )}, url(${bgImage})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "grid",
-          placeItems: "center",
         }}
-      >
-        <MKBox>
-          <MKTypography
-            variant="h2"
-            color="white"
-            textAlign="center"
-            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
-          >
-            Galeria de Fotos
-          </MKTypography>
-          <MKTypography
-            variant="body3"
-            color="white"
-            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
-          >
-            Descobreix els nostres moments més especials
-          </MKTypography>
-        </MKBox>
-      </MKBox>
-      <Card
-        sx={{
-          p: 2,
-          mx: { xs: 2, lg: 3 },
-          mt: -8,
-          mb: 4,
-          backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
-          backdropFilter: "saturate(200%) blur(30px)",
-          boxShadow: ({ boxShadows: { xxl } }) => xxl,
-        }}
-      >
-        <Container sx={{ py: 6 }}>
-          {galleries.length === 0 ? (
-            <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
-              <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
-            </MKBox>
-          ) : (
-            <Grid container spacing={4}>
-              {galleries.map((gallery) => {
-                // Genera el slug de la galeria
-                const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
-                const galleryUrl = `${window.location.origin}/galeria/${gallerySlug}`;
-                return (
-                  <Grid item xs={12} md={6} lg={4} key={gallery.id}>
-                    <MKBox
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      sx={{ cursor: "pointer", position: "relative" }}
-                    >
-                      <MKBox
-                        component="img"
-                        src={gallery.images[0]?.url || bgImage}
-                        alt={gallery.title}
-                        borderRadius="lg"
-                        shadow="lg"
-                        width="100%"
-                        maxHeight="250px"
-                        sx={{ objectFit: "cover", mb: 2 }}
-                        onClick={() => openGallery(gallery)}
-                      />
-                      <MKTypography variant="h5" fontWeight="bold" textAlign="center">
-                        {gallery.title}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text" textAlign="center">
-                        <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
-                      </MKTypography>
-                      <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
-                        {gallery.images.length} imatges
-                      </MKTypography>
-                      {/* Lightbox react-image-gallery */}
-                      {openLightbox && selectedGallery && (
-                        <MKBox
-                          sx={{
-                            position: "fixed",
-                            top: 0,
-                            left: 0,
-                            width: "100vw",
-                            height: "100vh",
-                            background: "rgba(0,0,0,0.95)",
-                            zIndex: 2000,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <MKButton
-                            onClick={closeLightbox}
-                            color="white"
-                            variant="gradient"
-                            sx={{ position: "absolute", top: 20, right: 20, zIndex: 2100 }}
-                          >
-                            Tancar
-                          </MKButton>
-                          <MKTypography variant="h4" color="white" mb={2} mt={2}>
-                            {selectedGallery.title}
-                          </MKTypography>
-                          <MKTypography variant="body2" color="white" mb={2}>
-                            <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
-                          </MKTypography>
-                          <MKBox width={{ xs: "100vw", sm: "80vw", md: "60vw" }}>
-                            <ImageGallery
-                              items={selectedGallery.images.map((img) => {
-                                // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
-                                if (img.url && (img.url.includes("youtube.com") || img.url.includes("youtu.be") || img.url.includes("vimeo.com"))) {
-                                  return {
-                                    thumbnail: `https://img.youtube.com/vi/${getYoutubeId(img.url)}/default.jpg`,
-                                    original: img.url,
-                                    renderItem: () => (
-                                      <div className="video-wrapper" style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-                                        <iframe
-                                          src={getVideoEmbedUrl(img.url)}
-                                          frameBorder="0"
-                                          allow="autoplay; fullscreen"
-                                          allowFullScreen
-                                          title="Vídeo de galeria"
-                                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                                        />
-                                      </div>
-                                    ),
-                                  };
-                                }
-                                return {
-                                  original: img.url,
-                                  thumbnail: img.url,
-                                  description: img.alt,
-                                };
-                              })}
-                              showPlayButton={false}
-                              showFullscreenButton={false}
-                              startIndex={currentGalleryIndex}
-                              onSlide={(idx) => setCurrentGalleryIndex(idx)}
-                              additionalClass="custom-gallery"
-                            />
-                          </MKBox>
-                        </MKBox>
-                      )}
-                    // Helpers per vídeos
-                    function getYoutubeId(url) {
-                      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                      const match = url.match(regExp);
-                      return match && match[2].length === 11 ? match[2] : null;
-                    }
+      />
 
-                    function getVideoEmbedUrl(url) {
-                      if (url.includes("youtube.com") || url.includes("youtu.be")) {
-                        const id = getYoutubeId(url);
-                        return id ? `https://www.youtube.com/embed/${id}` : url;
-                      }
-                      if (url.includes("vimeo.com")) {
-                        const vimeoId = url.split("/").pop();
-                        return `https://player.vimeo.com/video/${vimeoId}`;
-                      }
-                      return url;
+      <Container>
+        <Grid container spacing={3} mt={-22}>
+          <Grid item xs={12} md={8} lg={6} ml={5} mb={6}>
+            <Card>
+              <MKBox p={6}>
+                <MKTypography variant="h2" align="center" fontWeight="bold" gutterBottom>
+                  Galeria d'imatges
+                </MKTypography>
+                <MKTypography variant="body2" color="text" align="justify" lineHeight={1.75}>
+                  Recull de fotografies dels actes i activitats realitzades per l'Agrupació
+                  Sardanista de Castelldefels.
+                </MKTypography>
+              </MKBox>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <MKBox
+          sx={{
+            p: 2,
+            mx: { xs: 2, lg: 3 },
+            mt: -8,
+            mb: 4,
+            backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
+            backdropFilter: "saturate(200%) blur(30px)",
+            boxShadow: ({ boxShadows: { xxl } }) => xxl,
+          }}
+        >
+          <Container sx={{ py: 6 }}>
+            {galleries.length === 0 ? (
+              <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
+                <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
+              </MKBox>
+            ) : (
+              <Grid container spacing={4}>
+                {galleries.map((gallery) => {
+                  // Genera el slug de la galeria
+                  const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
+                  const galleryUrl = `${window.location.origin}/galeria/${gallerySlug}`;
+                  return (
+                    <Grid item xs={12} md={6} lg={4} key={gallery.id}>
+                      <MKBox
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        sx={{ cursor: "pointer", position: "relative" }}
+                      >
+                        <MKBox
+                          component="img"
+                          src={gallery.images[0]?.url || bgImage}
+                          alt={gallery.title}
+                          borderRadius="lg"
+                          shadow="lg"
+                          width="100%"
+                          maxHeight="250px"
+                          sx={{ objectFit: "cover", mb: 2 }}
+                          onClick={() => openGallery(gallery)}
+                        />
+                        <MKTypography variant="h5" fontWeight="bold" textAlign="center">
+                          {gallery.title}
+                        </MKTypography>
+                        <MKTypography variant="body2" color="text" textAlign="center">
+                          <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
+                        </MKTypography>
+                        <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
+                          {gallery.images.length} imatges
+                        </MKTypography>
+                      </MKBox>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
+          </Container>
+        </MKBox>
+      </Container>
+
+      {/* Lightbox Modal */}
+      <Dialog
+        open={openLightbox}
+        onClose={closeLightbox}
+        maxWidth="md"
+        fullWidth
+        fullScreen
+        PaperProps={{
+          style: {
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            margin: 0,
+          },
+        }}
+      >
+        {selectedGallery && (
+          <>
+            <DialogContent dividers sx={{ padding: "20px !important" }}>
+              <MKButton
+                variant="gradient"
+                color="error"
+                size="small"
+                circular
+                onClick={closeLightbox}
+                sx={{
+                  position: "absolute",
+                  top: "20px",
+                  left: "20px",
+                  zIndex: 9999,
+                  minWidth: "40px",
+                  height: "40px",
+                }}
+              >
+                Tancar
+              </MKButton>
+              <MKTypography variant="h4" color="white" mb={2} mt={2}>
+                {selectedGallery.title}
+              </MKTypography>
+              <MKTypography variant="body2" color="white" mb={2}>
+                <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
+              </MKTypography>
+              <MKBox width={{ xs: "100vw", sm: "80vw", md: "60vw" }}>
+                <ImageGallery
+                  items={selectedGallery.images.map((img) => {
+                    // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
+                    if (
+                      img.url &&
+                      (img.url.includes("youtube.com") ||
+                        img.url.includes("youtu.be") ||
+                        img.url.includes("vimeo.com"))
+                    ) {
+                      return {
+                        thumbnail: `https://img.youtube.com/vi/${getYoutubeId(
+                          img.url
+                        )}/default.jpg`,
+                        original: img.url,
+                        renderItem: () => (
+                          <div
+                            className="video-wrapper"
+                            style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
+                          >
+                            <iframe
+                              src={getVideoEmbedUrl(img.url)}
+                              frameBorder="0"
+                              allow="autoplay; fullscreen"
+                              allowFullScreen
+                              title="Vídeo de galeria"
+                              style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
+                        ),
+                      };
                     }
-                    onClick={() => setCurrentImageIndex(index)}
-                  />
-                ))}
+                    return {
+                      original: img.url,
+                      thumbnail: img.url,
+                      description: img.alt,
+                    };
+                  })}
+                  showPlayButton={false}
+                  showFullscreenButton={false}
+                  startIndex={currentGalleryIndex}
+                  onSlide={(idx) => setCurrentGalleryIndex(idx)}
+                  additionalClass="custom-gallery"
+                />
               </MKBox>
             </DialogContent>
             <MKBox
@@ -373,7 +397,6 @@ function GalleryPage() {
                 right: "20px",
               }}
             >
-              {" "}
               <IconButton
                 aria-label="close"
                 onClick={closeLightbox}
