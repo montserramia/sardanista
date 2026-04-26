@@ -194,42 +194,40 @@ function GalleryPage() {
         />
       </MKBox>
 
-      
-      
-            <MKBox
-              minHeight="60vh"
-              width="100%"
-              sx={{
-                backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-                  `${linearGradient(
-                    rgba(gradients.info.main, 0.1),
-                    rgba(gradients.info.state, 0.1)
-                  )}, url(${bgImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <MKBox>
-                <MKTypography
-                  variant="h2"
-                  color="white"
-                  textAlign="center"
-                  sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
-                >
-                  Galeria d'imatges
-                </MKTypography>
-                <MKTypography
-                  variant="body3"
-                  color="white"
-                  sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
-                >
-                  Recull de fotografies dels actes i activitats realitzades per l'Agrupació Sardanista de Castelldefels.
-                </MKTypography>
-              </MKBox>
-            </MKBox>
-      
+      <MKBox
+        minHeight="60vh"
+        width="100%"
+        sx={{
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.info.main, 0.1),
+              rgba(gradients.info.state, 0.1)
+            )}, url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <MKBox>
+          <MKTypography
+            variant="h2"
+            color="white"
+            textAlign="center"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Galeria d&apos;imatges
+          </MKTypography>
+          <MKTypography
+            variant="body3"
+            color="white"
+            sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
+          >
+            Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació
+            Sardanista de Castelldefels.
+          </MKTypography>
+        </MKBox>
+      </MKBox>
 
       <Container>
         <Grid container spacing={3} mt={-12}>
