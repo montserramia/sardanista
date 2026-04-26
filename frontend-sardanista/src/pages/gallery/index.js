@@ -19,7 +19,6 @@ import { useLocation } from "react-router-dom";
 // @mui material components
 import Container from "@mui/material/Container"; // Used for layout
 import Grid from "@mui/material/Grid"; // Used for grid layout
-import Card from "@mui/material/Card"; // Used in rendering
 import ImageGallery from "react-image-gallery";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -230,22 +229,6 @@ function GalleryPage() {
       </MKBox>
 
       <Container>
-        <Grid container spacing={3} mt={-12}>
-          {" "}
-          {/* Adjusted negative margin since we moved the header outside */}
-          <Grid item xs={12} md={8} lg={6} ml={5} mb={6}>
-            <Card>
-              <MKBox p={6}>
-                {/* This card now serves as an info panel only, as the header is above */}
-                <MKTypography variant="body2" color="text" align="justify" lineHeight={1.75}>
-                  Aquí trobaràs les fotografies dels diferents esdeveniments organitzats per
-                  l&apos;Agrupació Sardanista de Castelldefels.
-                </MKTypography>
-              </MKBox>
-            </Card>
-          </Grid>
-        </Grid>
-
         <MKBox
           sx={{
             p: 2,
@@ -263,7 +246,8 @@ function GalleryPage() {
                 <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
               </MKBox>
             ) : (
-              <Grid container spacing={4}>
+              <Grid container spacing={3} mt={-12}>
+                {/* Adjusted negative margin since we moved the header outside */}
                 {galleries.map((gallery) => {
                   return (
                     <Grid item xs={12} md={6} lg={4} key={gallery.id}>
@@ -293,6 +277,19 @@ function GalleryPage() {
                         <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
                           {gallery.images.length} imatges
                         </MKTypography>
+                        <MKButton
+                          variant="gradient"
+                          color="info"
+                          size="small"
+                          onClick={() => {
+                            const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
+                            window.history.pushState({}, "", `/galeria/${gallerySlug}`);
+                            openGallery(gallery);
+                          }}
+                          sx={{ mt: 2 }}
+                        >
+                          Veure la galeria
+                        </MKButton>
                       </MKBox>
                     </Grid>
                   );
