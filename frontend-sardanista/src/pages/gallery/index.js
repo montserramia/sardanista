@@ -20,9 +20,7 @@ import { useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import IconButton from "@mui/material/IconButton";
+import ImageGallery from "react-image-gallery";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -47,7 +45,7 @@ function GalleryPage() {
   const [error, setError] = useState(null);
   const [selectedGallery, setSelectedGallery] = useState(null);
   const [openLightbox, setOpenLightbox] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
 
   {
     /* Navbar flotant */
@@ -145,7 +143,7 @@ function GalleryPage() {
 
   const openGallery = (gallery) => {
     setSelectedGallery(gallery);
-    setCurrentImageIndex(0);
+    setCurrentGalleryIndex(0);
     setOpenLightbox(true);
   };
 
@@ -277,179 +275,92 @@ function GalleryPage() {
                       <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
                         {gallery.images.length} imatges
                       </MKTypography>
-                      <MKBox mt={2} width="100%" display="flex" justifyContent="center">
-                        <input
-                          type="text"
-                          value={galleryUrl}
-                          readOnly
-                          style={{
-                            width: "1px",
-                            height: "1px",
-                            opacity: 0,
-                            position: "absolute",
-                            left: "-9999px",
-                          }}
-                          id={`gallery-url-${gallery.id}`}
-                        />
-                        <MKButton
-                          variant="outlined"
-                          color="info"
-                          size="small"
-                          onClick={() => {
-                            const input = document.getElementById(`gallery-url-${gallery.id}`);
-                            input.select();
-                            document.execCommand("copy");
+                      {/* Lightbox react-image-gallery */}
+                      {openLightbox && selectedGallery && (
+                        <MKBox
+                          sx={{
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            width: "100vw",
+                            height: "100vh",
+                            background: "rgba(0,0,0,0.95)",
+                            zIndex: 2000,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
                           }}
                         >
-                          Veure la galeria
-                        </MKButton>
-                      </MKBox>
-                    </MKBox>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          )}
-        </Container>
-      </Card>
+                          <MKButton
+                            onClick={closeLightbox}
+                            color="white"
+                            variant="gradient"
+                            sx={{ position: "absolute", top: 20, right: 20, zIndex: 2100 }}
+                          >
+                            Tancar
+                          </MKButton>
+                          <MKTypography variant="h4" color="white" mb={2} mt={2}>
+                            {selectedGallery.title}
+                          </MKTypography>
+                          <MKTypography variant="body2" color="white" mb={2}>
+                            <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
+                          </MKTypography>
+                          <MKBox width={{ xs: "100vw", sm: "80vw", md: "60vw" }}>
+                            <ImageGallery
+                              items={selectedGallery.images.map((img) => {
+                                // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
+                                if (img.url && (img.url.includes("youtube.com") || img.url.includes("youtu.be") || img.url.includes("vimeo.com"))) {
+                                  return {
+                                    thumbnail: `https://img.youtube.com/vi/${getYoutubeId(img.url)}/default.jpg`,
+                                    original: img.url,
+                                    renderItem: () => (
+                                      <div className="video-wrapper" style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                                        <iframe
+                                          src={getVideoEmbedUrl(img.url)}
+                                          frameBorder="0"
+                                          allow="autoplay; fullscreen"
+                                          allowFullScreen
+                                          title="Vídeo de galeria"
+                                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                                        />
+                                      </div>
+                                    ),
+                                  };
+                                }
+                                return {
+                                  original: img.url,
+                                  thumbnail: img.url,
+                                  description: img.alt,
+                                };
+                              })}
+                              showPlayButton={false}
+                              showFullscreenButton={false}
+                              startIndex={currentGalleryIndex}
+                              onSlide={(idx) => setCurrentGalleryIndex(idx)}
+                              additionalClass="custom-gallery"
+                            />
+                          </MKBox>
+                        </MKBox>
+                      )}
+                    // Helpers per vídeos
+                    function getYoutubeId(url) {
+                      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                      const match = url.match(regExp);
+                      return match && match[2].length === 11 ? match[2] : null;
+                    }
 
-      {/* Lightbox Modal */}
-      <Dialog
-        open={openLightbox}
-        onClose={closeLightbox}
-        fullScreen
-        PaperProps={{
-          style: {
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            boxShadow: "none",
-          },
-        }}
-      >
-        {selectedGallery && (
-          <>
-            <DialogContent sx={{ p: 0, textAlign: "center" }}>
-              <MKBox
-                component="img"
-                src={selectedGallery.images[currentImageIndex]?.url}
-                alt={selectedGallery.images[currentImageIndex]?.alt}
-                sx={{
-                  width: { xs: "100vw", sm: "auto" },
-                  maxWidth: { xs: "100vw", sm: "90vw" },
-                  maxHeight: { xs: "60vh", sm: "80vh" },
-                  objectFit: "contain",
-                  margin: "0 auto",
-                  display: "block",
-                  borderRadius: "8px",
-                  background: "#222",
-                }}
-              />
-              <MKBox
-                sx={{
-                  position: "absolute",
-                  top: "20px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  color: "white",
-                  background: "rgba(0,0,0,0.6)",
-                  padding: "5px 15px",
-                  borderRadius: "20px",
-                }}
-              >
-                <MKTypography variant="body2" color="white">
-                  {currentImageIndex + 1} de {selectedGallery.images.length}:{" "}
-                  {selectedGallery.title}
-                </MKTypography>
-              </MKBox>
-              <MKBox
-                sx={{
-                  position: "absolute",
-                  top: { xs: "auto", sm: "50%" },
-                  bottom: { xs: 10, sm: "auto" },
-                  left: 0,
-                  right: 0,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  px: 2,
-                  transform: { xs: "none", sm: "translateY(-50%)" },
-                  width: "100%",
-                  zIndex: 2,
-                }}
-              >
-                <MKButton
-                  onClick={goToPreviousImage}
-                  variant="gradient"
-                  color="info"
-                  size="large"
-                  circular
-                  iconOnly
-                  sx={{
-                    minWidth: "auto",
-                    width: { xs: "40px", sm: "60px" },
-                    height: { xs: "40px", sm: "60px" },
-                    mr: 2,
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "transform 0.2s ease",
-                    },
-                  }}
-                >
-                  <i
-                    className="fas fa-chevron-left"
-                    style={{ fontSize: "1.2rem", color: "white" }}
-                  />
-                </MKButton>
-                <MKButton
-                  onClick={goToNextImage}
-                  variant="gradient"
-                  color="info"
-                  size="large"
-                  circular
-                  iconOnly
-                  sx={{
-                    minWidth: "auto",
-                    width: { xs: "40px", sm: "60px" },
-                    height: { xs: "40px", sm: "60px" },
-                    ml: 2,
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "transform 0.2s ease",
-                    },
-                  }}
-                >
-                  <i
-                    className="fas fa-chevron-right"
-                    style={{ fontSize: "1.2rem", color: "white" }}
-                  />
-                </MKButton>
-              </MKBox>
-              <MKBox
-                sx={{
-                  position: "absolute",
-                  bottom: "20px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  display: "flex",
-                  gap: 1,
-                }}
-              >
-                {selectedGallery.images.map((image, index) => (
-                  <MKBox
-                    key={image.id}
-                    component="img"
-                    src={image.url}
-                    alt={`Miniatura ${index + 1}`}
-                    width="60px"
-                    height="60px"
-                    sx={{
-                      objectFit: "cover",
-                      border: index === currentImageIndex ? "3px solid #4285f4" : "1px solid #fff",
-                      opacity: index === currentImageIndex ? 1 : 0.6,
-                      cursor: "pointer",
-                      borderRadius: "4px",
-                    }}
+                    function getVideoEmbedUrl(url) {
+                      if (url.includes("youtube.com") || url.includes("youtu.be")) {
+                        const id = getYoutubeId(url);
+                        return id ? `https://www.youtube.com/embed/${id}` : url;
+                      }
+                      if (url.includes("vimeo.com")) {
+                        const vimeoId = url.split("/").pop();
+                        return `https://player.vimeo.com/video/${vimeoId}`;
+                      }
+                      return url;
+                    }
                     onClick={() => setCurrentImageIndex(index)}
                   />
                 ))}
