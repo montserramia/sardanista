@@ -52,7 +52,7 @@ function GalleryPage() {
   {
     /* Navbar flotant */
   }
-  <MKBox position="fixed" top="0.5rem" width="100%" center={false} zIndex={999}>
+  <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
     <DefaultNavbar
       routes={routes}
       action={{
@@ -245,37 +245,69 @@ function GalleryPage() {
             </MKBox>
           ) : (
             <Grid container spacing={4}>
-              {galleries.map((gallery) => (
-                <Grid item xs={12} md={6} lg={4} key={gallery.id}>
-                  <MKBox
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    onClick={() => openGallery(gallery)}
-                    sx={{ cursor: "pointer" }}
-                  >
+              {galleries.map((gallery) => {
+                // Genera el slug de la galeria
+                const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
+                const galleryUrl = `${window.location.origin}/galeria/${gallerySlug}`;
+                return (
+                  <Grid item xs={12} md={6} lg={4} key={gallery.id}>
                     <MKBox
-                      component="img"
-                      src={gallery.images[0]?.url || bgImage}
-                      alt={gallery.title}
-                      borderRadius="lg"
-                      shadow="lg"
-                      width="100%"
-                      maxHeight="250px"
-                      sx={{ objectFit: "cover", mb: 2 }}
-                    />
-                    <MKTypography variant="h5" fontWeight="bold" textAlign="center">
-                      {gallery.title}
-                    </MKTypography>
-                    <MKTypography variant="body2" color="text" textAlign="center">
-                      <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
-                    </MKTypography>
-                    <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
-                      {gallery.images.length} imatges
-                    </MKTypography>
-                  </MKBox>
-                </Grid>
-              ))}
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      sx={{ cursor: "pointer", position: "relative" }}
+                    >
+                      <MKBox
+                        component="img"
+                        src={gallery.images[0]?.url || bgImage}
+                        alt={gallery.title}
+                        borderRadius="lg"
+                        shadow="lg"
+                        width="100%"
+                        maxHeight="250px"
+                        sx={{ objectFit: "cover", mb: 2 }}
+                        onClick={() => openGallery(gallery)}
+                      />
+                      <MKTypography variant="h5" fontWeight="bold" textAlign="center">
+                        {gallery.title}
+                      </MKTypography>
+                      <MKTypography variant="body2" color="text" textAlign="center">
+                        <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
+                      </MKTypography>
+                      <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
+                        {gallery.images.length} imatges
+                      </MKTypography>
+                      <MKBox mt={2} width="100%" display="flex" justifyContent="center">
+                        <input
+                          type="text"
+                          value={galleryUrl}
+                          readOnly
+                          style={{
+                            width: "1px",
+                            height: "1px",
+                            opacity: 0,
+                            position: "absolute",
+                            left: "-9999px",
+                          }}
+                          id={`gallery-url-${gallery.id}`}
+                        />
+                        <MKButton
+                          variant="outlined"
+                          color="info"
+                          size="small"
+                          onClick={() => {
+                            const input = document.getElementById(`gallery-url-${gallery.id}`);
+                            input.select();
+                            document.execCommand("copy");
+                          }}
+                        >
+                          Veure la galeria
+                        </MKButton>
+                      </MKBox>
+                    </MKBox>
+                  </Grid>
+                );
+              })}
             </Grid>
           )}
         </Container>
@@ -300,9 +332,16 @@ function GalleryPage() {
                 component="img"
                 src={selectedGallery.images[currentImageIndex]?.url}
                 alt={selectedGallery.images[currentImageIndex]?.alt}
-                maxWidth="100%"
-                maxHeight="90vh"
-                sx={{ objectFit: "contain", margin: "0 auto" }}
+                sx={{
+                  width: { xs: "100vw", sm: "auto" },
+                  maxWidth: { xs: "100vw", sm: "90vw" },
+                  maxHeight: { xs: "60vh", sm: "80vh" },
+                  objectFit: "contain",
+                  margin: "0 auto",
+                  display: "block",
+                  borderRadius: "8px",
+                  background: "#222",
+                }}
               />
               <MKBox
                 sx={{
@@ -324,14 +363,17 @@ function GalleryPage() {
               <MKBox
                 sx={{
                   position: "absolute",
-                  top: "50%",
+                  top: { xs: "auto", sm: "50%" },
+                  bottom: { xs: 10, sm: "auto" },
                   left: 0,
                   right: 0,
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                   px: 2,
-                  transform: "translateY(-50%)",
+                  transform: { xs: "none", sm: "translateY(-50%)" },
+                  width: "100%",
+                  zIndex: 2,
                 }}
               >
                 <MKButton
@@ -343,8 +385,8 @@ function GalleryPage() {
                   iconOnly
                   sx={{
                     minWidth: "auto",
-                    width: "60px",
-                    height: "60px",
+                    width: { xs: "40px", sm: "60px" },
+                    height: { xs: "40px", sm: "60px" },
                     mr: 2,
                     boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
                     "&:hover": {
@@ -355,7 +397,7 @@ function GalleryPage() {
                 >
                   <i
                     className="fas fa-chevron-left"
-                    style={{ fontSize: "1.6rem", color: "white" }}
+                    style={{ fontSize: "1.2rem", color: "white" }}
                   />
                 </MKButton>
                 <MKButton
@@ -367,8 +409,8 @@ function GalleryPage() {
                   iconOnly
                   sx={{
                     minWidth: "auto",
-                    width: "60px",
-                    height: "60px",
+                    width: { xs: "40px", sm: "60px" },
+                    height: { xs: "40px", sm: "60px" },
                     ml: 2,
                     boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
                     "&:hover": {
@@ -379,7 +421,7 @@ function GalleryPage() {
                 >
                   <i
                     className="fas fa-chevron-right"
-                    style={{ fontSize: "1.6rem", color: "white" }}
+                    style={{ fontSize: "1.2rem", color: "white" }}
                   />
                 </MKButton>
               </MKBox>
