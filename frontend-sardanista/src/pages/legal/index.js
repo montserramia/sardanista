@@ -14,7 +14,7 @@ const legalContent = {
     title: "Termes i Condicions",
     content: `
       <h2>Termes i Condicions d'Ús</h2>
-      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p><strong>Data d'entrada en vigor:</strong> 15/04/2026</p>
       <p>Benvingut/uda al lloc web del <strong>Grup Sardanista Castelldefels</strong>. En accedir i utilitzar aquest lloc web, accepteu complir els següents termes i condicions. Si no hi esteu d'acord, us demanem que no utilitzeu el nostre lloc web.</p>
       
       <h3>1. Informació general</h3>
@@ -54,7 +54,7 @@ const legalContent = {
     title: "Política de Privacitat",
     content: `
       <h2>Política de Privacitat</h2>
-      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p><strong>Data d'entrada en vigor:</strong> 15/04/2026</p>
       <p><strong>Responsable:</strong> Grup Sardanista Castelldefels</p>
       <p><strong>Web:</strong> https://grupsardanistacastelldefels.cat</p>
       
@@ -98,8 +98,10 @@ const legalContent = {
       <h3>4. Compartició de dades amb tercers</h3>
       <ul>
         <li><strong>No venem, no lloguem ni cedim les vostres dades personals</strong> a tercers aliens a l'associació.</li>
+        <li><strong>YouTube (Google Ireland Limited):</strong> Per incrustar vídeos a la nostra web i galeria. Actua com a encarregat del tractament per a la reproducció de contingut multimèdia. Les dades es tracten segons la seva política de privacitat i amb les garanties del RGPD.</li>
         <li><strong>Proveïdors tècnics (encarregats del tractament):</strong> Per poder funcionar, confiem en alguns serveis (per exemple, empresa d'allotjament del web, plataforma de pagament segur, sistema d'enviament de correus electrònics). Tots ells han signat un contracte de confidencialitat i compleixen el RGPD.</li>
         <li><strong>Transferències internacionals:</strong> Evitem enviar dades fora de l'Espai Econòmic Europeu. Si algun proveïdor ho requereix, exigim garanties adequades (clàusules tipus de la UE).</li>
+        <p>Alguns dels nostres proveïdors (com Google/YouTube) poden processar dades fora de l'Espai Econòmic Europeu. En aquests casos, exigim garanties adequades com les <strong>Clàusules Contractuals Tipus de la UE</strong> per assegurar la protecció de les vostres dades.</p>
       </ul>
       
       <h3>5. Seguretat de les dades</h3>
@@ -131,13 +133,21 @@ const legalContent = {
       <p>Podem actualitzar aquesta política per adaptar-nos a canvis normatius o a noves formes de gestionar l'associació. Quan ho fem, publicarem la nova versió en aquesta mateixa pàgina i us ho notificarem per correu electrònic si el canvi és important.</p>
       
       <p><strong>Consentiment:</strong> En utilitzar aquest lloc web, accepteu la nostra política de privacitat. Quan faciliteu dades mitjançant formularis, doneu el vostre consentiment explícit per al tractament descrit.</p>
+      <h3>El nostre compromís amb la privadesa</h3>
+      <p>Al Grup Sardanista Castelldefels creiem que la cultura i la privadesa han d'anar de la mà. Per això:</p>
+      <ul>
+        <li>❌ No fem servir Google Analytics, Facebook Pixel ni altres eines de rastreig comercial.</li>
+        <li>✅ Utilitzem Matomo autoallotjat, una alternativa ètica i de codi obert.</li>
+        <li>🔐 Les vostres dades es queden amb nosaltres, no es venen ni es comparteixen.</li>
+        <li>🌱 Apostem per una tecnologia respectuosa, transparent i alineada amb els valors de la cultura popular.</li>
+      </ul>
     `,
   },
   gdpr: {
     title: "Compliment del RGPD",
     content: `
       <h2>Compliment del Reglament General de Protecció de Dades (RGPD)</h2>
-      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p><strong>Data d'entrada en vigor:</strong> 15/04/2026</p>
       <p>Aquesta pàgina us informa sobre les nostres polítiques relatives a la recollida, ús i divulgació de dades personals quan utilitzeu el nostre servei (aquest lloc web) i les opcions que teniu associades a aquestes dades.</p>
       
       <h3>Recollida i ús de la informació</h3>
@@ -226,7 +236,7 @@ const legalContent = {
     title: "Política de Cookies",
     content: `
       <h2>Política de Cookies</h2>
-      <p><strong>Data d'entrada en vigor:</strong> 15/03/2026</p>
+      <p><strong>Data d'entrada en vigor:</strong> 15/04/2026</p>
       <p>Aquesta Política de Cookies explica com el <strong>Grup Sardanista Castelldefels</strong> ("l'Associació", "nosaltres", "ens" o "el nostre") utilitza les cookies i tecnologies similars per reconèixer-vos quan visiteu el nostre lloc web a <strong>https://grupsardanistacastelldefels.cat</strong> ("el Lloc web"). Explica què són aquestes tecnologies i per què les utilitzem, així com els vostres drets per controlar el nostre ús d'aquestes.</p>
       
       <h3>Què són les cookies?</h3>
@@ -244,10 +254,22 @@ const legalContent = {
       <p>Aquestes cookies s'utilitzen per millorar el rendiment i la funcionalitat del nostre Lloc web, però no són essencials per al seu ús. Sense aquestes cookies, és possible que determinades funcionalitats (com recordar les vostres preferències d'acceptació de cookies) quedin indisponibles.</p>
       
       <h4>Cookies analítiques i de personalització</h4>
-      <p>Aquestes cookies recullen informació que s'utilitza de forma agregada per ajudar-nos a entendre com s'utilitza el nostre Lloc web (per exemple, quines pàgines es visiten més) o per personalitzar la vostra experiència. Nosaltres <strong>no utilitzem eines de rastreig intrusives</strong> com Google Analytics estàndard; en el seu lloc, fem servir analítiques respectuoses amb la privadesa que anonimitzen les adreces IP.</p>
-      
-      <h4>Cookies de contingut multimèdia (Vimeo)</h4>
-      <p>Quan reproduïu un vídeo de Vimeo incrustat al nostre Lloc web, aquesta plataforma pot establir cookies al vostre navegador per al funcionament del reproductor, analítiques pròpies o personalització. Per a la vostra privacitat, utilitzem Vimeo amb el paràmetre <code>dnt=1</code> (Do Not Track), que limita la recollida de dades. No obstant això, aquests vídeos només es carreguen després d'obtenir el vostre consentiment exprés mitjançant el banner de cookies. Podeu obtenir més informació sobre les cookies de Vimeo a la seva <a href="https://vimeo.com/cookie_policy" target="_blank" rel="noopener noreferrer">Política de Cookies</a>.</p>
+      <p>Aquestes cookies recullen informació que s'utilitza de forma agregada per ajudar-nos a entendre com s'utilitza el nostre Lloc web (per exemple, quines pàgines es visiten més) o per personalitzar la vostra experiència.</p>
+      <p><strong>Important:</strong> No utilitzem Google Analytics ni altres eines de rastreig intrusives. En el seu lloc, fem servir <strong>Matomo autoallotjat</strong>, una plataforma de codi obert que:</p>
+      <ul>
+        <li>🔒 <strong>Anonimitza les adreces IP</strong> abans de guardar-les.</li>
+        <li>🚫 <strong>No creua dades</strong> amb altres llocs web ni perfils publicitaris.</li>
+        <li>🏠 <strong>Les dades es queden al nostre servidor</strong>, no es transfereixen a tercers.</li>
+        <li>✅ <strong>Compleix el RGPD sense necessitat de banner de consentiment</strong> per a les cookies estrictament analítiques (segons criteris de l'APDCAT), tot i que nosaltres us oferim transparència i control igualment.</li>
+      </ul>
+
+      <h4>Cookies de contingut multimèdia (YouTube)</h4>
+      <p>Quan reproduïu un vídeo de YouTube incrustat al nostre Lloc web, aquesta plataforma (propietat de Google Ireland Limited) pot establir cookies al vostre navegador per al funcionament del reproductor, analítiques pròpies o personalització. Per a la vostra privacitat:</p>
+      <ul>
+        <li>Utilitzem YouTube amb el paràmetre de <strong>privadesa millorada</strong> (<code>youtube-nocookie.com</code>), que limita la recollida de dades fins que no inicieu la reproducció.</li>
+        <li>Els vídeos només es carreguen després d'obtenir el vostre consentiment exprés mitjançant el banner de cookies.</li>
+        <li>Podeu consultar la política de cookies de YouTube a la seva <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer">pàgina oficial</a>.</li>
+      </ul>
       
       <h3>Resum de cookies utilitzades</h3>
       <table>
@@ -269,18 +291,18 @@ const legalContent = {
             <td>Pròpia</td>
           </tr>
           <tr>
-            <td>_ga, _gid</td>
+            <td>_pk_id.*, _pk_ses.*, _pk_ref.*</td>
             <td>Analítica</td>
-            <td>Google Analytics (mesura d’audiència)</td>
-            <td>2 anys / 24h</td>
-            <td>Google</td>
+            <td>Matomo (mesura d'audiència respectuosa: IP anonimitzada, sense rastreig entre llocs)</td>
+            <td>13 mesos / 30 min</td>
+            <td>Pròpia (autoallotjat)</td>
           </tr>
           <tr>
-            <td>vuid, player</td>
+            <td>VISITOR_INFO1_LIVE, YSC, PREF</td>
             <td>Multimèdia</td>
-            <td>Funcionament i analítica del reproductor de Vimeo</td>
-            <td>2 anys / Sessió</td>
-            <td>Vimeo</td>
+            <td>Funcionament i analítica del reproductor de YouTube</td>
+            <td>Sessió / 8 mesos</td>
+            <td>Google/YouTube</td>
           </tr>
         </tbody>
       </table>
@@ -301,7 +323,7 @@ const legalContent = {
       <p>Si teniu cap pregunta sobre l'ús de cookies o altres tecnologies, envieu-nos un correu electrònic a <strong>hola@grupsardanistacastelldefels.cat</strong>.</p>
       
       <h3>Consentiment</h3>
-      <p>En accedir al nostre lloc web, us mostrem un banner de cookies on podeu acceptar o rebutjar l’ús de cookies no essencials (analítiques, multimèdia, etc.). Les cookies de Vimeo i altres serveis externs només es carreguen després d’obtenir el vostre consentiment exprés. Podeu canviar o retirar el vostre consentiment en qualsevol moment des de la configuració de cookies del web.</p>
+      <p>En accedir al nostre lloc web, us mostrem un banner de cookies on podeu acceptar o rebutjar l'ús de cookies no essencials (analítiques, multimèdia, etc.). Les cookies de <strong>YouTube</strong> i altres serveis externs només es carreguen després d'obtenir el vostre consentiment exprés. Podeu canviar o retirar el vostre consentiment en qualsevol moment des de la configuració de cookies del web.</p>
     `,
   },
 };
