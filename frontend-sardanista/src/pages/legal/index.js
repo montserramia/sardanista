@@ -7,6 +7,7 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/db/mans.jpeg";
 import PropTypes from "prop-types";
+import Card from "@mui/material/Card";
 
 const legalContent = {
   terms: {
