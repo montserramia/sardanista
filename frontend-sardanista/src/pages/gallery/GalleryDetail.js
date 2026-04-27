@@ -13,7 +13,8 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
-import bgImage from "assets/images/nouCollage.jpg";
+// Ja no cal importar bgImage perquè el farem dinàmic
+// import bgImage from "assets/images/nouCollage.jpg";
 
 // Helper per normalitzar el títol a slug (igual que generateGallerySlug)
 function titleToSlug(title) {
@@ -32,6 +33,7 @@ function GalleryDetail() {
   const [gallery, setGallery] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [heroImage, setHeroImage] = useState(null); // ← NOU: estat per la imatge de fons
 
   // Lightbox
   const [openLightbox, setOpenLightbox] = useState(false);
@@ -78,12 +80,22 @@ function GalleryDetail() {
             }))
             .filter((img) => img.url) || [];
 
+        // ← NOU: La primera imatge és la portada / hero
+        const coverImage = images.length > 0 ? images[0] : null;
+
         setGallery({
           id: found.id,
           title: found.attributes.title,
           description: found.attributes.field_description?.processed || "",
           images,
+          coverImage, // ← Guardem la portada
         });
+
+        // ← NOU: Establim la imatge de fons de l'hero
+        if (coverImage) {
+          setHeroImage(coverImage.url);
+        }
+
         setLoading(false);
       })
       .catch((err) => {
@@ -170,16 +182,22 @@ function GalleryDetail() {
         />
       </MKBox>
 
-      {/* Hero */}
+      {/* Hero - Ara amb la imatge de portada com a fons */}
       <MKBox
         minHeight="60vh"
         width="100%"
         sx={{
-          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-            `${linearGradient(
-              rgba(gradients.info.main, 0.1),
-              rgba(gradients.info.state, 0.1)
-            )}, url(${bgImage})`,
+          backgroundImage: heroImage
+            ? ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+                `${linearGradient(
+                  rgba(gradients.info.main, 0.1),
+                  rgba(gradients.info.state, 0.1)
+                )}, url(${heroImage})`
+            : ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+                `${linearGradient(
+                  rgba(gradients.info.main, 0.1),
+                  rgba(gradients.info.state, 0.1)
+                )}`, // Fallback si no hi ha imatge
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
