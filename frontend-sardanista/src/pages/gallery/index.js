@@ -46,7 +46,7 @@ function GalleryPage() {
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
 
-    fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images`)
+    fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images,field_images.field_media_image`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -54,12 +54,23 @@ function GalleryPage() {
       .then((data) => {
         const included = data.included || [];
 
-        const imageMap = {};
+        // Mapa fileId -> URL
+        const fileMap = {};
         included.forEach((item) => {
           if (item.type === "file--file") {
             const rawUrl = item.attributes.uri.url;
-            const imageUrl = rawUrl.startsWith("http") ? rawUrl : `${API_BASE}${rawUrl}`;
-            imageMap[item.id] = imageUrl;
+            fileMap[item.id] = rawUrl.startsWith("http") ? rawUrl : `${API_BASE}${rawUrl}`;
+          }
+        });
+
+        // Mapa mediaId -> URL (via field_media_image)
+        const imageMap = {};
+        included.forEach((item) => {
+          if (item.type === "media--image") {
+            const fileRef = item.relationships?.field_media_image?.data;
+            if (fileRef && fileMap[fileRef.id]) {
+              imageMap[item.id] = fileMap[fileRef.id];
+            }
           }
         });
 

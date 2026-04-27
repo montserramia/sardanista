@@ -381,7 +381,7 @@ function LegalPage({ type }) {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <MKTypography variant="body1" color="text">
+        <MKTypography variant="body2" color="text">
           <div dangerouslySetInnerHTML={{ __html: content.content }} />
         </MKTypography>
       </Card>
