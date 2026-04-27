@@ -349,19 +349,19 @@ function LegalPage({ type }) {
         </MKBox>
       </MKBox>
 
-      <MKBox pt={10} pb={6}>
-        <MKBox
-          sx={{
-            maxWidth: "800px",
-            mx: "auto",
-            px: 3,
-          }}
-        >
-          <MKTypography variant="body1" color="text">
-            <div dangerouslySetInnerHTML={{ __html: content.content }} />
-          </MKTypography>
-        </MKBox>
-      </MKBox>
+      <Card
+        sx={{
+          p: 2,
+          mx: { xs: 2, lg: 3 },
+          mt: -8,
+          mb: 4,
+          boxShadow: ({ boxShadows: { xxl } }) => xxl,
+        }}
+      >
+        <MKTypography variant="body1" color="text">
+          <div dangerouslySetInnerHTML={{ __html: content.content }} />
+        </MKTypography>
+      </Card>
 
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
