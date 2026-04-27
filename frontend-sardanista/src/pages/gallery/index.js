@@ -14,157 +14,85 @@ Coded by www.creative-tim.com
 */
 
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
-// @mui material components
-import Container from "@mui/material/Container"; // Used for layout
-import Grid from "@mui/material/Grid"; // Used for grid layout
-import Card from "@mui/material/Card"; // Added Card component
-import ImageGallery from "react-image-gallery";
-import IconButton from "@mui/material/IconButton";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-
-// Material Kit 2 React components
+import { useNavigate } from "react-router-dom";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
-// Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-
-// Gallery images
-import bgImage from "assets/images/nouCollage.jpg";
-
-// Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
+import bgImage from "assets/images/nouCollage.jpg";
 
-// Helper functions for videos
-function getYoutubeId(url) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-  const match = url.match(regExp);
-  return match && match[2].length === 11 ? match[2] : null;
-}
-
-function getVideoEmbedUrl(url) {
-  if (url.includes("youtube.com") || url.includes("youtu.be")) {
-    const id = getYoutubeId(url);
-    return id ? `https://www.youtube.com/embed/${id}` : url;
-  }
-  if (url.includes("vimeo.com")) {
-    const vimeoId = url.split("/").pop();
-    return `https://player.vimeo.com/video/${vimeoId}`;
-  }
-  return url;
+// Igual que titleToSlug a GalleryDetail.js — han de ser idèntiques
+function titleToSlug(title) {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
 }
 
 function GalleryPage() {
-  const location = useLocation();
+  const navigate = useNavigate();
   const [galleries, setGalleries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedGallery, setSelectedGallery] = useState(null);
-  const [openLightbox, setOpenLightbox] = useState(false);
-  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  // Function to fetch galleries from Drupal JSON:API
-  const fetchGalleriesFromDrupal = async () => {
-    try {
-      // Using the same API_BASE as the blog implementation
-      const API_BASE = process.env.REACT_APP_API_BASE;
-
-      // Include the related files in the response
-      const response = await fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const included = data.included || [];
-
-      // Create a map of file IDs to their URIs
-      const imageMap = {};
-      included.forEach((item) => {
-        if (item.type === "file--file") {
-          // Convert public:// to actual file path
-          const imageUrl = item.attributes.uri.url.replace("public://", "/sites/default/files/");
-          // Construct the full image URL using the API_BASE
-          imageMap[item.id] = `${API_BASE}${imageUrl}`;
-        }
-      });
-
-      // Process the JSON:API response according to our data contract
-      const processedGalleries = data.data
-        .map((item) => ({
-          id: item.id,
-          title: item.attributes.title,
-          description: item.attributes.field_description?.processed || "",
-          category: item.attributes.field_category || "",
-          images:
-            item.relationships.field_images?.data
-              ?.map((imgRef) => {
-                // Get the image URL from the image map
-                const imageUrl = imgRef?.id && imageMap[imgRef.id] ? imageMap[imgRef.id] : null;
-
-                return {
-                  id: imgRef?.id,
-                  url: imageUrl,
-                  alt: imgRef?.meta?.alt || `Imatge de galeria ${item.attributes.title}`,
-                };
-              })
-              .filter((img) => img.url) || [], // Filter out any invalid images
-        }))
-        .filter((gallery) => gallery.images.length > 0); // Filter out galleries without images
-
-      setGalleries(processedGalleries);
-
-      // Check if there's a gallery slug in the URL to open automatically
-      const pathSegments = location.pathname.split("/");
-      if (pathSegments.length >= 3 && pathSegments[1] === "galeria") {
-        const gallerySlug = pathSegments[2];
-        const galleryToOpen = processedGalleries.find(
-          (gallery) => gallery.title.toLowerCase().replace(/\s+/g, "-") === gallerySlug
-        );
-
-        if (galleryToOpen) {
-          setSelectedGallery(galleryToOpen);
-          setOpenLightbox(true);
-        }
-      }
-
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching galleries:", err);
-      setError(`Error carregant galeries: ${err.message}`);
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
-    fetchGalleriesFromDrupal();
-  }, [location.pathname]);
+    const API_BASE = process.env.REACT_APP_API_BASE;
 
-  const openGallery = (gallery) => {
-    setSelectedGallery(gallery);
-    setCurrentGalleryIndex(0);
-    setOpenLightbox(true);
-  };
+    fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        const included = data.included || [];
 
-  const closeLightbox = () => {
-    setOpenLightbox(false);
-    setSelectedGallery(null);
-  };
+        const imageMap = {};
+        included.forEach((item) => {
+          if (item.type === "file--file") {
+            const rawUrl = item.attributes.uri.url;
+            const imageUrl = rawUrl.startsWith("http") ? rawUrl : `${API_BASE}${rawUrl}`;
+            imageMap[item.id] = imageUrl;
+          }
+        });
+
+        const processedGalleries = data.data
+          .map((item) => ({
+            id: item.id,
+            title: item.attributes.title,
+            slug: titleToSlug(item.attributes.title),
+            description: item.attributes.field_description?.processed || "",
+            images:
+              item.relationships.field_images?.data
+                ?.map((imgRef) => ({
+                  id: imgRef?.id,
+                  url: imgRef?.id && imageMap[imgRef.id] ? imageMap[imgRef.id] : null,
+                  alt: imgRef?.meta?.alt || `Imatge de ${item.attributes.title}`,
+                }))
+                .filter((img) => img.url) || [],
+          }))
+          .filter((g) => g.images.length > 0);
+
+        setGalleries(processedGalleries);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error carregant galeries:", err);
+        setError(`Error carregant les galeries: ${err.message}`);
+        setLoading(false);
+      });
+  }, []);
 
   if (loading) {
     return (
-      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
+      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
         <MKTypography variant="h5">Carregant galeries...</MKTypography>
       </MKBox>
     );
@@ -172,7 +100,7 @@ function GalleryPage() {
 
   if (error) {
     return (
-      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
+      <MKBox display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
         <MKTypography variant="h5" color="error">
           {error}
         </MKTypography>
@@ -209,28 +137,26 @@ function GalleryPage() {
           placeItems: "center",
         }}
       >
-        <MKBox>
+        <MKBox textAlign="center" px={3}>
           <MKTypography
             variant="h2"
             color="white"
-            textAlign="center"
             sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
           >
             Galeria d&apos;imatges
           </MKTypography>
           <MKTypography
-            variant="body3"
+            variant="body1"
             color="white"
-            textAlign="center"
+            mt={1}
             sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
           >
-            Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació
-            Sardanista de Castelldefels.
+            Recull de fotografies dels actes i activitats de l&apos;Agrupació Sardanista de
+            Castelldefels.
           </MKTypography>
         </MKBox>
       </MKBox>
 
-      {/* Contingut principal */}
       <Card
         sx={{
           p: 2,
@@ -247,195 +173,63 @@ function GalleryPage() {
             </MKBox>
           ) : (
             <Grid container spacing={4}>
-              {galleries.map((gallery) => {
-                return (
-                  <Grid item xs={12} md={6} lg={4} key={gallery.id}>
+              {galleries.map((gallery) => (
+                <Grid item xs={12} md={6} lg={4} key={gallery.id}>
+                  <MKBox
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => navigate(`/galeria/${gallery.slug}`)}
+                  >
                     <MKBox
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      sx={{ cursor: "pointer", position: "relative" }}
+                      component="img"
+                      src={gallery.images[0]?.url}
+                      alt={gallery.title}
+                      borderRadius="lg"
+                      shadow="lg"
+                      width="100%"
+                      sx={{
+                        objectFit: "cover",
+                        aspectRatio: "4 / 3",
+                        mb: 2,
+                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                        "&:hover": {
+                          transform: "scale(1.02)",
+                          boxShadow: "0 12px 32px rgba(0,0,0,0.18)",
+                        },
+                      }}
+                    />
+                    <MKTypography variant="h5" fontWeight="bold" textAlign="center">
+                      {gallery.title}
+                    </MKTypography>
+                    {gallery.description && (
+                      <MKTypography variant="body2" color="text" textAlign="center" mt={0.5}>
+                        <span dangerouslySetInnerHTML={{ __html: gallery.description }} />
+                      </MKTypography>
+                    )}
+                    <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
+                      {gallery.images.length} imatges
+                    </MKTypography>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      size="small"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/galeria/${gallery.slug}`);
+                      }}
+                      sx={{ mt: 2 }}
                     >
-                      <MKBox
-                        component="img"
-                        src={gallery.images[0]?.url || bgImage}
-                        alt={gallery.title}
-                        borderRadius="lg"
-                        shadow="lg"
-                        width="100%"
-                        maxHeight="250px"
-                        sx={{ objectFit: "cover", mb: 2 }}
-                        onClick={() => openGallery(gallery)}
-                      />
-                      <MKTypography variant="h5" fontWeight="bold" textAlign="center">
-                        {gallery.title}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text" textAlign="center">
-                        <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
-                      </MKTypography>
-                      <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
-                        {gallery.images.length} imatges
-                      </MKTypography>
-                      <MKButton
-                        variant="gradient"
-                        color="info"
-                        size="small"
-                        onClick={() => openGallery(gallery)}
-                        sx={{ mt: 2 }}
-                      >
-                        Veure la galeria
-                      </MKButton>
-                    </MKBox>
-                  </Grid>
-                );
-              })}
+                      Veure la galeria
+                    </MKButton>
+                  </MKBox>
+                </Grid>
+              ))}
             </Grid>
           )}
         </Container>
       </Card>
-
-      {/* Lightbox Modal */}
-      <Dialog
-        open={openLightbox}
-        onClose={closeLightbox}
-        maxWidth="md"
-        fullWidth
-        fullScreen
-        PaperProps={{
-          style: {
-            backgroundColor: "transparent",
-            boxShadow: "none",
-            margin: 0,
-          },
-        }}
-      >
-        {selectedGallery && (
-          <>
-            <DialogContent
-              dividers
-              sx={{ padding: isMobile ? "10px !important" : "20px !important" }}
-            >
-              <MKButton
-                variant="gradient"
-                color="error"
-                size="small"
-                circular
-                onClick={closeLightbox}
-                sx={{
-                  position: "absolute",
-                  top: "20px",
-                  left: "20px",
-                  zIndex: 9999,
-                  minWidth: "40px",
-                  height: "40px",
-                }}
-              >
-                Tancar
-              </MKButton>
-              <MKTypography variant="h4" color="white" mb={2} mt={2}>
-                {selectedGallery.title}
-              </MKTypography>
-              <MKTypography variant="body2" color="white" mb={2}>
-                <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
-              </MKTypography>
-              <MKBox width={isMobile ? "90vw" : "60vw"}>
-                {selectedGallery.images && selectedGallery.images.length > 0 ? (
-                  <ImageGallery
-                    items={selectedGallery.images.map((img) => {
-                      // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
-                      if (
-                        img.url &&
-                        (img.url.includes("youtube.com") ||
-                          img.url.includes("youtu.be") ||
-                          img.url.includes("vimeo.com"))
-                      ) {
-                        return {
-                          thumbnail: `https://img.youtube.com/vi/${getYoutubeId(
-                            img.url
-                          )}/default.jpg`,
-                          original: img.url,
-                          renderItem: () => (
-                            <div
-                              className="video-wrapper"
-                              style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
-                            >
-                              <iframe
-                                src={getVideoEmbedUrl(img.url)}
-                                frameBorder="0"
-                                allow="autoplay; fullscreen"
-                                allowFullScreen
-                                title="Vídeo de galeria"
-                                style={{
-                                  position: "absolute",
-                                  top: 0,
-                                  left: 0,
-                                  width: "100%",
-                                  height: "100%",
-                                }}
-                              />
-                            </div>
-                          ),
-                        };
-                      }
-                      return {
-                        original: img.url,
-                        thumbnail: img.url,
-                        description: img.alt,
-                      };
-                    })}
-                    showPlayButton={false}
-                    showFullscreenButton={true}
-                    startIndex={currentGalleryIndex}
-                    onSlide={(idx) => setCurrentGalleryIndex(idx)}
-                    additionalClass="custom-gallery"
-                    infinite={true}
-                    autoPlay={false}
-                  />
-                ) : (
-                  <MKBox
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    minHeight="300px"
-                  >
-                    <MKTypography variant="h6" color="white">
-                      No hi ha imatges disponibles per a aquesta galeria
-                    </MKTypography>
-                  </MKBox>
-                )}
-              </MKBox>
-            </DialogContent>
-            <MKBox
-              sx={{
-                position: "absolute",
-                top: "20px",
-                right: "20px",
-              }}
-            >
-              <IconButton
-                aria-label="close"
-                onClick={closeLightbox}
-                sx={{
-                  color: "white",
-                  background: "rgba(0,0,0,0.6)",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  ml: 2,
-                  "&:hover": {
-                    background: "rgba(0,0,0,0.8)",
-                  },
-                }}
-              >
-                <i className="fas fa-times" style={{ fontSize: "1.2rem", color: "white" }} />
-              </IconButton>
-            </MKBox>
-          </>
-        )}
-      </Dialog>
 
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
