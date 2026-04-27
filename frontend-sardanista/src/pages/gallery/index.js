@@ -19,6 +19,7 @@ import { useLocation } from "react-router-dom";
 // @mui material components
 import Container from "@mui/material/Container"; // Used for layout
 import Grid from "@mui/material/Grid"; // Used for grid layout
+import Card from "@mui/material/Card"; // Added Card component
 import ImageGallery from "react-image-gallery";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -220,6 +221,7 @@ function GalleryPage() {
           <MKTypography
             variant="body3"
             color="white"
+            textAlign="center"
             sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
           >
             Recull de fotografies dels actes i activitats realitzades per l&apos;Agrupació
@@ -228,79 +230,69 @@ function GalleryPage() {
         </MKBox>
       </MKBox>
 
-      <Container>
-        <MKBox
-          sx={{
-            p: 2,
-            mx: { xs: 2, lg: 3 },
-            mt: -8,
-            mb: 4,
-            backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
-            backdropFilter: "saturate(200%) blur(30px)",
-            boxShadow: ({ boxShadows: { xxl } }) => xxl,
-          }}
-        >
-          <MKBox component="section" py={3}>
-            <Container sx={{ py: 6 }}>
-              {galleries.length === 0 ? (
-                <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
-                  <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
-                </MKBox>
-              ) : (
-                <Grid container spacing={3} mt={-12}>
-                  {/* Adjusted negative margin since we moved the header outside */}
-                  {galleries.map((gallery) => {
-                    return (
-                      <Grid item xs={12} md={6} lg={4} key={gallery.id}>
-                        <MKBox
-                          display="flex"
-                          flexDirection="column"
-                          alignItems="center"
-                          sx={{ cursor: "pointer", position: "relative" }}
-                        >
-                          <MKBox
-                            component="img"
-                            src={gallery.images[0]?.url || bgImage}
-                            alt={gallery.title}
-                            borderRadius="lg"
-                            shadow="lg"
-                            width="100%"
-                            maxHeight="250px"
-                            sx={{ objectFit: "cover", mb: 2 }}
-                            onClick={() => openGallery(gallery)}
-                          />
-                          <MKTypography variant="h5" fontWeight="bold" textAlign="center">
-                            {gallery.title}
-                          </MKTypography>
-                          <MKTypography variant="body2" color="text" textAlign="center">
-                            <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
-                          </MKTypography>
-                          <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
-                            {gallery.images.length} imatges
-                          </MKTypography>
-                          <MKButton
-                            variant="gradient"
-                            color="info"
-                            size="small"
-                            onClick={() => {
-                              const gallerySlug = gallery.title.toLowerCase().replace(/\s+/g, "-");
-                              window.history.pushState({}, "", `/galeria/${gallerySlug}`);
-                              openGallery(gallery);
-                            }}
-                            sx={{ mt: 2 }}
-                          >
-                            Veure la galeria
-                          </MKButton>
-                        </MKBox>
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              )}
-            </Container>
-          </MKBox>
-        </MKBox>
-      </Container>
+      {/* Contingut principal */}
+      <Card
+        sx={{
+          p: 2,
+          mx: { xs: 2, lg: 3 },
+          mt: -8,
+          mb: 4,
+          boxShadow: ({ boxShadows: { xxl } }) => xxl,
+        }}
+      >
+        <Container sx={{ py: 6 }}>
+          {galleries.length === 0 ? (
+            <MKBox display="flex" justifyContent="center" alignItems="center" py={6}>
+              <MKTypography variant="h5">Encara no hi ha galeries disponibles</MKTypography>
+            </MKBox>
+          ) : (
+            <Grid container spacing={4}>
+              {galleries.map((gallery) => {
+                return (
+                  <Grid item xs={12} md={6} lg={4} key={gallery.id}>
+                    <MKBox
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      sx={{ cursor: "pointer", position: "relative" }}
+                    >
+                      <MKBox
+                        component="img"
+                        src={gallery.images[0]?.url || bgImage}
+                        alt={gallery.title}
+                        borderRadius="lg"
+                        shadow="lg"
+                        width="100%"
+                        maxHeight="250px"
+                        sx={{ objectFit: "cover", mb: 2 }}
+                        onClick={() => openGallery(gallery)}
+                      />
+                      <MKTypography variant="h5" fontWeight="bold" textAlign="center">
+                        {gallery.title}
+                      </MKTypography>
+                      <MKTypography variant="body2" color="text" textAlign="center">
+                        <div dangerouslySetInnerHTML={{ __html: gallery.description }} />
+                      </MKTypography>
+                      <MKTypography variant="caption" color="info" fontWeight="bold" mt={1}>
+                        {gallery.images.length} imatges
+                      </MKTypography>
+                      <MKButton
+                        variant="gradient"
+                        color="info"
+                        size="small"
+                        onClick={() => openGallery(gallery)}
+                        sx={{ mt: 2 }}
+                      >
+                        Veure la galeria
+                      </MKButton>
+                    </MKBox>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
+        </Container>
+      </Card>
 
       {/* Lightbox Modal */}
       <Dialog
@@ -344,7 +336,11 @@ function GalleryPage() {
                 {selectedGallery.title}
               </MKTypography>
               <MKTypography variant="body2" color="white" mb={2}>
-                <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: selectedGallery.description.replace(/"/g, "&quot;"),
+                  }}
+                />
               </MKTypography>
               <MKBox width={isMobile ? "90vw" : "60vw"}>
                 <ImageGallery
