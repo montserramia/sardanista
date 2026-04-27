@@ -336,11 +336,7 @@ function GalleryPage() {
                 {selectedGallery.title}
               </MKTypography>
               <MKTypography variant="body2" color="white" mb={2}>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: selectedGallery.description.replace(/"/g, "&quot;"),
-                  }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
               </MKTypography>
               <MKBox width={isMobile ? "90vw" : "60vw"}>
                 <ImageGallery
