@@ -339,57 +339,70 @@ function GalleryPage() {
                 <span dangerouslySetInnerHTML={{ __html: selectedGallery.description }} />
               </MKTypography>
               <MKBox width={isMobile ? "90vw" : "60vw"}>
-                <ImageGallery
-                  items={selectedGallery.images.map((img) => {
-                    // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
-                    if (
-                      img.url &&
-                      (img.url.includes("youtube.com") ||
-                        img.url.includes("youtu.be") ||
-                        img.url.includes("vimeo.com"))
-                    ) {
+                {selectedGallery.images && selectedGallery.images.length > 0 ? (
+                  <ImageGallery
+                    items={selectedGallery.images.map((img) => {
+                      // Si la imatge és vídeo (YouTube/Vimeo), afegeix renderItem
+                      if (
+                        img.url &&
+                        (img.url.includes("youtube.com") ||
+                          img.url.includes("youtu.be") ||
+                          img.url.includes("vimeo.com"))
+                      ) {
+                        return {
+                          thumbnail: `https://img.youtube.com/vi/${getYoutubeId(
+                            img.url
+                          )}/default.jpg`,
+                          original: img.url,
+                          renderItem: () => (
+                            <div
+                              className="video-wrapper"
+                              style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
+                            >
+                              <iframe
+                                src={getVideoEmbedUrl(img.url)}
+                                frameBorder="0"
+                                allow="autoplay; fullscreen"
+                                allowFullScreen
+                                title="Vídeo de galeria"
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  left: 0,
+                                  width: "100%",
+                                  height: "100%",
+                                }}
+                              />
+                            </div>
+                          ),
+                        };
+                      }
                       return {
-                        thumbnail: `https://img.youtube.com/vi/${getYoutubeId(
-                          img.url
-                        )}/default.jpg`,
                         original: img.url,
-                        renderItem: () => (
-                          <div
-                            className="video-wrapper"
-                            style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
-                          >
-                            <iframe
-                              src={getVideoEmbedUrl(img.url)}
-                              frameBorder="0"
-                              allow="autoplay; fullscreen"
-                              allowFullScreen
-                              title="Vídeo de galeria"
-                              style={{
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                                width: "100%",
-                                height: "100%",
-                              }}
-                            />
-                          </div>
-                        ),
+                        thumbnail: img.url,
+                        description: img.alt,
                       };
-                    }
-                    return {
-                      original: img.url,
-                      thumbnail: img.url,
-                      description: img.alt,
-                    };
-                  })}
-                  showPlayButton={false}
-                  showFullscreenButton={true}
-                  startIndex={currentGalleryIndex}
-                  onSlide={(idx) => setCurrentGalleryIndex(idx)}
-                  additionalClass="custom-gallery"
-                  infinite={true}
-                  autoPlay={false}
-                />
+                    })}
+                    showPlayButton={false}
+                    showFullscreenButton={true}
+                    startIndex={currentGalleryIndex}
+                    onSlide={(idx) => setCurrentGalleryIndex(idx)}
+                    additionalClass="custom-gallery"
+                    infinite={true}
+                    autoPlay={false}
+                  />
+                ) : (
+                  <MKBox
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    minHeight="300px"
+                  >
+                    <MKTypography variant="h6" color="white">
+                      No hi ha imatges disponibles per a aquesta galeria
+                    </MKTypography>
+                  </MKBox>
+                )}
               </MKBox>
             </DialogContent>
             <MKBox

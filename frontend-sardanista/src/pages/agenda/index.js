@@ -7,7 +7,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
-import bgImage from "assets/images/sardana/db/mans.jpeg";
+import bgImage from "assets/images/sardana/mans.jpg";
 
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
