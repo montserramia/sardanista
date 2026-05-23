@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Container, Grid, Card, CardMedia, CardContent } from "@mui/material";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import MKButton from "components/MKButton";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
@@ -96,6 +98,17 @@ export default function agenda() {
           >
             Ballades, àplecs i trobades sardanistes.
           </MKTypography>
+          <MKBox mt={2} textAlign="center">
+            <MKButton
+              component={Link}
+              to="/calendari"
+              variant="gradient"
+              color="info"
+              size="small"
+            >
+              Porta'm al calendari
+            </MKButton>
+          </MKBox>
         </MKBox>
       </MKBox>
 
