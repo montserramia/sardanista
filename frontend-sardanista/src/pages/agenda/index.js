@@ -99,14 +99,8 @@ export default function agenda() {
             Ballades, àplecs i trobades sardanistes.
           </MKTypography>
           <MKBox mt={2} textAlign="center">
-            <MKButton
-              component={Link}
-              to="/calendari"
-              variant="gradient"
-              color="info"
-              size="small"
-            >
-              Porta'm al calendari
+            <MKButton component={Link} to="/calendari" variant="gradient" color="info" size="small">
+              Porta&apos;m al calendari
             </MKButton>
           </MKBox>
         </MKBox>
