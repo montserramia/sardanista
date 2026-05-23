@@ -25,7 +25,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
-import bgImage from "assets/images/nouCollage.jpg";
+import bgImage from "assets/images/sardana/Collage-galeria.jpg";
 
 // Igual que titleToSlug a GalleryDetail.js — han de ser idèntiques
 function titleToSlug(title) {

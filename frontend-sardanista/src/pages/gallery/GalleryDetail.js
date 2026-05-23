@@ -14,7 +14,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 // Ja no cal importar bgImage perquè el farem dinàmic
-// import bgImage from "assets/images/nouCollage.jpg";
+// import bgImage from "assets/images/sardana/Collage-galeria.jpg";
 
 // Helper per normalitzar el títol a slug (igual que generateGallerySlug)
 function titleToSlug(title) {
