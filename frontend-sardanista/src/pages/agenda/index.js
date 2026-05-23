@@ -19,7 +19,9 @@ export default function agenda() {
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
     axios
-      .get(`${API_BASE}/jsonapi/node/esdeveniment`)
+      .get(`${API_BASE}/jsonapi/node/esdeveniment`, {
+        params: { sort: "field_data_inici" },
+      })
       .then(async (response) => {
         const events = await Promise.all(
           response.data.data.map(async (item) => {
@@ -46,7 +48,11 @@ export default function agenda() {
           })
         );
 
-        setagenda(events);
+        const sortedEvents = events.sort(
+          (a, b) => new Date(a.dataInici).getTime() - new Date(b.dataInici).getTime()
+        );
+
+        setagenda(sortedEvents);
       })
       .catch((error) => {
         console.error("Error carregant esdeveniments:", error);
