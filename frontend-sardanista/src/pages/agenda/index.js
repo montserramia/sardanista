@@ -38,6 +38,7 @@ export default function agenda() {
             return {
               id: item.id,
               title: item.attributes.title,
+              slug: item.attributes.field_slug,
               lloc: item.attributes.field_lloc,
               dataInici: item.attributes.field_data_inici,
               imageUrl,
@@ -152,6 +153,19 @@ export default function agenda() {
                       <MKTypography variant="body2" color="text">
                         📍 {event.lloc || "Lloc no especificat"}
                       </MKTypography>
+                      {event.slug && (
+                        <MKBox mt={2}>
+                          <MKButton
+                            component={Link}
+                            to={`/agenda/${event.slug}`}
+                            variant="text"
+                            size="small"
+                            color="info"
+                          >
+                            Veure esdeveniment
+                          </MKButton>
+                        </MKBox>
+                      )}
                     </CardContent>
                   </Card>
                 </Grid>
