@@ -87,14 +87,14 @@ function Information() {
                   icon="school"
                   color="info"
                   title="Curset"
-                  description="Oferim classes de sardana per a tots els nivells. Aprendre els passos i la coreografia d'aquesta dansa tradicional en un ambient col·laboratiu i acollidor. Dimecres de 17 a 19h i dissabtes d'11 a 13h."
+                  description="Oferim classes de sardana per a tots els nivells. Aprendre els passos i la coreografia d'aquesta dansa tradicional en un ambient col·laboratiu i acollidor. Dimecres de 17 a 19h i dissabtes d'11 a 13h al Local de l'Agrupació de Cultura Popular."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
                   icon="people"
                   title="Trobades"
-                  description="Participem en ballades d'estiu, Festa Major d'Estiu i Hivern, i Sant Jordi. Fem sortides a ballades dels pobles veïns com Begues, Gavà i Viladecans per conèixer altres ballarins i reforçar la comunitat sardanista."
+                  description="Participem en ballades d'estiu, Festa Major d'Estiu i Hivern, Sant Jordi, l’Aplec de Bruguers i la Diada. Fem sortides a ballades dels pobles veïns com Begues, Gavà i Viladecans per conèixer altres ballarins i reforçar la comunitat sardanista."
                 />
               </Grid>
             </Grid>
@@ -103,14 +103,14 @@ function Information() {
                 <DefaultInfoCard
                   icon="event"
                   title="Actuacions i tallers"
-                  description="Organitzem actuacions públiques i tallers per apropar la sardana a tothom. Els nostres espectacles destaquen la dansa i la música tradicional, atraient un públic divers i contribuint a la difusió de la cultura catalana."
+                  description="Organitzem actuacions públiques i tallers per apropar la sardana a tothom, col·laborant amb el programa “Salut i diversió” de l’Ajuntament i anant a les escoles que ens ho demanen, tot destacant la dansa i la música tradicional per atraure un públic divers i difondre la cultura catalana."
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DefaultInfoCard
                   icon="favorite"
                   title="Tradició i comunitat"
-                  description="La sardana a Castelldefels té una història rica i vibrant. Organitzem conferències i tallers per enriquir el coneixement i apreciació d'aquesta disciplina musical i de dansa, preservant-la per a les futures generacions."
+                  description="La sardana a Castelldefels té una història rica i vibrant. Organitzem tallers per enriquir el coneixement i apreciació d'aquesta disciplina musical i de dansa, preservant-la per a les futures generacions."
                 />
               </Grid>
             </Grid>

@@ -49,7 +49,7 @@ function Counters() {
             <DefaultCounterCard
               count={13}
               title="Ballades anuals"
-              description="Organitzem ballades d'estiu, participem en trobades i oferim 28 dies de curset per a nous sardanistes."
+              description="Organitzem ballades d'estiu, participem en trobades i oferim cursets per a nous sardanistes."
             />
           </Grid>
         </Grid>
