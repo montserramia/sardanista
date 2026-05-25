@@ -85,6 +85,10 @@ function PaginaNeta() {
                 Per a qualsevol dubte o consulta, pots contactar-nos a:
               </MKTypography>
 
+              <MKTypography variant="body1" color="dark" fontWeight="medium" mb={2}>
+                L’únic requisit és tenir ganes: ganes d’aprendre, de ballar i de fer pinya.
+              </MKTypography>
+
               <MKBox mb={2}>
                 <MKTypography variant="body2" color="text" fontWeight="bold">
                   📧 Email:
@@ -93,9 +97,9 @@ function PaginaNeta() {
                   variant="body2"
                   color="info"
                   component="a"
-                  href="mailto:sardanistacastelldefels.cat"
+                  href="mailto:hola@grupsardanistacastelldefels.cat"
                 >
-                  sardanistacastelldefels.cat
+                  hola@grupsardanistacastelldefels.cat
                 </MKTypography>
               </MKBox>
 
