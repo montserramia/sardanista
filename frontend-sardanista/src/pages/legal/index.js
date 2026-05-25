@@ -65,7 +65,7 @@ const legalContent = {
       <h3>2. Responsable del Tractament</h3>
       <p><strong>Identitat:</strong> Grup Sardanista Castelldefels<br />
       <strong>Activitat:</strong> Associació cultural sardanista<br />
-      <strong>Contacte:</strong> sardanistacastelldefels.cat<br />
+      <strong>Contacte:</strong> hola@grupsardanistacastelldefels.cat<br />
       <strong>Domicili:</strong> [Carrer de la Sardana, 12, 08860 Castelldefels, Barcelona]</p>
       
       <h3>3. Quines dades recollim i per a què?</h3>
@@ -123,7 +123,7 @@ const legalContent = {
         <li><strong>Portabilitat:</strong> rebre les vostres dades en un format estructurat i comú.</li>
         <li><strong>Retirar el consentiment</strong> en qualsevol moment (sense que afecti la licitud del tractament anterior).</li>
       </ul>
-      <p>Per exercir aquests drets, envieu un correu a <strong>grupsardanistacastelldefels@gmail.com</strong> adjuntant una còpia del vostre DNI o document identificatiu.</p>
+      <p>Per exercir aquests drets, envieu un correu a <strong>hola@grupsardanistacastelldefels.cat</strong> adjuntant una còpia del vostre DNI o document identificatiu.</p>
       <p>Si no esteu satisfets amb la resposta, teniu dret a presentar una reclamació davant l'<strong>Autoritat Catalana de Protecció de Dades (APDCAT)</strong> o l'<strong>Agència Espanyola de Protecció de Dades (AEPD)</strong>.</p>
       
       <h3>7. Menors d'edat</h3>

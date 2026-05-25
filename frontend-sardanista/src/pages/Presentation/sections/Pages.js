@@ -84,7 +84,7 @@ function Pages() {
                 Aquí pots conèixer què fem i com ho fem. Reflexions, articles i notícies sobre la
                 sardana.
                 <br />
-                Troba el esdeveniment que més t’agradi i participa!
+                Troba l&apos;esdeveniment que més t’agradi i participa!
               </MKTypography>
             </MKBox>
           </Grid>

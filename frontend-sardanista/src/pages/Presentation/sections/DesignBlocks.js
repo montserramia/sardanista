@@ -81,7 +81,7 @@ function DesignBlocks() {
             Què pots trobar aquí?
           </MKTypography>
           <MKTypography variant="body1" color="text">
-            Aquí pots trobar l’esdeveniment què més t’agradi i aprop de Castelldefels. A més,
+            Aquí pots trobar l’esdeveniment que més t’agradi i a prop de Castelldefels. A més,
             Notícies i Reflexions.
           </MKTypography>
         </Grid>

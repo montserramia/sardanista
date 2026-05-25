@@ -19,7 +19,7 @@ const imagesPrefix =
 export default [
   {
     title: "Agenda",
-    description: "Aquí veuràs tots els agenda sardanítics que pots gaudir",
+    description: "Aquí veuràs tots els esdeveniments sardanistes que pots gaudir",
     items: [
       {
         image: `${imagesPrefix}/headers.jpg`,

@@ -55,7 +55,7 @@ function Information() {
                     Mantenim viva la cultura catalana a través de la sardana, amb passió i
                     comunitat.
                     <br />
-                    Ens adaptantem als nous temps sense perdre l’essència.
+                    Ens adaptem als nous temps sense perdre l’essència.
                     <br />
                     Tu pots ser-ne part
                   </>
