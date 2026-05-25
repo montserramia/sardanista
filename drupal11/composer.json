@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^11.1",
         "drupal/gin": "^4.1",
         "drupal/jsonapi_extras": "^3.26",
+        "drupal/media_bulk_upload": "^3.0",
         "drupal/metatag": "^2.1",
         "drupal/pathauto": "^1.13",
         "drupal/redirect": "^1.11"
