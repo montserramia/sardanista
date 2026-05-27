@@ -111,6 +111,10 @@ function PaginaNeta() {
                   📱 Telèfons de contacte:
                 </MKTypography>
                 <MKTypography variant="body2" color="text">
+                  Pilar:{" "}
+                  <MKTypography component="a" href="tel:+34645044417" variant="body2" color="info">
+                    645 04 44 17
+                  </MKTypography>
                   Glòria:{" "}
                   <MKTypography component="a" href="tel:+34616430148" variant="body2" color="info">
                     616 43 01 48
