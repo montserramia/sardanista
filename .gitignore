@@ -17,6 +17,7 @@ __MACOSX/
 # --- Backups / dumps ---
 /backup-db.sh
 /restore-db.sh
+/backups/
 *backup*.sql
 *backup*.gz
 *.tar.gz
@@ -34,6 +35,11 @@ __MACOSX/
 /bfg.jar
 /sardanista.git/
 /sardanista.git.bfg-report/
+/drupal11/drush.phar
+/drupal11/drush83
+/drupal11/web/index.php.bak
+/drupal11/web/sites/default/settings.php.backup
+/drupal11/web/.well-known/
 
 # --- DDEV (configuració local) ---
 /.ddev/.gitignore

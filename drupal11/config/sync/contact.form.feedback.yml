@@ -7,7 +7,7 @@ _core:
 id: feedback
 label: 'Feedback del web'
 recipients:
-  - montserrat.serramia@newwweb.net
+  - hola@grupsardanistacastelldefels.cat
 reply: ''
 weight: 0
 message: "El vostre missatge s'ha enviat."
