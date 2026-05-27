@@ -44,3 +44,4 @@ __MACOSX/
 /.ddev/import-*/
 /.ddev/.sshkeys/
 /.ddev/.downloads/
+drupal11/web/sites/default/default.services.yml

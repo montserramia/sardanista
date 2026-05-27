@@ -79,14 +79,17 @@ function PaginaNeta() {
             </MKBox>
             <MKBox p={3}>
               <MKTypography variant="h5" color="dark" mb={2}>
+                Quin requisit cal? 
+              </MKTypography>
+              <MKTypography variant="body2" color="text" mb={3}>
+                Ganes d’aprendre, de ballar i de fer pinya.
+              </MKTypography>
+
+              <MKTypography variant="h5" color="dark" mb={2}>
                 Vols ser soci?
               </MKTypography>
               <MKTypography variant="body2" color="text" mb={3}>
                 Per a qualsevol dubte o consulta, pots contactar-nos a:
-              </MKTypography>
-
-              <MKTypography variant="body1" color="dark" fontWeight="medium" mb={2}>
-                L’únic requisit és tenir ganes: ganes d’aprendre, de ballar i de fer pinya.
               </MKTypography>
 
               <MKBox mb={2}>
