@@ -79,7 +79,7 @@ function PaginaNeta() {
             </MKBox>
             <MKBox p={3}>
               <MKTypography variant="h5" color="dark" mb={2}>
-                Quin requisit cal? 
+                Quins requisits cal complir?
               </MKTypography>
               <MKTypography variant="body2" color="text" mb={3}>
                 Ganes d’aprendre, de ballar i de fer pinya.
