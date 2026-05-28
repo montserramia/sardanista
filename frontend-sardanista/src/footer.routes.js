@@ -32,7 +32,7 @@ export default {
     },
     {
       icon: <YouTubeIcon />,
-      link: "https://www.youtube.com/",
+      link: "https://www.youtube.com/@GrupSardanista",
     },
   ],
   menus: [
