@@ -13,6 +13,13 @@ import bgImage from "assets/images/sardana/mans.jpg";
 
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
+const imatgeCardSx = {
+  width: "100%",
+  height: 200,
+  objectFit: "cover",
+  display: "block",
+};
+
 function parseLlocAmbEnllac(lloc) {
   if (!lloc) return { label: "Lloc no especificat", url: null };
 
@@ -161,11 +168,12 @@ export default function agenda() {
                       <MKBox
                         component={Link}
                         to={`/agenda/${event.slug}`}
-                        sx={{ display: "block", lineHeight: 0 }}
+                        sx={{ display: "block", lineHeight: 0, width: "100%" }}
                       >
                         <CardMedia
                           component="img"
                           height="200"
+                          sx={imatgeCardSx}
                           image={
                             event.imageUrl
                               ? event.imageUrl.startsWith("http")
@@ -180,6 +188,7 @@ export default function agenda() {
                       <CardMedia
                         component="img"
                         height="200"
+                        sx={imatgeCardSx}
                         image={
                           event.imageUrl
                             ? event.imageUrl.startsWith("http")
