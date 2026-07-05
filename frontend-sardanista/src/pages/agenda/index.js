@@ -52,7 +52,17 @@ export default function agenda() {
           (a, b) => new Date(a.dataInici).getTime() - new Date(b.dataInici).getTime()
         );
 
-        setagenda(sortedEvents);
+        const now = new Date();
+        const upcomingEvents = sortedEvents.filter((event) => {
+          const eventDate = new Date(event.dataInici);
+          // Comparar només la data sense hora per incloure esdeveniments del dia actual
+          const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+          const todayDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          
+          return eventDateOnly >= todayDateOnly;
+        });
+
+        setagenda(upcomingEvents);
       })
       .catch((error) => {
         console.error("Error carregant esdeveniments:", error);
