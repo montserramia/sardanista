@@ -51,7 +51,6 @@ function EventDetail() {
           include: "field_imatge",
           sort: "-changed",
           "page[limit]": 1,
-          _: Date.now(),
         },
       })
       .then((res) => {
