@@ -157,27 +157,60 @@ export default function agenda() {
               {esdeveniments.map((event) => (
                 <Grid item key={event.id} xs={12} sm={6} md={4}>
                   <Card>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={
-                        event.imageUrl
-                          ? event.imageUrl.startsWith("http")
-                            ? event.imageUrl
-                            : `${process.env.REACT_APP_API_BASE}${event.imageUrl}`
-                          : imatgePerDefecte
-                      }
-                      alt={event.title}
-                    />
+                    {event.slug ? (
+                      <MKBox
+                        component={Link}
+                        to={`/agenda/${event.slug}`}
+                        sx={{ display: "block", lineHeight: 0 }}
+                      >
+                        <CardMedia
+                          component="img"
+                          height="200"
+                          image={
+                            event.imageUrl
+                              ? event.imageUrl.startsWith("http")
+                                ? event.imageUrl
+                                : `${process.env.REACT_APP_API_BASE}${event.imageUrl}`
+                              : imatgePerDefecte
+                          }
+                          alt={event.title}
+                        />
+                      </MKBox>
+                    ) : (
+                      <CardMedia
+                        component="img"
+                        height="200"
+                        image={
+                          event.imageUrl
+                            ? event.imageUrl.startsWith("http")
+                              ? event.imageUrl
+                              : `${process.env.REACT_APP_API_BASE}${event.imageUrl}`
+                            : imatgePerDefecte
+                        }
+                        alt={event.title}
+                      />
+                    )}
                     <CardContent>
                       {(() => {
                         const lloc = parseLlocAmbEnllac(event.lloc);
 
                         return (
                           <>
-                            <MKTypography variant="h5" gutterBottom>
-                              {event.title}
-                            </MKTypography>
+                            {event.slug ? (
+                              <MKTypography
+                                component={Link}
+                                to={`/agenda/${event.slug}`}
+                                variant="h5"
+                                gutterBottom
+                                sx={{ textDecoration: "none", color: "inherit" }}
+                              >
+                                {event.title}
+                              </MKTypography>
+                            ) : (
+                              <MKTypography variant="h5" gutterBottom>
+                                {event.title}
+                              </MKTypography>
+                            )}
                             <MKTypography variant="body2" color="text">
                               📅{" "}
                               {new Date(event.dataInici).toLocaleString("ca-ES", {

@@ -14,6 +14,14 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/mans.jpg";
 
+function normalitzaHtmlDrupal(html, apiBase) {
+  if (!html) return "";
+
+  // JSON:API retorna sovint rutes relatives (/sites/default/files/...).
+  // Al frontend desplegat en un altre domini cal convertir-les a absolutes.
+  return html.replace(/(src|href)="\/(sites\/default\/files\/[^"]+)"/gi, `$1="${apiBase}/$2"`);
+}
+
 function parseLlocAmbEnllac(lloc) {
   if (!lloc) return { label: "Lloc no especificat", url: null };
 
@@ -67,7 +75,10 @@ function EventDetail() {
 
         setEvent({
           title: node.attributes.title,
-          body: node.attributes.body?.processed || "Contingut no disponible",
+          body: normalitzaHtmlDrupal(
+            node.attributes.body?.processed || "Contingut no disponible",
+            API_BASE
+          ),
           lloc: node.attributes.field_lloc,
           dataInici: node.attributes.field_data_inici,
           image: imageUrl,
