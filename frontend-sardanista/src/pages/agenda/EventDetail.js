@@ -37,7 +37,15 @@ function EventDetail() {
     const API_BASE = process.env.REACT_APP_API_BASE;
 
     axios
-      .get(`${API_BASE}/jsonapi/node/esdeveniment?filter[field_slug]=${slug}&include=field_imatge`)
+      .get(`${API_BASE}/jsonapi/node/esdeveniment`, {
+        params: {
+          "filter[field_slug]": slug,
+          include: "field_imatge",
+          sort: "-changed",
+          "page[limit]": 1,
+          _: Date.now(),
+        },
+      })
       .then((res) => {
         const node = res.data.data[0];
 
