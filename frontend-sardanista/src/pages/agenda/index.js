@@ -56,8 +56,16 @@ export default function agenda() {
         const upcomingEvents = sortedEvents.filter((event) => {
           const eventDate = new Date(event.dataInici);
           // Comparar només la data sense hora per incloure esdeveniments del dia actual
-          const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
-          const todayDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          const eventDateOnly = new Date(
+            eventDate.getFullYear(),
+            eventDate.getMonth(),
+            eventDate.getDate()
+          );
+          const todayDateOnly = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+          );
           
           return eventDateOnly >= todayDateOnly;
         });
