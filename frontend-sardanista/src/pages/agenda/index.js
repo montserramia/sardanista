@@ -61,12 +61,8 @@ export default function agenda() {
             eventDate.getMonth(),
             eventDate.getDate()
           );
-          const todayDateOnly = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate()
-          );
-          
+          const todayDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
           return eventDateOnly >= todayDateOnly;
         });
 
