@@ -13,6 +13,20 @@ import bgImage from "assets/images/sardana/mans.jpg";
 
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
+function parseLlocAmbEnllac(lloc) {
+  if (!lloc) return { label: "Lloc no especificat", url: null };
+
+  const text = lloc.trim();
+  const match = text.match(/https?:\/\/\S+/i);
+
+  if (!match) return { label: text, url: null };
+
+  const url = match[0];
+  const label = text.replace(/\s*[-–—]?\s*https?:\/\/\S+/i, "").trim() || "Ubicació";
+
+  return { label, url };
+}
+
 export default function agenda() {
   const [esdeveniments, setagenda] = useState([]);
 
@@ -156,23 +170,45 @@ export default function agenda() {
                       alt={event.title}
                     />
                     <CardContent>
-                      <MKTypography variant="h5" gutterBottom>
-                        {event.title}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text">
-                        📅{" "}
-                        {new Date(event.dataInici).toLocaleString("ca-ES", {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </MKTypography>
-                      <MKTypography variant="body2" color="text">
-                        📍 {event.lloc || "Lloc no especificat"}
-                      </MKTypography>
+                      {(() => {
+                        const lloc = parseLlocAmbEnllac(event.lloc);
+
+                        return (
+                          <>
+                            <MKTypography variant="h5" gutterBottom>
+                              {event.title}
+                            </MKTypography>
+                            <MKTypography variant="body2" color="text">
+                              📅{" "}
+                              {new Date(event.dataInici).toLocaleString("ca-ES", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })}
+                            </MKTypography>
+                            <MKTypography variant="body2" color="text">
+                              📍 {lloc.label}
+                              {lloc.url && (
+                                <>
+                                  {" - "}
+                                  <MKBox
+                                    component="a"
+                                    href={lloc.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{ color: "info.main", textDecoration: "underline" }}
+                                  >
+                                    Obrir mapa
+                                  </MKBox>
+                                </>
+                              )}
+                            </MKTypography>
+                          </>
+                        );
+                      })()}
                       {event.slug && (
                         <MKBox mt={2}>
                           <MKButton

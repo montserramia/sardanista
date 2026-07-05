@@ -14,6 +14,20 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/mans.jpg";
 
+function parseLlocAmbEnllac(lloc) {
+  if (!lloc) return { label: "Lloc no especificat", url: null };
+
+  const text = lloc.trim();
+  const match = text.match(/https?:\/\/\S+/i);
+
+  if (!match) return { label: text, url: null };
+
+  const url = match[0];
+  const label = text.replace(/\s*[-–—]?\s*https?:\/\/\S+/i, "").trim() || "Ubicació";
+
+  return { label, url };
+}
+
 function EventDetail() {
   const { slug } = useParams();
   const [event, setEvent] = useState(null);
@@ -60,6 +74,8 @@ function EventDetail() {
 
   if (loading) return <MKTypography>Carregant...</MKTypography>;
   if (!event) return <MKTypography>Esdeveniment no trobat</MKTypography>;
+
+  const lloc = parseLlocAmbEnllac(event.lloc);
 
   return (
     <>
@@ -136,7 +152,21 @@ function EventDetail() {
                     })}
                   </MKTypography>
                   <MKTypography variant="body2" color="text" mb={3}>
-                    📍 {event.lloc || "Lloc no especificat"}
+                    📍 {lloc.label}
+                    {lloc.url && (
+                      <>
+                        {" - "}
+                        <MKBox
+                          component="a"
+                          href={lloc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{ color: "info.main", textDecoration: "underline" }}
+                        >
+                          Obrir mapa
+                        </MKBox>
+                      </>
+                    )}
                   </MKTypography>
 
                   <div
