@@ -37,6 +37,6 @@ export default [
   {
     image: imgColla,
     name: "Aprèn a ballar sardanes amb la nostra colla",
-    route: "/pages/neta",
+    route: "/pages/cuset",
   },
 ];
