@@ -13,30 +13,30 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import imgAssaig from "assets/images/sardana/assaig-rotllana-clara.jpeg";
-import imgPremis from "assets/images/sardana/cobla-colla.jpeg";
-import imgInvitats from "assets/images/sardana/colla-campiona.jpeg";
+import imgAgenda from "assets/images/sardana/mans.jpg";
+import imgGaleria from "assets/images/sardana/Collage-galeria.jpg";
+import imgBlog from "assets/images/sardana/colla-campiona.jpeg";
 import imgColla from "assets/images/sardana/tots-esglesia.jpeg";
 
 export default [
   {
-    image: imgAssaig,
-    name: "Assaig de rotllana",
-    route: "/pages/landing-pages/about-us",
+    image: imgAgenda,
+    name: "Troba les properes ballades a la nostra agenda",
+    route: "/pages/agenda",
   },
   {
-    image: imgPremis,
-    name: "Mare Nostrum",
-    route: "/pages/landing-pages/contact-us",
+    image: imgGaleria,
+    name: "Galeria de fotos i vídeos de les nostres activitats",
+    route: "/pages/galeria",
   },
   {
-    image: imgInvitats,
-    name: "Una ballada amb convidats",
-    route: "/pages/neta",
+    image: imgBlog,
+    name: "Articles i notícies sobre la sardana",
+    route: "/pages/blog",
   },
   {
     image: imgColla,
-    name: "La Nostra Colla",
-    route: "/pages/landing-pages/author",
+    name: "Aprèn a ballar sardanes amb la nostra colla",
+    route: "/pages/neta",
   },
 ];
