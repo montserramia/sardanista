@@ -222,16 +222,6 @@ function GalleryDetail() {
           >
             {gallery.title}
           </MKTypography>
-          {gallery.description && (
-            <MKTypography
-              variant="body1"
-              color="white"
-              mt={1}
-              sx={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)" }}
-            >
-              <span dangerouslySetInnerHTML={{ __html: gallery.description }} />
-            </MKTypography>
-          )}
           <MKTypography
             variant="caption"
             color="white"
@@ -264,6 +254,14 @@ function GalleryDetail() {
             ← Tornar a les galeries
           </MKButton>
         </MKBox>
+
+        {gallery.description && (
+          <MKBox px={1} mb={3}>
+            <MKTypography variant="body1" color="text" component="div">
+              <span dangerouslySetInnerHTML={{ __html: gallery.description }} />
+            </MKTypography>
+          </MKBox>
+        )}
 
         <Container>
           <Grid container spacing={2}>
