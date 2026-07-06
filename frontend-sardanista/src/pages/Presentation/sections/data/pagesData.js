@@ -9,12 +9,12 @@
 Coded by www.creative-tim.com
 
  =========================================================
- 
+
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
 import imgAgenda from "assets/images/sardana/mans.jpg";
-import imgGaleria from "assets/images/sardana/Collage-galeria-1.jpg";
+import imgGaleria from "assets/images/sardana/CollageGaleria.jpg";
 import imgBlog from "assets/images/sardana/colla-campiona.jpeg";
 import imgColla from "assets/images/sardana/tots-esglesia.jpeg";
 
