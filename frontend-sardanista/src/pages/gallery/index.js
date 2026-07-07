@@ -46,7 +46,9 @@ function GalleryPage() {
   useEffect(() => {
     const API_BASE = process.env.REACT_APP_API_BASE;
 
-    fetch(`${API_BASE}/jsonapi/node/galeria?include=field_images,field_images.field_media_image`)
+    fetch(
+      `${API_BASE}/jsonapi/node/galeria?include=field_images,field_images.field_media_image&sort=-created`
+    )
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -79,6 +81,7 @@ function GalleryPage() {
             id: item.id,
             title: item.attributes.title,
             slug: titleToSlug(item.attributes.title),
+            created: item.attributes.created,
             description: item.attributes.field_description?.processed || "",
             images:
               item.relationships.field_images?.data
@@ -89,7 +92,8 @@ function GalleryPage() {
                 }))
                 .filter((img) => img.url) || [],
           }))
-          .filter((g) => g.images.length > 0);
+          .filter((g) => g.images.length > 0)
+          .sort((a, b) => new Date(b.created) - new Date(a.created));
 
         setGalleries(processedGalleries);
         setLoading(false);
