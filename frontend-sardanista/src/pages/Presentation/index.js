@@ -167,6 +167,13 @@ function Presentation() {
                 </MKSocialButton>
               </Grid>
             </Grid>
+            <Grid container spacing={3}>
+              <Grid item xs={12} lg={5} ml="auto" sx={{ textAlign: { xs: "center", lg: "left" } }}>
+                <MKTypography variant="h4" fontWeight="bold" mb={0.5}>
+                  Pàgina creada per cortesia de la nostra sòcia i amiga Montse Berga.
+                </MKTypography>
+              </Grid>
+            </Grid>
           </Container>
         </MKBox>
       </Card>
