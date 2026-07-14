@@ -71,10 +71,10 @@ export default {
       ],
     },
   ],
+  infoText:
+    "Si vols més informació clica sobre el que t’interessi i aniràs a la pàgina de l’entitat.",
   copyright: (
     <MKTypography variant="button" fontWeight="regular">
-      Si vols més informació clica sobre el que t’interessi i aniràs a la pàgina de l’entitat.
-      <br />
       All rights reserved. Copyright &copy; {date} Grup Sardanista Castelldefels{" "}
       <MKTypography
         component="a"

@@ -171,8 +171,8 @@ function Presentation() {
         </MKBox>
       </Card>
       <Grid container spacing={3}>
-        <Grid item xs={12} lg={5} ml="auto" sx={{ textAlign: { xs: "center", lg: "left" } }}>
-          <MKTypography variant="h5" mb={0.5}>
+        <Grid item xs={12} sx={{ textAlign: "center" }}>
+          <MKTypography variant="body2" mb={0.5}>
             Pàgina creada per cortesia de la nostra sòcia i amiga Montse Berga.
           </MKTypography>
         </Grid>
