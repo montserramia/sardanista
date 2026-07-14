@@ -63,8 +63,8 @@ function Pages() {
             Què pots trobar aquí?
           </MKTypography>
           <MKTypography variant="body1" color="text">
-            La nostre missió és preservar i promocionar la sardana,
-            <br /> fomentant la participació i la inclusió de tothom.
+            La nostre missió és preservar i promocionar la sardana, fomentant la participació i la
+            inclusió de tothom.
           </MKTypography>
         </Grid>
       </Container>
