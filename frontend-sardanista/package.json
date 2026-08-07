@@ -31,6 +31,7 @@
     "react-copy-to-clipboard": "5.1.0",
     "react-countup": "6.4.2",
     "react-dom": "18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-flatpickr": "3.10.13",
     "react-router-dom": "6.10.0",
     "react-scripts": "^5.0.1",
@@ -39,6 +40,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "node scripts/generate-sitemap.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

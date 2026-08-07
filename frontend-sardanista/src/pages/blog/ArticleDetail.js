@@ -11,6 +11,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
+import SEO from "components/SEO";
 
 function ArticleDetail() {
   const { slug } = useParams();
@@ -49,8 +50,22 @@ function ArticleDetail() {
   if (loading) return <MKTypography>Carregant...</MKTypography>;
   if (!article) return <MKTypography>Article no trobat</MKTypography>;
 
+  const plainDescription = article.body
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 155);
+
   return (
     <>
+      <SEO
+        title={`${article.title} | Blog | Grup Sardanista Castelldefels`}
+        description={plainDescription}
+        type="article"
+        image={article.image || undefined}
+        canonical={`/blog/${slug}`}
+      />
+
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}

@@ -12,6 +12,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/punteig.jpg";
+import SEO from "components/SEO";
 
 const imatgePerDefecte = "https://source.unsplash.com/random/800x600?culture";
 
@@ -60,6 +61,11 @@ function BlogPage() {
 
   return (
     <>
+      <SEO
+        title="Blog | Grup Sardanista Castelldefels"
+        description="Últims articles, notícies i reflexions sobre cultura sardanista a Castelldefels."
+      />
+
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}

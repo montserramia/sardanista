@@ -26,6 +26,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/Collage-galeria.jpg";
+import SEO from "components/SEO";
 
 // Igual que titleToSlug a GalleryDetail.js — han de ser idèntiques
 function titleToSlug(title) {
@@ -125,6 +126,11 @@ function GalleryPage() {
 
   return (
     <>
+      <SEO
+        title="Galeria | Grup Sardanista Castelldefels"
+        description="Recull de fotografies dels actes i activitats de l'Agrupació Sardanista de Castelldefels."
+      />
+
       <MKBox position="fixed" top="0" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}

@@ -10,6 +10,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/mans.jpg";
+import SEO from "components/SEO";
 
 const imatgePerDefecte = "https://placehold.co/400x200?text=Sense+imatge";
 
@@ -96,6 +97,11 @@ export default function agenda() {
 
   return (
     <>
+      <SEO
+        title="Agenda | Grup Sardanista Castelldefels"
+        description="Consulta les properes ballades, aplecs i activitats sardanistes a l'agenda."
+      />
+
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}

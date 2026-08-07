@@ -13,6 +13,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/sardana/mans.jpg";
+import SEO from "components/SEO";
 
 function parseLlocAmbEnllac(lloc) {
   if (!lloc) return { label: "Lloc no especificat", url: null };
@@ -79,6 +80,13 @@ function EventDetail() {
 
   return (
     <>
+      <SEO
+        title={`${event.title} | Agenda | Grup Sardanista Castelldefels`}
+        description={`Esdeveniment sardanista a ${lloc.label}. Consulta data, lloc i detalls de l'activitat.`}
+        image={event.image || undefined}
+        canonical={`/agenda/${slug}`}
+      />
+
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}

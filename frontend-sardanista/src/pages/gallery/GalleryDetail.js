@@ -13,6 +13,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
+import SEO from "components/SEO";
 // Ja no cal importar bgImage perquè el farem dinàmic
 // import bgImage from "assets/images/sardana/Collage-galeria.jpg";
 
@@ -180,6 +181,13 @@ function GalleryDetail() {
 
   return (
     <>
+      <SEO
+        title={`${gallery.title} | Galeria | Grup Sardanista Castelldefels`}
+        description={`Galeria d'imatges de ${gallery.title}. ${gallery.images.length} fotografies de l'activitat.`}
+        image={heroImage || undefined}
+        canonical={`/galeria/${gallerySlug}`}
+      />
+
       <MKBox position="fixed" top="0.5rem" width="100%" zIndex={999}>
         <DefaultNavbar
           routes={routes}
