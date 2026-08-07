@@ -314,11 +314,11 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           }}
         >
           <MKBox borderRadius="lg">
-            <MKTypography variant="h1" color="white">
+            <MKBox component="span" display="inline-flex" color="white">
               <Icon ref={setArrowRef} sx={{ mt: -3 }}>
                 arrow_drop_up
               </Icon>
-            </MKTypography>
+            </MKBox>
             <MKBox shadow="lg" borderRadius="lg" p={2} mt={2}>
               {renderRoutes}
             </MKBox>

@@ -1,0 +1,33 @@
+# Grup Sardanista Castelldefels
+
+Web oficial del Grup Sardanista de Castelldefels.
+
+## Propòsit
+
+Difondre activitats, agenda, articles i galeria d'imatges relacionades amb la sardana i la cultura popular catalana a Castelldefels.
+
+## Pàgines principals
+
+- https://grupsardanistacastelldefels.cat/
+- https://grupsardanistacastelldefels.cat/agenda
+- https://grupsardanistacastelldefels.cat/blog
+- https://grupsardanistacastelldefels.cat/galeria
+- https://grupsardanistacastelldefels.cat/calendari
+- https://grupsardanistacastelldefels.cat/contacte
+
+## Contingut públic
+
+- Agenda d'esdeveniments
+- Articles del blog
+- Galeria fotogràfica
+- Informació de contacte i participació
+
+## Indexació
+
+- Sitemap: https://grupsardanistacastelldefels.cat/sitemap.xml
+- Robots: https://grupsardanistacastelldefels.cat/robots.txt
+
+## Notes
+
+- La web utilitza React al frontend.
+- Les dades principals es consumeixen des del backend Drupal.
